@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Riinu&#39;s scripting diary</title>
-    <link>https://elated-hopper-629835.netlify.com/tags/</link>
+    <link>https://riinu.netlify.com/tags/</link>
     <description>Recent content in Tags on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://elated-hopper-629835.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://riinu.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blogdown</title>
-      <link>https://elated-hopper-629835.netlify.com/tags/blogdown/</link>
+      <link>https://riinu.netlify.com/tags/blogdown/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://elated-hopper-629835.netlify.com/tags/blogdown/</guid>
+      <guid>https://riinu.netlify.com/tags/blogdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github</title>
-      <link>https://elated-hopper-629835.netlify.com/tags/github/</link>
+      <link>https://riinu.netlify.com/tags/github/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://elated-hopper-629835.netlify.com/tags/github/</guid>
+      <guid>https://riinu.netlify.com/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://elated-hopper-629835.netlify.com/tags/hugo/</link>
+      <link>https://riinu.netlify.com/tags/hugo/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://elated-hopper-629835.netlify.com/tags/hugo/</guid>
+      <guid>https://riinu.netlify.com/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Netlify</title>
-      <link>https://elated-hopper-629835.netlify.com/tags/netlify/</link>
+      <link>https://riinu.netlify.com/tags/netlify/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://elated-hopper-629835.netlify.com/tags/netlify/</guid>
+      <guid>https://riinu.netlify.com/tags/netlify/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://elated-hopper-629835.netlify.com/tags/r/</link>
+      <link>https://riinu.netlify.com/tags/r/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://elated-hopper-629835.netlify.com/tags/r/</guid>
+      <guid>https://riinu.netlify.com/tags/r/</guid>
       <description></description>
     </item>
     
