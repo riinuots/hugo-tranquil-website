@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Riinu&#39;s scripting diary</title>
-    <link>https://riinu.netlify.com/tags/hugo/</link>
+    <link>/tags/hugo/</link>
     <description>Recent content in Hugo on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://riinu.netlify.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello world: blogdown loves Hugo</title>
-      <link>https://riinu.netlify.com/2018/02/hello-world/</link>
+      <link>/2018/02/hello-world/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2018/02/hello-world/</guid>
-      <description>We are live! I wrote my last blog post on Wordpress on 20-October 2017. I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces&amp;hellip;oh and discovering MARKDOWN.
-My two rules:  text is written in Markdown (usually R Markdown/knitr/bookdown, e.g. see how easy it is to create a book: &amp;ldquo;HealthyR: the eBook&amp;rdquo;) data analysis needs to end up in a Shiny app (e.</description>
+      <guid>/2018/02/hello-world/</guid>
+      <description>We are live! I wrote my last blog post on Wordpress on 20-October 2017 and myself that this was the last time I do this I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&amp;hellip;oh and discovering MARKDOWN.
+My two rules:  text is written in Markdown (I use R Markdown/knitr/bookdown, e.</description>
     </item>
     
   </channel>
