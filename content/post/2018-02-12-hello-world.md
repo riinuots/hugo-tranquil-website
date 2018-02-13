@@ -22,7 +22,7 @@ tags:
 
 # We are live!
 
-I wrote my last blog post on Wordpress on 20-October 2017 and myself that this was the last time I do this I've been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway...oh and discovering MARKDOWN.
+I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I've been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway...oh and discovering MARKDOWN.
 
 
 ### My two rules:
