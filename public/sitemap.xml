@@ -3,34 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/2018/02/hello-world/</loc>
+    <loc>https://elated-hopper-629835.netlify.com/2018/02/hello-world/</loc>
     <lastmod>2018-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/archives/</loc>
+    <loc>https://elated-hopper-629835.netlify.com/archives/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://elated-hopper-629835.netlify.com/tags/blogdown/</loc>
     <lastmod>2018-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://elated-hopper-629835.netlify.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/tags/github/</loc>
     <lastmod>2018-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://elated-hopper-629835.netlify.com/tags/hugo/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/tags/netlify/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/post/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/tags/r/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/categories/scripting/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://elated-hopper-629835.netlify.com/tags/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

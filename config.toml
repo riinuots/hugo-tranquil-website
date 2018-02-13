@@ -15,7 +15,7 @@
 baseURL = "https://elated-hopper-629835.netlify.com/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "Hugo tranquilpeak theme"
+title = "Riinu's scripting diary"
 theme = "hugo-tranquilpeak-theme"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 disqusShortname = "hugo-tranquilpeak-theme"

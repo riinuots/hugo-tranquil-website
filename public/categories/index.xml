@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Hugo tranquilpeak theme</title>
-    <link>/categories/</link>
-    <description>Recent content in Categories on Hugo tranquilpeak theme</description>
+    <title>Categories on Riinu&#39;s scripting diary</title>
+    <link>https://elated-hopper-629835.netlify.com/categories/</link>
+    <description>Recent content in Categories on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://elated-hopper-629835.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scripting</title>
+      <link>https://elated-hopper-629835.netlify.com/categories/scripting/</link>
+      <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://elated-hopper-629835.netlify.com/categories/scripting/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
