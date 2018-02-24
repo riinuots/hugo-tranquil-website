@@ -351,6 +351,27 @@
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/converting-old-wordpress-posts-to-hugo/">
+                <h3 class="media-heading">Converting old Wordpress posts to Hugo</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by blogdown-Hugo.
+Step 1 Read the Migration: From Wordpress chapter of the blogdown book.
+ Step 2 Get all your wordpress posts into one XML: WP Admin - Tools - Export.
+ Step 3 Install Exitwp and its dependencies (pyyamp, beautifulsoup4, html2text):
+git clone https://github.com/thomasf/exitwp.git sudo easy_install pip sudo pip install pyyaml sudo pip install beautifulsoup4 sudo pip install html2text This worked on macOS1 High Sierra - I already had python installed.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="/2018/02/hello-world/">
                 <h3 class="media-heading">Hello world: blogdown loves Hugo</h3>
               </a>
@@ -514,24 +535,6 @@ The style I use: Dawn</div>
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="/2016/09/r-iso-codes-and-country-names/">
-                <h3 class="media-heading">R: ISO codes and country names</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Sep 9, 2016
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">install.packages(&lsquo;maps&rsquo;)
-iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : chr &quot;AW&quot; ... $ a3 : chr &quot;ABW&quot; ... $ ISOname : chr &quot;Aruba&quot; .. $ mapname : chr &quot;Aruba&quot; ... $ sovereignty: chr &quot;Netherlands&quot; ...  </div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -539,7 +542,7 @@ iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : 
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         28 posts found
+         29 posts found
       </p>
     </div>
   </div>

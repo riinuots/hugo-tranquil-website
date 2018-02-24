@@ -300,6 +300,27 @@ My two rules:  text is written in Markdown (I use R Markdown/knitr/bookdown, e.
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/converting-old-wordpress-posts-to-hugo/">
+                <h3 class="media-heading">Converting old Wordpress posts to Hugo</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by blogdown-Hugo.
+Step 1 Read the Migration: From Wordpress chapter of the blogdown book.
+ Step 2 Get all your wordpress posts into one XML: WP Admin - Tools - Export.
+ Step 3 Install Exitwp and its dependencies (pyyamp, beautifulsoup4, html2text):
+git clone https://github.com/thomasf/exitwp.git sudo easy_install pip sudo pip install pyyaml sudo pip install beautifulsoup4 sudo pip install html2text This worked on macOS1 High Sierra - I already had python installed.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="/2018/02/hello-world/">
                 <h3 class="media-heading">Hello world: blogdown loves Hugo</h3>
               </a>
@@ -359,23 +380,6 @@ forcats reference: http://dplyr.tidyverse.org/reference/index.html</div>
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="/2017/06/our-group/">
-                <h3 class="media-heading">Group website</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jun 6, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">http://surgicalinformatics.org/</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
               <a class="link-unstyled" href="/2017/06/handling-your-bib-file-latex-bibliography/">
                 <h3 class="media-heading">Handling your .bib file (LaTex bibliography)</h3>
               </a>
@@ -406,23 +410,6 @@ There are a few issues with this though. The command bibexport comes with the in
               <div class="media-content hide-xs font-merryweather">ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
 https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b
 fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="/2016/10/healthyr-a-new-2-5-day-quick-start-r-course/">
-                <h3 class="media-heading">HealthyR - a new 2.5 day quick-start R course</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Oct 10, 2016
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">http://healthyr.surgicalinformatics.org/</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -481,6 +468,24 @@ iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : 
             <hr>
           </div>
         
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2016/07/adding-a-cron-job-using-the-ed-editor/">
+                <h3 class="media-heading">Adding a Cron job using the ed editor</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2016
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">These commands (after the first one) work in the ed editor. ed editor is used in the RStudio server shell.
+sudo crontab -e #opens crontab file in chosen editor a #add to file 0,30 * * * * Rscript /home/user/folder/script.R #command to add . #finished editing ,p #print file content to check w #save changes Q #quit  In this example the script will run every 0 hours, 30 minutes, see Ubuntu: How do I set up a CRON job for other options.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
       </div>
     </div>
     <div class="modal-footer">
@@ -488,7 +493,7 @@ iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : 
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         28 posts found
+         27 posts found
       </p>
     </div>
   </div>
