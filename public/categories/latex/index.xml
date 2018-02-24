@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on Riinu&#39;s scripting diary</title>
+    <link>/categories/latex/</link>
+    <description>Recent content in Latex on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Handling your .bib file (LaTex bibliography)</title>
+      <link>/2017/06/handling-your-bib-file-latex-bibliography/</link>
+      <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/handling-your-bib-file-latex-bibliography/</guid>
+      <description>To create a .bib file that only includes the citations you used in the manuscript:
+bibexport -o extracted_file.bib manuscript.aux
+There are a few issues with this though. The command bibexport comes with the installation of TexLive, but my Windows computer (bless) does not cooperate (&amp;ldquo;bibexport is not recognised as an internal or external command&amp;hellip;&amp;rdquo;) . So I can only use it on my Mac (luv ya).</description>
+    </item>
+    
+    <item>
+      <title>Adding space between rows in LaTex tables</title>
+      <link>/2016/04/adding-space-between-rows-in-latex-tables/</link>
+      <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/04/adding-space-between-rows-in-latex-tables/</guid>
+      <description>By default, LaTex tables are very tight:
+\usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table} &amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/screen-shot-2016-04-11-at-11-28-54.png&amp;quot; alt=&amp;quot;Screen Shot 2016-04-11 at 11.28.54&amp;quot; height=&amp;quot;260&amp;quot; class=&amp;quot;alignnone size-full wp-image-278&amp;quot; width=&amp;quot;319&amp;quot; /&amp;gt;  Adding this to the document preamble will add space between the rows:</description>
+    </item>
+    
+    <item>
+      <title>My minimal LaTex preamble</title>
+      <link>/2016/03/my-minimal-latex-preamble/</link>
+      <pubDate>Wed, 23 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/03/my-minimal-latex-preamble/</guid>
+      <description>My minimal example:
+\documentclass[a4paper]{article} %%% FIGURES AND TABLES %%%% \usepackage{graphicx} %gives the \includegraphics[width=0.5\textwidth]{my_image} %%% PAGE AND TEXT SET-UP %%%% \usepackage{fullpage} %gets rids of the wide default borders \renewcommand{\baselinestretch}{1.5} %space between lines \begin{document} Hello hello hello \end{document} And then one that is not so minimal, but still pretty basic and useful: \documentclass[a4paper]{article} %%% FIGURES AND TABLES %%%% \usepackage{graphicx} %gives the \includegraphics[width=0.5\textwidth]{my_image} \usepackage{booktabs} %for nicer tables \usepackage{tabu} %advanced control over tables \renewcommand{\thetable}{S\arabic{table}} %if this is supplement (this numbers figures as S1, S2.</description>
+    </item>
+    
+    <item>
+      <title>Converting R Markdown to Latex</title>
+      <link>/2015/06/converting-r-markdown-to-latex/</link>
+      <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/converting-r-markdown-to-latex/</guid>
+      <description>Install Pandoc: http://pandoc.org/
+library(knitr) knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;  Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:
+pandoc -s report.md -o report.tex
+And that&amp;rsquo;s it!
+(Read this, if you want vector images.)</description>
+    </item>
+    
+    <item>
+      <title>Latex tables: column widths and alignments</title>
+      <link>/2014/11/latex-tables-column-widths-and-allignments/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/11/latex-tables-column-widths-and-allignments/</guid>
+      <description>Firstly, start off your table in http://www.tablesgenerator.com/.
+Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &amp;ldquo;publication quality&amp;rdquo;. Note that publication quality tables should not contain vertical lines.
+Screen shot of Tables Generator
+Code#1
+Code #1 is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&amp;rsquo;s compilable).</description>
+    </item>
+    
+  </channel>
+</rss>

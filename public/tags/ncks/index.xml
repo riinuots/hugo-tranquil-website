@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ncks on Riinu&#39;s scripting diary</title>
+    <link>/tags/ncks/</link>
+    <description>Recent content in Ncks on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ncks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cut a time period from netCDF with nco</title>
+      <link>/2015/06/cut-a-time-period-from-netcdf-with-nco/</link>
+      <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/cut-a-time-period-from-netcdf-with-nco/</guid>
+      <description>ncks -d time,start_time,end_time in.nc out.nc
+start_time and end_time are integers.
+Add -F, if you want to use Fortran indexing (to start from 1).
+No space between dimension name and start-end points!</description>
+    </item>
+    
+    <item>
+      <title>Saving some variables from a netCDF to a new file</title>
+      <link>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
+      <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
+      <description>The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
+From the documentation:
+   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
+    </item>
+    
+  </channel>
+</rss>

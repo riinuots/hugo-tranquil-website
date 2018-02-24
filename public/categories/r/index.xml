@@ -1,25 +1,139 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Hugo tranquilpeak theme</title>
+    <title>R on Riinu&#39;s scripting diary</title>
     <link>/categories/r/</link>
-    <description>Recent content in R on Hugo tranquilpeak theme</description>
+    <description>Recent content in R on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 20 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Your first Shiny app</title>
+      <link>/2017/10/your-first-shiny-app/</link>
+      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2015/07/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/2017/10/your-first-shiny-app/</guid>
+      <description>What is Shiny?
+Shiny is an R package (install.packages(&amp;quot;shiny&amp;quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
+I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
+If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
+    </item>
+    
+    <item>
+      <title>R: Replacing NAs in all factors with &#39;Missing&#39;</title>
+      <link>/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
+      <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
+      <description>With a simple combination of mutate_if and fct_explicit_na,you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:
+If some of the words/symbols appear in white font, see the example here: Gist: factor_NA_levels.R
+https://gist.github.com/riinuots/b362b1aad497bb7480b0dae18beeb087
+dplyr reference: http://dplyr.tidyverse.org/reference/index.html
+forcats reference: http://dplyr.tidyverse.org/reference/index.html</description>
+    </item>
+    
+    <item>
+      <title>Get data from ggplot()</title>
+      <link>/2016/12/get-data-from-ggplot/</link>
+      <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/12/get-data-from-ggplot/</guid>
+      <description>ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
+https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b
+fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</description>
+    </item>
+    
+    <item>
+      <title>R lingua: library vs package</title>
+      <link>/2016/10/r-lingua-library-vs-package/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/10/r-lingua-library-vs-package/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R: ISO codes and country names</title>
+      <link>/2016/09/r-iso-codes-and-country-names/</link>
+      <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/09/r-iso-codes-and-country-names/</guid>
+      <description>install.packages(&amp;lsquo;maps&amp;rsquo;)
+iso = maps::iso3166 &amp;gt; str(iso) &#39;data.frame&#39;: 269 obs. of 5 variables: $ a2 : chr &amp;quot;AW&amp;quot; ... $ a3 : chr &amp;quot;ABW&amp;quot; ... $ ISOname : chr &amp;quot;Aruba&amp;quot; .. $ mapname : chr &amp;quot;Aruba&amp;quot; ... $ sovereignty: chr &amp;quot;Netherlands&amp;quot; ...  </description>
+    </item>
+    
+    <item>
+      <title>Add abcd labels on ggplot facets</title>
+      <link>/2016/04/add-abcd-labels-on-ggplot-facets/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
+      <description>https://gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392
+&amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/rplot.png&amp;quot; alt=&amp;quot;Rplot&amp;quot; height=&amp;quot;267&amp;quot; class=&amp;quot;alignnone size-full wp-image-302&amp;quot; width=&amp;quot;999&amp;quot; /&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>How long did my R script run?</title>
+      <link>/2016/04/how-long-did-my-script-run/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/04/how-long-did-my-script-run/</guid>
+      <description>This to the beginning:
+strt&amp;lt;-Sys.time()
+And this to the end:
+print(Sys.time()-strt)
+Example output:
+ print(Sys.time()-strt) Time difference of 16.39691 secs
+ </description>
+    </item>
+    
+    <item>
+      <title>How to &#34;increase&#34; array resolution in R (replicate each element both column-wise and row-wise)</title>
+      <link>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
+      <description>One picture says more than a thousand words. You have what is one the left, and you want what is on the right.
+my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3) #matrix is a 2D array, this next row creates a third dimension, #duplicating the data my_array = array(my_matrix, dim = c(3,3,2))  There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):</description>
+    </item>
+    
+    <item>
+      <title>Converting R Markdown to Latex</title>
+      <link>/2015/06/converting-r-markdown-to-latex/</link>
+      <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/converting-r-markdown-to-latex/</guid>
+      <description>Install Pandoc: http://pandoc.org/
+library(knitr) knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;  Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:
+pandoc -s report.md -o report.tex
+And that&amp;rsquo;s it!
+(Read this, if you want vector images.)</description>
+    </item>
+    
+    <item>
+      <title>Reordering factor levels in R and what could go wrong</title>
+      <link>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
+      <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
+      <description>I&amp;rsquo;ve recently started using ggplot2 in addition to lattice (see this post that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels.</description>
+    </item>
+    
+    <item>
+      <title>Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]</title>
+      <link>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
+      <pubDate>Wed, 06 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
+      <description>This is a short note based on this.
+Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.
+R2 for a linear model that has an intercept:
+,
+where y is the variable that the linear model is trying to predict (the response variable), y^ is the predicted value and y- is the mean value of the response variable.</description>
     </item>
     
   </channel>
