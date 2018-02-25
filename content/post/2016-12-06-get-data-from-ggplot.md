@@ -2,16 +2,22 @@
 title: Get data from ggplot()
 author: Riinu Ots
 date: '2016-12-06'
+thumbnailImage: /img/thumbnails/ggplot2.png
 categories:
   - R
+tags:
+ - plot
 slug: get-data-from-ggplot
 ---
 
-ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
+**ggplot** includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, `ggplot_build()` can be used to access the summarised dataset.
 
 ![summarised_barplot](https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png)
 
-https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b
+{{< gist a6af08ac11f7b5ede69572a7559a704b >}} 
+
+
+
 
     fill         y count prop x PANEL group    ...
     #D7301F 0.2147239    35    1 1     1     4 ...

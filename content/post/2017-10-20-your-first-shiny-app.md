@@ -2,6 +2,7 @@
 title: Your first Shiny app
 author: Riinu Ots
 date: '2017-10-20'
+thumbnailImage: /img/thumbnails/shiny_first_app_bubbles.png
 categories:
   - R
 tags:
@@ -9,21 +10,25 @@ tags:
 slug: your-first-shiny-app
 ---
 
-_**What is Shiny?**_
+### What is Shiny?
 
 Shiny is an R package (`install.packages("shiny")`) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don't use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
 
 I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
 
-## If it's not worth putting in a Shiny app it's not worth doing.
+> If it's not worth putting in a Shiny app it's not worth doing.
 
-_Your first Shiny app_
+### Your first Shiny app
 
 Getting started with Shiny is actually a lot easier than a lot of people make it out to be. So I created a very short (9 slides) presentation outlining my 5-step programme for your first Shiny app.
 
 This is the app: <https://riinu.shinyapps.io/shiny_testing/>
 
+<iframe src="https://riinu.shinyapps.io/shiny_testing/" width="600" height="600"></iframe>
+
 This is the presentation: <http://rpubs.com/riinu/shiny>
+
+<iframe src="http://rpubs.com/riinu/shiny" width="1000" height="800"></iframe>
 
 And here are the steps (also included in the presentation):
 

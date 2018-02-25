@@ -3,8 +3,7 @@ title: Converting old Wordpress posts to Hugo
 author: Riinu Ots
 date: '2018-02-24'
 slug: converting-old-wordpress-posts-to-hugo
-thumbnailImagePosition: left
-thumbnailImage: /img/wordpress.jpg
+thumbnailImage: /img/thumbnails/wordpress.jpg
 categories:
   - scripting
 tags:

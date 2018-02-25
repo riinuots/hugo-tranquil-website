@@ -17,10 +17,9 @@
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/10/your-first-shiny-app/</guid>
-      <description>What is Shiny?
-Shiny is an R package (install.packages(&amp;quot;shiny&amp;quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
+      <description>What is Shiny? Shiny is an R package (install.packages(&amp;quot;shiny&amp;quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
 I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
-If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
+ If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
     </item>
     
     <item>
@@ -30,10 +29,8 @@ If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doin
       
       <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
       <description>With a simple combination of mutate_if and fct_explicit_na,you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:
-If some of the words/symbols appear in white font, see the example here: Gist: factor_NA_levels.R
-https://gist.github.com/riinuots/b362b1aad497bb7480b0dae18beeb087
-dplyr reference: http://dplyr.tidyverse.org/reference/index.html
-forcats reference: http://dplyr.tidyverse.org/reference/index.html</description>
+ dplyr reference: http://dplyr.tidyverse.org/reference
+forcats reference: http://dplyr.tidyverse.org/reference</description>
     </item>
     
     <item>
@@ -43,8 +40,7 @@ forcats reference: http://dplyr.tidyverse.org/reference/index.html</description>
       
       <guid>/2016/12/get-data-from-ggplot/</guid>
       <description>ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
-https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b
-fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</description>
+ fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</description>
     </item>
     
     <item>

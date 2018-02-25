@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Plot on Hugo tranquilpeak theme</title>
+    <title>Plot on Riinu&#39;s scripting diary</title>
     <link>/tags/plot/</link>
-    <description>Recent content in Plot on Hugo tranquilpeak theme</description>
+    <description>Recent content in Plot on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 06 Dec 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/plot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Get data from ggplot()</title>
+      <link>/2016/12/get-data-from-ggplot/</link>
+      <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2015/07/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/2016/12/get-data-from-ggplot/</guid>
+      <description>ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
+ fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</description>
     </item>
     
   </channel>

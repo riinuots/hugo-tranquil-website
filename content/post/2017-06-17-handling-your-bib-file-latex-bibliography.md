@@ -2,6 +2,7 @@
 title: Handling your .bib file (LaTex bibliography)
 author: Riinu Ots
 date: '2017-06-17'
+thumbnailImage: /img/thumbnails/latex.png
 categories:
   - LaTex
 slug: handling-your-bib-file-latex-bibliography

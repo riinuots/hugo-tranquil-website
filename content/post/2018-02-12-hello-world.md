@@ -3,8 +3,7 @@ title: "Hello world: blogdown loves Hugo"
 author: Riinu Ots
 date: '2018-02-12'
 slug: hello-world
-thumbnailImagePosition: left
-thumbnailImage: https://riinudata.files.wordpress.com/2018/02/blogdown2.png
+thumbnailImage: /img/thumbnails/blogdown.png
 metaAlignment: center
 coverMeta: out
 categories:
