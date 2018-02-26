@@ -16,7 +16,9 @@ Shiny is an R package (`install.packages("shiny")`) for making your outputs inte
 
 I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
 
-> If it's not worth putting in a Shiny app it's not worth doing.
+{{< alert info >}}
+If it's not worth putting in a Shiny app it's not worth doing.
+{{< /alert >}}
 
 ### Your first Shiny app
 

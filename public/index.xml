@@ -42,7 +42,7 @@ My two rules:  text is written in Markdown (I use R Markdown/knitr/bookdown, e.<
       <guid>/2017/10/your-first-shiny-app/</guid>
       <description>What is Shiny? Shiny is an R package (install.packages(&amp;quot;shiny&amp;quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
 I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
- If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
+If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
     </item>
     
     <item>
