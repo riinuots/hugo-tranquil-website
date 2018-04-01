@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bash on Riinu&#39;s scripting diary</title>
-    <link>/tags/bash/</link>
+    <link>https://riinu.netlify.com/tags/bash/</link>
     <description>Recent content in Bash on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Jul 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://riinu.netlify.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to temporarily disable a bash alias</title>
-      <link>/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
+      <link>https://riinu.netlify.com/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
+      <guid>https://riinu.netlify.com/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
       <description>If you&amp;rsquo;ve defined alias ls=&amp;lsquo;ls -al –color=auto&amp;rsquo;, but want to use ls without the extra information and colouring then use
 \ls
 or equivalently
@@ -25,10 +25,10 @@ command ls</description>
     
     <item>
       <title>My bash aliases</title>
-      <link>/2014/05/my-bash-aliases/</link>
+      <link>https://riinu.netlify.com/2014/05/my-bash-aliases/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/my-bash-aliases/</guid>
+      <guid>https://riinu.netlify.com/2014/05/my-bash-aliases/</guid>
       <description>If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
 # .bashrc
 # Put user specific aliases and functions here alias ls=&amp;lsquo;ls -al &amp;ndash;color=auto&amp;rsquo; alias qstat=&amp;lsquo;qstat -a&amp;rsquo; alias qsub=&amp;lsquo;qsub -m abe -M myemail@email.com&amp;rsquo;
