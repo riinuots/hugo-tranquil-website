@@ -12,7 +12,7 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://riinu.netlify.com/"
+baseURL = "https://riinu.me/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Riinu's scripting diary"

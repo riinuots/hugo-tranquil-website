@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Riinu&#39;s scripting diary</title>
-    <link>https://riinu.netlify.com/post/</link>
+    <link>https://riinu.me/post/</link>
     <description>Recent content in Posts on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://riinu.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://riinu.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Islay distilleries in 3 days</title>
-      <link>https://riinu.netlify.com/2018/04/islay-distilleries-in-3-days/</link>
+      <link>https://riinu.me/2018/04/islay-distilleries-in-3-days/</link>
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2018/04/islay-distilleries-in-3-days/</guid>
+      <guid>https://riinu.me/2018/04/islay-distilleries-in-3-days/</guid>
       <description>Day 0 (Sunday 18-February 2018) Left Edinburgh at 8am for a 1pm ferry Kennacraig to Port Askaig (Islay). Edinburgh-Kennacraig should be a 3.5h drive (and it was), but we left early to allow for any delays on the road. Arrived on Islay at 3pm and our accommodation near Port Ellen (southern Islay, close to to Ardbeg, Lagavulin, Laphroiaig) was a 40 min drive from the port.
 Map of Islay with all its lovely distilleries.</description>
     </item>
     
     <item>
       <title>Converting old Wordpress posts to Hugo</title>
-      <link>https://riinu.netlify.com/2018/02/converting-old-wordpress-posts-to-hugo/</link>
+      <link>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</link>
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
+      <guid>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
       <description>Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by blogdown-Hugo.
 Step 1 Read the Migration: From Wordpress chapter of the blogdown book.
  Step 2 Get all your wordpress posts into one XML: WP Admin - Tools - Export.
@@ -36,20 +36,20 @@ git clone https://github.com/thomasf/exitwp.git sudo easy_install pip sudo pip i
     
     <item>
       <title>Hello world: blogdown loves Hugo</title>
-      <link>https://riinu.netlify.com/2018/02/hello-world/</link>
+      <link>https://riinu.me/2018/02/hello-world/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2018/02/hello-world/</guid>
+      <guid>https://riinu.me/2018/02/hello-world/</guid>
       <description>We are live! I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&amp;hellip;oh and discovering MARKDOWN.
 My two rules:  text is written in Markdown (I use R Markdown/knitr/bookdown, e.</description>
     </item>
     
     <item>
       <title>Your first Shiny app</title>
-      <link>https://riinu.netlify.com/2017/10/your-first-shiny-app/</link>
+      <link>https://riinu.me/2017/10/your-first-shiny-app/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2017/10/your-first-shiny-app/</guid>
+      <guid>https://riinu.me/2017/10/your-first-shiny-app/</guid>
       <description>What is Shiny? Shiny is an R package (install.packages(&amp;quot;shiny&amp;quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
 I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
 If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.</description>
@@ -57,10 +57,10 @@ If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doin
     
     <item>
       <title>R: Replacing NAs in all factors with &#39;Missing&#39;</title>
-      <link>https://riinu.netlify.com/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
+      <link>https://riinu.me/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
+      <guid>https://riinu.me/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
       <description>With a simple combination of mutate_if and fct_explicit_na,you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:
  dplyr reference: http://dplyr.tidyverse.org/reference
 forcats reference: http://dplyr.tidyverse.org/reference</description>
@@ -68,10 +68,10 @@ forcats reference: http://dplyr.tidyverse.org/reference</description>
     
     <item>
       <title>Handling your .bib file (LaTex bibliography)</title>
-      <link>https://riinu.netlify.com/2017/06/handling-your-bib-file-latex-bibliography/</link>
+      <link>https://riinu.me/2017/06/handling-your-bib-file-latex-bibliography/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2017/06/handling-your-bib-file-latex-bibliography/</guid>
+      <guid>https://riinu.me/2017/06/handling-your-bib-file-latex-bibliography/</guid>
       <description>To create a .bib file that only includes the citations you used in the manuscript:
 bibexport -o extracted_file.bib manuscript.aux
 There are a few issues with this though. The command bibexport comes with the installation of TexLive, but my Windows computer (bless) does not cooperate (&amp;ldquo;bibexport is not recognised as an internal or external command&amp;hellip;&amp;rdquo;) . So I can only use it on my Mac (luv ya).</description>
@@ -79,69 +79,69 @@ There are a few issues with this though. The command bibexport comes with the in
     
     <item>
       <title>Get data from ggplot()</title>
-      <link>https://riinu.netlify.com/2016/12/get-data-from-ggplot/</link>
+      <link>https://riinu.me/2016/12/get-data-from-ggplot/</link>
       <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/12/get-data-from-ggplot/</guid>
+      <guid>https://riinu.me/2016/12/get-data-from-ggplot/</guid>
       <description>ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
  fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</description>
     </item>
     
     <item>
       <title>R lingua: library vs package</title>
-      <link>https://riinu.netlify.com/2016/10/r-lingua-library-vs-package/</link>
+      <link>https://riinu.me/2016/10/r-lingua-library-vs-package/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/10/r-lingua-library-vs-package/</guid>
+      <guid>https://riinu.me/2016/10/r-lingua-library-vs-package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Online syntax highlighter</title>
-      <link>https://riinu.netlify.com/2016/09/online-syntax-highlighter/</link>
+      <link>https://riinu.me/2016/09/online-syntax-highlighter/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/09/online-syntax-highlighter/</guid>
+      <guid>https://riinu.me/2016/09/online-syntax-highlighter/</guid>
       <description>http://markup.su/highlighter/
 The style I use: Dawn</description>
     </item>
     
     <item>
       <title>R: ISO codes and country names</title>
-      <link>https://riinu.netlify.com/2016/09/r-iso-codes-and-country-names/</link>
+      <link>https://riinu.me/2016/09/r-iso-codes-and-country-names/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/09/r-iso-codes-and-country-names/</guid>
+      <guid>https://riinu.me/2016/09/r-iso-codes-and-country-names/</guid>
       <description>install.packages(&amp;lsquo;maps&amp;rsquo;)
 iso = maps::iso3166 &amp;gt; str(iso) &#39;data.frame&#39;: 269 obs. of 5 variables: $ a2 : chr &amp;quot;AW&amp;quot; ... $ a3 : chr &amp;quot;ABW&amp;quot; ... $ ISOname : chr &amp;quot;Aruba&amp;quot; .. $ mapname : chr &amp;quot;Aruba&amp;quot; ... $ sovereignty: chr &amp;quot;Netherlands&amp;quot; ...  </description>
     </item>
     
     <item>
       <title>Adding a Cron job using the ed editor</title>
-      <link>https://riinu.netlify.com/2016/07/adding-a-cron-job-using-the-ed-editor/</link>
+      <link>https://riinu.me/2016/07/adding-a-cron-job-using-the-ed-editor/</link>
       <pubDate>Mon, 25 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/07/adding-a-cron-job-using-the-ed-editor/</guid>
+      <guid>https://riinu.me/2016/07/adding-a-cron-job-using-the-ed-editor/</guid>
       <description>These commands (after the first one) work in the ed editor. ed editor is used in the RStudio server shell.
 sudo crontab -e #opens crontab file in chosen editor a #add to file 0,30 * * * * Rscript /home/user/folder/script.R #command to add . #finished editing ,p #print file content to check w #save changes Q #quit  In this example the script will run every 0 hours, 30 minutes, see Ubuntu: How do I set up a CRON job for other options.</description>
     </item>
     
     <item>
       <title>Add abcd labels on ggplot facets</title>
-      <link>https://riinu.netlify.com/2016/04/add-abcd-labels-on-ggplot-facets/</link>
+      <link>https://riinu.me/2016/04/add-abcd-labels-on-ggplot-facets/</link>
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
+      <guid>https://riinu.me/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
       <description>https://gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392
 &amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/rplot.png&amp;quot; alt=&amp;quot;Rplot&amp;quot; height=&amp;quot;267&amp;quot; class=&amp;quot;alignnone size-full wp-image-302&amp;quot; width=&amp;quot;999&amp;quot; /&amp;gt;  </description>
     </item>
     
     <item>
       <title>How long did my R script run?</title>
-      <link>https://riinu.netlify.com/2016/04/how-long-did-my-script-run/</link>
+      <link>https://riinu.me/2016/04/how-long-did-my-script-run/</link>
       <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/04/how-long-did-my-script-run/</guid>
+      <guid>https://riinu.me/2016/04/how-long-did-my-script-run/</guid>
       <description>This to the beginning:
 strt&amp;lt;-Sys.time()
 And this to the end:
@@ -153,40 +153,40 @@ Example output:
     
     <item>
       <title>Adding space between rows in LaTex tables</title>
-      <link>https://riinu.netlify.com/2016/04/adding-space-between-rows-in-latex-tables/</link>
+      <link>https://riinu.me/2016/04/adding-space-between-rows-in-latex-tables/</link>
       <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/04/adding-space-between-rows-in-latex-tables/</guid>
+      <guid>https://riinu.me/2016/04/adding-space-between-rows-in-latex-tables/</guid>
       <description>By default, LaTex tables are very tight:
 \usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table} &amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/screen-shot-2016-04-11-at-11-28-54.png&amp;quot; alt=&amp;quot;Screen Shot 2016-04-11 at 11.28.54&amp;quot; height=&amp;quot;260&amp;quot; class=&amp;quot;alignnone size-full wp-image-278&amp;quot; width=&amp;quot;319&amp;quot; /&amp;gt;  Adding this to the document preamble will add space between the rows:</description>
     </item>
     
     <item>
       <title>My minimal LaTex preamble</title>
-      <link>https://riinu.netlify.com/2016/03/my-minimal-latex-preamble/</link>
+      <link>https://riinu.me/2016/03/my-minimal-latex-preamble/</link>
       <pubDate>Wed, 23 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2016/03/my-minimal-latex-preamble/</guid>
+      <guid>https://riinu.me/2016/03/my-minimal-latex-preamble/</guid>
       <description>My minimal example:
 \documentclass[a4paper]{article} %%% FIGURES AND TABLES %%%% \usepackage{graphicx} %gives the \includegraphics[width=0.5\textwidth]{my_image} %%% PAGE AND TEXT SET-UP %%%% \usepackage{fullpage} %gets rids of the wide default borders \renewcommand{\baselinestretch}{1.5} %space between lines \begin{document} Hello hello hello \end{document} And then one that is not so minimal, but still pretty basic and useful: \documentclass[a4paper]{article} %%% FIGURES AND TABLES %%%% \usepackage{graphicx} %gives the \includegraphics[width=0.5\textwidth]{my_image} \usepackage{booktabs} %for nicer tables \usepackage{tabu} %advanced control over tables \renewcommand{\thetable}{S\arabic{table}} %if this is supplement (this numbers figures as S1, S2.</description>
     </item>
     
     <item>
       <title>How to &#34;increase&#34; array resolution in R (replicate each element both column-wise and row-wise)</title>
-      <link>https://riinu.netlify.com/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
+      <link>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
+      <guid>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
       <description>One picture says more than a thousand words. You have what is one the left, and you want what is on the right.
 my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3) #matrix is a 2D array, this next row creates a third dimension, #duplicating the data my_array = array(my_matrix, dim = c(3,3,2))  There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):</description>
     </item>
     
     <item>
       <title>Cut a time period from netCDF with nco</title>
-      <link>https://riinu.netlify.com/2015/06/cut-a-time-period-from-netcdf-with-nco/</link>
+      <link>https://riinu.me/2015/06/cut-a-time-period-from-netcdf-with-nco/</link>
       <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2015/06/cut-a-time-period-from-netcdf-with-nco/</guid>
+      <guid>https://riinu.me/2015/06/cut-a-time-period-from-netcdf-with-nco/</guid>
       <description>ncks -d time,start_time,end_time in.nc out.nc
 start_time and end_time are integers.
 Add -F, if you want to use Fortran indexing (to start from 1).
@@ -195,10 +195,10 @@ No space between dimension name and start-end points!</description>
     
     <item>
       <title>Converting R Markdown to Latex</title>
-      <link>https://riinu.netlify.com/2015/06/converting-r-markdown-to-latex/</link>
+      <link>https://riinu.me/2015/06/converting-r-markdown-to-latex/</link>
       <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2015/06/converting-r-markdown-to-latex/</guid>
+      <guid>https://riinu.me/2015/06/converting-r-markdown-to-latex/</guid>
       <description>Install Pandoc: http://pandoc.org/
 library(knitr) knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;  Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:
 pandoc -s report.md -o report.tex
@@ -208,19 +208,19 @@ And that&amp;rsquo;s it!
     
     <item>
       <title>Reordering factor levels in R and what could go wrong</title>
-      <link>https://riinu.netlify.com/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
+      <link>https://riinu.me/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
+      <guid>https://riinu.me/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
       <description>I&amp;rsquo;ve recently started using ggplot2 in addition to lattice (see this post that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels.</description>
     </item>
     
     <item>
       <title>Latex tables: column widths and alignments</title>
-      <link>https://riinu.netlify.com/2014/11/latex-tables-column-widths-and-allignments/</link>
+      <link>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/11/latex-tables-column-widths-and-allignments/</guid>
+      <guid>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</guid>
       <description>Firstly, start off your table in http://www.tablesgenerator.com/.
 Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &amp;ldquo;publication quality&amp;rdquo;. Note that publication quality tables should not contain vertical lines.
 Screen shot of Tables Generator
@@ -230,10 +230,10 @@ Code #1 is the code from Tables Generator with the addition of caption, label an
     
     <item>
       <title>Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]</title>
-      <link>https://riinu.netlify.com/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
+      <link>https://riinu.me/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
       <pubDate>Wed, 06 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
+      <guid>https://riinu.me/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
       <description>This is a short note based on this.
 Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.
 R2 for a linear model that has an intercept:
@@ -243,19 +243,19 @@ where y is the variable that the linear model is trying to predict (the response
     
     <item>
       <title>Rotate with ImageMagick</title>
-      <link>https://riinu.netlify.com/2014/07/rotate-with-imagemagick/</link>
+      <link>https://riinu.me/2014/07/rotate-with-imagemagick/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/07/rotate-with-imagemagick/</guid>
+      <guid>https://riinu.me/2014/07/rotate-with-imagemagick/</guid>
       <description>convert -rotate 270 -density 300 -compress lzw in.pdf out.pdf</description>
     </item>
     
     <item>
       <title>How to temporarily disable a bash alias</title>
-      <link>https://riinu.netlify.com/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
+      <link>https://riinu.me/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
+      <guid>https://riinu.me/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
       <description>If you&amp;rsquo;ve defined alias ls=&amp;lsquo;ls -al –color=auto&amp;rsquo;, but want to use ls without the extra information and colouring then use
 \ls
 or equivalently
@@ -264,10 +264,10 @@ command ls</description>
     
     <item>
       <title>Symbolic links and 2 common errors with them</title>
-      <link>https://riinu.netlify.com/2014/07/symbolic-links-and-2-common-errors-with-them/</link>
+      <link>https://riinu.me/2014/07/symbolic-links-and-2-common-errors-with-them/</link>
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
+      <guid>https://riinu.me/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
       <description>I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:
 _ln -s target_file symlink,
 where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)</description>
@@ -275,10 +275,10 @@ where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard 
     
     <item>
       <title>Add up two variables of a netCDF file</title>
-      <link>https://riinu.netlify.com/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</link>
+      <link>https://riinu.me/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
+      <guid>https://riinu.me/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
       <description>NCO:ncap2 is the function to do it:
 _ncap2 -s &amp;lsquo;new_var=var1+var2&amp;rsquo; in_filename.nc outfilename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
@@ -288,10 +288,10 @@ BUT the new_var will have the same long_name as the first variable used for summ
     
     <item>
       <title>My bash aliases</title>
-      <link>https://riinu.netlify.com/2014/05/my-bash-aliases/</link>
+      <link>https://riinu.me/2014/05/my-bash-aliases/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/05/my-bash-aliases/</guid>
+      <guid>https://riinu.me/2014/05/my-bash-aliases/</guid>
       <description>If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
 # .bashrc
 # Put user specific aliases and functions here alias ls=&amp;lsquo;ls -al &amp;ndash;color=auto&amp;rsquo; alias qstat=&amp;lsquo;qstat -a&amp;rsquo; alias qsub=&amp;lsquo;qsub -m abe -M myemail@email.com&amp;rsquo;
@@ -300,10 +300,10 @@ alias disk=&amp;ldquo;du * -sh | sort -h&amp;rdquo;</description>
     
     <item>
       <title>Saving some variables from a netCDF to a new file</title>
-      <link>https://riinu.netlify.com/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
+      <link>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
+      <guid>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
    The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
@@ -311,10 +311,10 @@ From the documentation:
     
     <item>
       <title>Sum all values over several dimensions of a netCDF variable</title>
-      <link>https://riinu.netlify.com/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</link>
+      <link>https://riinu.me/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.netlify.com/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
+      <guid>https://riinu.me/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
       <description>NCO:ncap2 and .total
 _ncap2 -s &amp;lsquo;summed_variable=variable_tosum.total($lat,$lon)&amp;rsquo; in.nc out.nc
 Make sure to use single quotes.
