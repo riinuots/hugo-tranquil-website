@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2018/04/islay-distilleries-in-3-days/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/02/converting-old-wordpress-posts-to-hugo/</loc>
     <lastmod>2018-02-24T00:00:00+00:00</lastmod>
   </url>
@@ -138,6 +143,10 @@
   </url>
   
   <url>
+    <loc>/1/01/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/3d/</loc>
     <lastmod>2015-09-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -220,14 +229,14 @@
   </url>
   
   <url>
-    <loc>/categories/latex/</loc>
-    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
+    <loc>/tags/latex/</loc>
+    <lastmod>2016-04-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/latex/</loc>
-    <lastmod>2016-04-11T00:00:00+00:00</lastmod>
+    <loc>/categories/latex/</loc>
+    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -274,14 +283,14 @@
   </url>
   
   <url>
-    <loc>/categories/netcdf/</loc>
-    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+    <loc>/tags/netcdf/</loc>
+    <lastmod>2014-05-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/netcdf/</loc>
-    <lastmod>2014-05-29T00:00:00+00:00</lastmod>
+    <loc>/categories/netcdf/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -311,7 +320,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -322,14 +331,14 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2017-10-20T00:00:00+00:00</lastmod>
+    <loc>/tags/r/</loc>
+    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2018-02-12T00:00:00+00:00</lastmod>
+    <loc>/categories/r/</loc>
+    <lastmod>2017-10-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -341,13 +350,19 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-02-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/rmarkdown/</loc>
     <lastmod>2015-06-24T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/scotland/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -382,14 +397,20 @@
   </url>
   
   <url>
-    <loc>/categories/unix/</loc>
-    <lastmod>2016-07-25T00:00:00+00:00</lastmod>
+    <loc>/categories/travel/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/unix/</loc>
     <lastmod>2014-07-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/unix/</loc>
+    <lastmod>2016-07-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
