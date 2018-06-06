@@ -2,83 +2,83 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Riinu&#39;s scripting diary</title>
-    <link>https://riinu.me/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://riinu.me/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Latex</title>
-      <link>https://riinu.me/categories/latex/</link>
+      <link>/categories/latex/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/latex/</guid>
+      <guid>/categories/latex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Netcdf</title>
-      <link>https://riinu.me/categories/netcdf/</link>
+      <link>/categories/netcdf/</link>
       <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/netcdf/</guid>
+      <guid>/categories/netcdf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pdf</title>
-      <link>https://riinu.me/categories/pdf/</link>
+      <link>/categories/pdf/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/pdf/</guid>
+      <guid>/categories/pdf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://riinu.me/categories/r/</link>
+      <link>/categories/r/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/r/</guid>
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scripting</title>
-      <link>https://riinu.me/categories/scripting/</link>
+      <link>/categories/scripting/</link>
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/scripting/</guid>
+      <guid>/categories/scripting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Travel</title>
-      <link>https://riinu.me/categories/travel/</link>
+      <link>/categories/travel/</link>
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/travel/</guid>
+      <guid>/categories/travel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unix</title>
-      <link>https://riinu.me/categories/unix/</link>
+      <link>/categories/unix/</link>
       <pubDate>Mon, 25 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/unix/</guid>
+      <guid>/categories/unix/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Utility</title>
-      <link>https://riinu.me/categories/utility/</link>
+      <link>/categories/utility/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/categories/utility/</guid>
+      <guid>/categories/utility/</guid>
       <description></description>
     </item>
     

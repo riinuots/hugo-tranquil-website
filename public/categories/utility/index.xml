@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Utility on Riinu&#39;s scripting diary</title>
-    <link>https://riinu.me/categories/utility/</link>
+    <link>/categories/utility/</link>
     <description>Recent content in Utility on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 26 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://riinu.me/categories/utility/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/utility/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Online syntax highlighter</title>
-      <link>https://riinu.me/2016/09/online-syntax-highlighter/</link>
+      <link>/2016/09/online-syntax-highlighter/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/2016/09/online-syntax-highlighter/</guid>
+      <guid>/2016/09/online-syntax-highlighter/</guid>
       <description>http://markup.su/highlighter/
 The style I use: Dawn</description>
     </item>

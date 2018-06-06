@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tables on Riinu&#39;s scripting diary</title>
-    <link>https://riinu.me/tags/tables/</link>
+    <link>/tags/tables/</link>
     <description>Recent content in Tables on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://riinu.me/tags/tables/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/tables/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Latex tables: column widths and alignments</title>
-      <link>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</link>
+      <link>/2014/11/latex-tables-column-widths-and-allignments/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</guid>
+      <guid>/2014/11/latex-tables-column-widths-and-allignments/</guid>
       <description>Firstly, start off your table in http://www.tablesgenerator.com/.
 Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &amp;ldquo;publication quality&amp;rdquo;. Note that publication quality tables should not contain vertical lines.
 Screen shot of Tables Generator
