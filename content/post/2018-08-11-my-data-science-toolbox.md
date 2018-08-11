@@ -3,6 +3,7 @@ title: My data science toolbox
 author: Riinu
 date: '2018-08-11'
 slug: my-data-science-toolbox
+thumbnailImage: img/toolbox_thumbnail.png
 categories:
   - scripting
 tags:
