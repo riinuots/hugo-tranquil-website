@@ -18,7 +18,7 @@
       
       <guid>/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
       <description>I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:
-_ln -s target_file symlink,
+ln -s target_file sym_link,
 where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)</description>
     </item>
     

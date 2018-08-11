@@ -260,10 +260,10 @@ ga('send', 'pageview');
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       NCO:ncap2 and .total
-_ncap2 -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
+ncap2 -s 'summed_variable=variable_to_sum.total($lat,$lon)' in.nc out.nc
 Make sure to use single quotes.
 If your in.nc==out.cnc then adding -A will save you from having to specify &ldquo;overwrite&rdquo; (see this).
-_ncap2 -A -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
+ncap2 -A -s 'summed_variable=variable_to_sum.total($lat,$lon)' in.nc out.nc
       <p>
         <a href="/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/" class="postShorten-excerpt_link link">Continue reading</a>
         

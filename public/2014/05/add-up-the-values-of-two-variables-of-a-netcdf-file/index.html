@@ -29,12 +29,12 @@
 
     
     <meta name="description" content="NCO:ncap2 is the function to do it:
-_ncap2 -s &lsquo;new_var=var1&#43;var2&rsquo; in_filename.nc outfilename.nc
+ncap2 -s &#39;new_var=var1&#43;var2&#39; in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).">
     <meta property="og:description" content="NCO:ncap2 is the function to do it:
-_ncap2 -s &lsquo;new_var=var1&#43;var2&rsquo; in_filename.nc outfilename.nc
+ncap2 -s &#39;new_var=var1&#43;var2&#39; in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).">
@@ -45,7 +45,7 @@ BUT the new_var will have the same long_name as the first variable used for summ
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Riinu&#39;s scripting diary">
     <meta name="twitter:description" content="NCO:ncap2 is the function to do it:
-_ncap2 -s &lsquo;new_var=var1&#43;var2&rsquo; in_filename.nc outfilename.nc
+ncap2 -s &#39;new_var=var1&#43;var2&#39; in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).">
@@ -262,7 +262,7 @@ ga('send', 'pageview');
             <div class="main-content-wrap">
               <p><a href="http://nco.sourceforge.net/nco.html#ncap2-netCDF-Arithmetic-Processor">NCO:ncap2</a> is the function to do it:</p>
 
-<p>_ncap2 -s &lsquo;new_var=var1+var2&rsquo; in_filename.nc out<em>filename.nc</em></p>
+<p><code>ncap2 -s 'new_var=var1+var2' in_filename.nc out_filename.nc</code></p>
 
 <p>The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).</p>
 
@@ -270,20 +270,9 @@ ga('send', 'pageview');
 
 <p>BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing). To change it, use a very complicated (but allegedly also very powerful) <a href="http://nco.sourceforge.net/nco.html#ncatted-netCDF-Attribute-Editor">NCO:ncatted</a>. Fortunately, its documentation has just the right example:</p>
 
-<blockquote>
+<p>Change the value of the <code>long_name</code> attribute for variable <code>T</code> from whatever it currently is to &ldquo;temperature&rdquo;:</p>
 
-Change the value of the `long_name` attribute for variable `T` from whatever it currently is to "temperature":
-
->
->
-
->
->     ncatted -a long_name,T,o,c,temperature in.nc
->
->
-
->
-> </blockquote>
+<p><code>ncatted -a long_name,T,o,c,temperature in.nc</code></p>
 
               
             </div>

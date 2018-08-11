@@ -262,7 +262,7 @@ ga('send', 'pageview');
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
-      If you&rsquo;ve defined alias ls=&lsquo;ls -al –color=auto&rsquo;, but want to use ls without the extra information and colouring then use
+      If you&rsquo;ve defined alias ls='ls -al –color=auto', but want to use ls without the extra information and colouring then use
 \ls
 or equivalently
 command ls
@@ -320,9 +320,7 @@ command ls
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&lsquo;ls -al &ndash;color=auto&rsquo; alias qstat=&lsquo;qstat -a&rsquo; alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;
-alias disk=&ldquo;du * -sh | sort -h&rdquo;
+# .bashrc # Put user specific aliases and functions here alias ls='ls -al --color=auto' alias qstat='qstat -a' alias qsub='qsub -m abe -M myemail@email.com' alias disk=&quot;du * -sh | sort -h&quot;  -a for ls shows hidden files (files that start with a dot, like .
       <p>
         <a href="/2014/05/my-bash-aliases/" class="postShorten-excerpt_link link">Continue reading</a>
         

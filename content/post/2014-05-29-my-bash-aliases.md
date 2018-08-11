@@ -14,14 +14,17 @@ slug: my-bash-aliases
 
 If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
 
-_# .bashrc_
+```
+# .bashrc
 
-_# Put user specific aliases and functions here_
-_alias ls='ls -al --color=auto'_
-_alias qstat='qstat -a'_
-_alias qsub='qsub -m abe -M myemail@email.com'_
+# Put user specific aliases and functions here
+alias ls='ls -al --color=auto'
+alias qstat='qstat -a'
+alias qsub='qsub -m abe -M myemail@email.com'
 
 alias disk="du * -sh | sort -h"
+
+```
 
 -a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).
 

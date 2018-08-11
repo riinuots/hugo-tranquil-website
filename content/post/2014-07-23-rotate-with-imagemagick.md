@@ -9,4 +9,4 @@ tags:
 slug: rotate-with-imagemagick
 ---
 
-_convert -rotate 270 -density 300 -compress lzw in.pdf out.pdf_
+`convert -rotate 270 -density 300 -compress lzw in.pdf out.pdf`

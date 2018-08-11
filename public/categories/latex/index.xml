@@ -29,7 +29,7 @@ There are a few issues with this though. The command bibexport comes with the in
       
       <guid>/2016/04/adding-space-between-rows-in-latex-tables/</guid>
       <description>By default, LaTex tables are very tight:
-\usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table} &amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/screen-shot-2016-04-11-at-11-28-54.png&amp;quot; alt=&amp;quot;Screen Shot 2016-04-11 at 11.28.54&amp;quot; height=&amp;quot;260&amp;quot; class=&amp;quot;alignnone size-full wp-image-278&amp;quot; width=&amp;quot;319&amp;quot; /&amp;gt;  Adding this to the document preamble will add space between the rows:</description>
+\usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table}  Adding this to the document preamble will add space between the rows:</description>
     </item>
     
     <item>

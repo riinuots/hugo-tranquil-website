@@ -12,7 +12,7 @@ slug: r-replacing-nas-in-all-factors-with-missing
 
 With a simple combination of `mutate_if` and `fct_explicit_na, `you can replace all NAs in all factors with "Missing":
 
-{{< gist e517c36b1feb480df981721a00e0e24a >}} 
+{{< gist riinuots e517c36b1feb480df981721a00e0e24a >}} 
 
 
 `dplyr` reference: <http://dplyr.tidyverse.org/reference>

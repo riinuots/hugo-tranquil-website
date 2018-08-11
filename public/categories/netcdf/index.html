@@ -320,7 +320,7 @@ No space between dimension name and start-end points!
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       NCO:ncap2 is the function to do it:
-_ncap2 -s &lsquo;new_var=var1+var2&rsquo; in_filename.nc outfilename.nc
+ncap2 -s 'new_var=var1+var2' in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).
@@ -379,7 +379,7 @@ BUT the new_var will have the same long_name as the first variable used for summ
     <div class="postShorten-excerpt" itemprop="articleBody">
       The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname "kitchen sink" is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.
+ The nickname &ldquo;kitchen sink&rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.
       <p>
         <a href="/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/" class="postShorten-excerpt_link link">Continue reading</a>
         
@@ -434,10 +434,10 @@ From the documentation:
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       NCO:ncap2 and .total
-_ncap2 -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
+ncap2 -s 'summed_variable=variable_to_sum.total($lat,$lon)' in.nc out.nc
 Make sure to use single quotes.
 If your in.nc==out.cnc then adding -A will save you from having to specify &ldquo;overwrite&rdquo; (see this).
-_ncap2 -A -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
+ncap2 -A -s 'summed_variable=variable_to_sum.total($lat,$lon)' in.nc out.nc
       <p>
         <a href="/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/" class="postShorten-excerpt_link link">Continue reading</a>
         

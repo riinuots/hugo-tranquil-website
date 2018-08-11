@@ -371,7 +371,7 @@ where y is the variable that the linear model is trying to predict (the response
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
-      If you&rsquo;ve defined alias ls=&lsquo;ls -al –color=auto&rsquo;, but want to use ls without the extra information and colouring then use
+      If you&rsquo;ve defined alias ls='ls -al –color=auto', but want to use ls without the extra information and colouring then use
 \ls
 or equivalently
 command ls
@@ -429,7 +429,7 @@ command ls
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       I don&rsquo;t know if it&rsquo;s good or bad, but I like when the files I&rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:
-_ln -s target_file symlink,
+ln -s target_file sym_link,
 where -s stands for &ldquo;symbolic&rdquo; (just ln would create a hard link)
       <p>
         <a href="/2014/07/symbolic-links-and-2-common-errors-with-them/" class="postShorten-excerpt_link link">Continue reading</a>
@@ -485,7 +485,7 @@ where -s stands for &ldquo;symbolic&rdquo; (just ln would create a hard link)
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       NCO:ncap2 is the function to do it:
-_ncap2 -s &lsquo;new_var=var1+var2&rsquo; in_filename.nc outfilename.nc
+ncap2 -s 'new_var=var1+var2' in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).
@@ -543,9 +543,7 @@ BUT the new_var will have the same long_name as the first variable used for summ
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&lsquo;ls -al &ndash;color=auto&rsquo; alias qstat=&lsquo;qstat -a&rsquo; alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;
-alias disk=&ldquo;du * -sh | sort -h&rdquo;
+# .bashrc # Put user specific aliases and functions here alias ls='ls -al --color=auto' alias qstat='qstat -a' alias qsub='qsub -m abe -M myemail@email.com' alias disk=&quot;du * -sh | sort -h&quot;  -a for ls shows hidden files (files that start with a dot, like .
       <p>
         <a href="/2014/05/my-bash-aliases/" class="postShorten-excerpt_link link">Continue reading</a>
         
@@ -601,7 +599,7 @@ alias disk=&ldquo;du * -sh | sort -h&rdquo;
     <div class="postShorten-excerpt" itemprop="articleBody">
       The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname "kitchen sink" is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.
+ The nickname &ldquo;kitchen sink&rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.
       <p>
         <a href="/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/" class="postShorten-excerpt_link link">Continue reading</a>
         

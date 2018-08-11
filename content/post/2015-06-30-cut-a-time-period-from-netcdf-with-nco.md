@@ -9,9 +9,9 @@ tags:
 slug: cut-a-time-period-from-netcdf-with-nco
 ---
 
-ncks -d time,start_time,end_time in.nc out.nc
+`ncks -d time,start_time,end_time in.nc out.nc`
 
-start_time and end_time are integers.
+`start_time` and `end_time` are integers.
 
 Add -F, if you want to use Fortran indexing (to start from 1).
 

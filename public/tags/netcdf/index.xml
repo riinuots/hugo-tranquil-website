@@ -18,7 +18,7 @@
       
       <guid>/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
       <description>NCO:ncap2 is the function to do it:
-_ncap2 -s &amp;lsquo;new_var=var1+var2&amp;rsquo; in_filename.nc outfilename.nc
+ncap2 -s &#39;new_var=var1+var2&#39; in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).</description>
@@ -32,7 +32,7 @@ BUT the new_var will have the same long_name as the first variable used for summ
       <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
+ The nickname &amp;ldquo;kitchen sink&amp;rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
     </item>
     
     <item>
@@ -42,10 +42,10 @@ From the documentation:
       
       <guid>/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
       <description>NCO:ncap2 and .total
-_ncap2 -s &amp;lsquo;summed_variable=variable_tosum.total($lat,$lon)&amp;rsquo; in.nc out.nc
+ncap2 -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc
 Make sure to use single quotes.
 If your in.nc==out.cnc then adding -A will save you from having to specify &amp;ldquo;overwrite&amp;rdquo; (see this).
-_ncap2 -A -s &amp;lsquo;summed_variable=variable_tosum.total($lat,$lon)&amp;rsquo; in.nc out.nc</description>
+ncap2 -A -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc</description>
     </item>
     
   </channel>

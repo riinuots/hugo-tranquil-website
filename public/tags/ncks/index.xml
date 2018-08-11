@@ -31,7 +31,7 @@ No space between dimension name and start-end points!</description>
       <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
+ The nickname &amp;ldquo;kitchen sink&amp;rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
     </item>
     
   </channel>

@@ -141,8 +141,7 @@ sudo crontab -e #opens crontab file in chosen editor a #add to file 0,30 * * * *
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
-      <description>https://gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392
-&amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/rplot.png&amp;quot; alt=&amp;quot;Rplot&amp;quot; height=&amp;quot;267&amp;quot; class=&amp;quot;alignnone size-full wp-image-302&amp;quot; width=&amp;quot;999&amp;quot; /&amp;gt;  </description>
+      <description> </description>
     </item>
     
     <item>
@@ -167,7 +166,7 @@ Example output:
       
       <guid>/2016/04/adding-space-between-rows-in-latex-tables/</guid>
       <description>By default, LaTex tables are very tight:
-\usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table} &amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/screen-shot-2016-04-11-at-11-28-54.png&amp;quot; alt=&amp;quot;Screen Shot 2016-04-11 at 11.28.54&amp;quot; height=&amp;quot;260&amp;quot; class=&amp;quot;alignnone size-full wp-image-278&amp;quot; width=&amp;quot;319&amp;quot; /&amp;gt;  Adding this to the document preamble will add space between the rows:</description>
+\usepackage{booktabs} \begin{table}[] \centering \caption{My caption} \label{my-label} \begin{tabular}{@{}lll@{}} \toprule Rows &amp;amp; Column 1 &amp;amp; Column 2 \\ \midrule Row 1 &amp;amp; 1234 &amp;amp; 2345 \\ Row 2 &amp;amp; 3456 &amp;amp; 4567 \\ Row 3 &amp;amp; 5678 &amp;amp; 6789 \\ Row 4 &amp;amp; 7890 &amp;amp; 8901 \\ Row 5 &amp;amp; 9012 &amp;amp; 10000 \\ \bottomrule \end{tabular} \end{table}  Adding this to the document preamble will add space between the rows:</description>
     </item>
     
     <item>
@@ -265,7 +264,7 @@ where y is the variable that the linear model is trying to predict (the response
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
       <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
-      <description>If you&amp;rsquo;ve defined alias ls=&amp;lsquo;ls -al –color=auto&amp;rsquo;, but want to use ls without the extra information and colouring then use
+      <description>If you&amp;rsquo;ve defined alias ls=&#39;ls -al –color=auto&#39;, but want to use ls without the extra information and colouring then use
 \ls
 or equivalently
 command ls</description>
@@ -278,7 +277,7 @@ command ls</description>
       
       <guid>/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
       <description>I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:
-_ln -s target_file symlink,
+ln -s target_file sym_link,
 where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)</description>
     </item>
     
@@ -289,7 +288,7 @@ where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard 
       
       <guid>/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
       <description>NCO:ncap2 is the function to do it:
-_ncap2 -s &amp;lsquo;new_var=var1+var2&amp;rsquo; in_filename.nc outfilename.nc
+ncap2 -s &#39;new_var=var1+var2&#39; in_filename.nc out_filename.nc
 The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
 I do not know what the -s stands for.
 BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).</description>
@@ -302,9 +301,7 @@ BUT the new_var will have the same long_name as the first variable used for summ
       
       <guid>/2014/05/my-bash-aliases/</guid>
       <description>If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&amp;lsquo;ls -al &amp;ndash;color=auto&amp;rsquo; alias qstat=&amp;lsquo;qstat -a&amp;rsquo; alias qsub=&amp;lsquo;qsub -m abe -M myemail@email.com&amp;rsquo;
-alias disk=&amp;ldquo;du * -sh | sort -h&amp;rdquo;</description>
+# .bashrc # Put user specific aliases and functions here alias ls=&#39;ls -al --color=auto&#39; alias qstat=&#39;qstat -a&#39; alias qsub=&#39;qsub -m abe -M myemail@email.com&#39; alias disk=&amp;quot;du * -sh | sort -h&amp;quot;  -a for ls shows hidden files (files that start with a dot, like .</description>
     </item>
     
     <item>
@@ -315,7 +312,7 @@ alias disk=&amp;ldquo;du * -sh | sort -h&amp;rdquo;</description>
       <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
+ The nickname &amp;ldquo;kitchen sink&amp;rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</description>
     </item>
     
     <item>
@@ -325,10 +322,10 @@ From the documentation:
       
       <guid>/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
       <description>NCO:ncap2 and .total
-_ncap2 -s &amp;lsquo;summed_variable=variable_tosum.total($lat,$lon)&amp;rsquo; in.nc out.nc
+ncap2 -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc
 Make sure to use single quotes.
 If your in.nc==out.cnc then adding -A will save you from having to specify &amp;ldquo;overwrite&amp;rdquo; (see this).
-_ncap2 -A -s &amp;lsquo;summed_variable=variable_tosum.total($lat,$lon)&amp;rsquo; in.nc out.nc</description>
+ncap2 -A -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc</description>
     </item>
     
   </channel>

@@ -29,13 +29,9 @@
 
     
     <meta name="description" content="If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&lsquo;ls -al &ndash;color=auto&rsquo; alias qstat=&lsquo;qstat -a&rsquo; alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;
-alias disk=&ldquo;du * -sh | sort -h&rdquo;">
+# .bashrc # Put user specific aliases and functions here alias ls=&#39;ls -al --color=auto&#39; alias qstat=&#39;qstat -a&#39; alias qsub=&#39;qsub -m abe -M myemail@email.com&#39; alias disk=&quot;du * -sh | sort -h&quot;  -a for ls shows hidden files (files that start with a dot, like .">
     <meta property="og:description" content="If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&lsquo;ls -al &ndash;color=auto&rsquo; alias qstat=&lsquo;qstat -a&rsquo; alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;
-alias disk=&ldquo;du * -sh | sort -h&rdquo;">
+# .bashrc # Put user specific aliases and functions here alias ls=&#39;ls -al --color=auto&#39; alias qstat=&#39;qstat -a&#39; alias qsub=&#39;qsub -m abe -M myemail@email.com&#39; alias disk=&quot;du * -sh | sort -h&quot;  -a for ls shows hidden files (files that start with a dot, like .">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="My bash aliases">
     <meta property="og:url" content="/2014/05/my-bash-aliases/">
@@ -43,9 +39,7 @@ alias disk=&ldquo;du * -sh | sort -h&rdquo;">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Riinu&#39;s scripting diary">
     <meta name="twitter:description" content="If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):
-# .bashrc
-# Put user specific aliases and functions here alias ls=&lsquo;ls -al &ndash;color=auto&rsquo; alias qstat=&lsquo;qstat -a&rsquo; alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;
-alias disk=&ldquo;du * -sh | sort -h&rdquo;">
+# .bashrc # Put user specific aliases and functions here alias ls=&#39;ls -al --color=auto&#39; alias qstat=&#39;qstat -a&#39; alias qsub=&#39;qsub -m abe -M myemail@email.com&#39; alias disk=&quot;du * -sh | sort -h&quot;  -a for ls shows hidden files (files that start with a dot, like .">
     
     
 
@@ -259,14 +253,16 @@ ga('send', 'pageview');
             <div class="main-content-wrap">
               <p>If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):</p>
 
-<p><em># .bashrc</em></p>
+<pre><code># .bashrc
 
-<p><em># Put user specific aliases and functions here</em>
-<em>alias ls=&lsquo;ls -al &ndash;color=auto&rsquo;</em>
-<em>alias qstat=&lsquo;qstat -a&rsquo;</em>
-<em>alias qsub=&lsquo;qsub -m abe -M myemail@email.com&rsquo;</em></p>
+# Put user specific aliases and functions here
+alias ls='ls -al --color=auto'
+alias qstat='qstat -a'
+alias qsub='qsub -m abe -M myemail@email.com'
 
-<p>alias disk=&ldquo;du * -sh | sort -h&rdquo;</p>
+alias disk=&quot;du * -sh | sort -h&quot;
+
+</code></pre>
 
 <p>-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).</p>
 

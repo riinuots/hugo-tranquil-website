@@ -30,10 +30,10 @@
     
     <meta name="description" content="The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
+ The nickname &ldquo;kitchen sink&rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
     <meta property="og:description" content="The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
+ The nickname &ldquo;kitchen sink&rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Saving some variables from a netCDF to a new file">
     <meta property="og:url" content="/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/">
@@ -42,7 +42,7 @@ From the documentation:
     <meta name="twitter:title" content="Riinu&#39;s scripting diary">
     <meta name="twitter:description" content="The NCO (netCDF Operator) command ncks (netCDF Kitchen Sink).
 From the documentation:
-   The nickname &#34;kitchen sink&#34; is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
+ The nickname &ldquo;kitchen sink&rdquo; is a catch-all because ncks combines most features of ncdump and nccopy with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. ncks extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.">
     
     
 
@@ -259,47 +259,33 @@ ga('send', 'pageview');
 <p>From the <a href="http://nco.sourceforge.net/nco.html#ncks-netCDF-Kitchen-Sink">documentation</a>:</p>
 
 <blockquote>
+<p>The nickname &ldquo;kitchen sink&rdquo; is a catch-all because <code>ncks</code> combines most features of <code>ncdump</code> and <code>nccopy</code> with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. <code>ncks</code> extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.</p>
 
->
-> The nickname "kitchen sink" is a catch-all because `ncks` combines most features of `ncdump` and `nccopy` with extra features to extract, hyperslab, multi-slab, sub-set, and translate into one versatile utility. `ncks` extracts (a subset of the) data from input-file and and writes (or pastes) it in netCDF format to output-file, and optionally writes it in flat binary format to binary-file, and optionally prints it to screen.
->
->
+<p>/&hellip;/</p>
 
->
-> /.../
->
->
-
->
-> `ncks` extracts (and optionally creates a new netCDF file comprised of) only selected variables from the input file (similar to the old `ncextr` specification). Only variables and coordinates may be specifically included or excluded—all global attributes and any attribute associated with an extracted variable are copied to the screen and/or output netCDF file.
->
->
+<p><code>ncks</code> extracts (and optionally creates a new netCDF file comprised of) only selected variables from the input file (similar to the old <code>ncextr</code> specification). Only variables and coordinates may be specifically included or excluded—all global attributes and any attribute associated with an extracted variable are copied to the screen and/or output netCDF file.</p>
 </blockquote>
 
 <p>The flag for extracting variables is -v (followed by variable name(s) separated by commas):</p>
 
-<p>_ncks -v var1,var2 in.nc out.nc         _no space after the comma!</p>
+<p><code>ncks -v var1,var2 in.nc out.nc</code>         no space after the comma!</p>
 
 <p>In case you&rsquo;ve forgotten what the names of your variables are, do:</p>
 
-<p>_ncdump -h in_<em>filename</em>.nc_</p>
+<p><code>ncdump -h in__filename_.nc</code></p>
 
 <p>-h prints headers only (and not the values). I usually direct the output of ncdump to a text file:</p>
 
-<p>_ncdump -h in_<em>filename</em>.nc &gt; ncdump.txt_</p>
+<p><code>ncdump -h in__filename_.nc &gt; ncdump.txt</code></p>
 
 <p>Also, if you forgot some of the variables that you wanted then you don&rsquo;t have to do the whole list again - NCO is always willing to append variables. So if you run:</p>
 
-<p>ncks -v var3 in.nc out.nc</p>
+<p><code>ncks -v var3 in.nc out.nc</code></p>
 
 <p>but the out.nc already exists, then NCO will prompt you with this:</p>
 
 <blockquote>
-
->
-> ncks: out.nc exists---`e'xit, `o'verwrite (i.e., delete existing file), or `a'ppend (i.e., replace duplicate variables in and add new variables to existing file) (e/o/a)?
->
->
+<p>ncks: out.nc exists&mdash;<code>e'xit,</code>o&rsquo;verwrite (i.e., delete existing file), or `a&rsquo;ppend (i.e., replace duplicate variables in and add new variables to existing file) (e/o/a)?</p>
 </blockquote>
 
 <p>So you can enter a and hit &lsquo;return&rsquo;.</p>
