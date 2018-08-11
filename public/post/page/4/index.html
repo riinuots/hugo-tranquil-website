@@ -233,6 +233,64 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/">
+          Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2014-08-06T00:00:00Z">
+        
+  August 6, 2014
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/r">R</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      This is a short note based on this.
+Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.
+R2 for a linear model that has an intercept:
+,
+where y is the variable that the linear model is trying to predict (the response variable), y^ is the predicted value and y- is the mean value of the response variable.
+      <p>
+        <a href="/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="/2014/07/rotate-with-imagemagick/">
           Rotate with ImageMagick
         </a>
@@ -554,64 +612,6 @@ From the documentation:
 </article>
 
           
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/">
-          Sum all values over several dimensions of a netCDF variable
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2014-05-29T00:00:00Z">
-        
-  May 29, 2014
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="/categories/netcdf">netCDF</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      NCO:ncap2 and .total
-_ncap2 -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
-Make sure to use single quotes.
-If your in.nc==out.cnc then adding -A will save you from having to specify &ldquo;overwrite&rdquo; (see this).
-_ncap2 -A -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc out.nc
-      <p>
-        <a href="/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
           
   <div class="pagination-bar">
     <ul class="pagination">
@@ -625,8 +625,15 @@ _ncap2 -A -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc
           </li>
         
         
+          <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/post/page/5/">
+              <span>OLDER POSTS</span>
+              <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+          </li>
+        
       
-      <li class="pagination-number">page 4 of 4</li>
+      <li class="pagination-number">page 4 of 5</li>
     </ul>
   </div>
 
@@ -688,6 +695,23 @@ _ncap2 -A -s &lsquo;summed_variable=variable_tosum.total($lat,$lon)&rsquo; in.nc
       <div class="no-result text-color-light text-center">no post found</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/08/my-data-science-toolbox/">
+                <h3 class="media-heading">My data science toolbox</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">I&rsquo;ve been doing data science for over 10 years now. Of course, most of this time I didn&rsquo;t quite realise I was doing data science. I thought I was just doing normal science but focusing on simulations and data analysis, rather than field or lab work. Because I&rsquo;ve now switched fields a few times - physics BSc, Chemistry PhD, now working in medical reseach. So saying &ldquo;I&rsquo;m a data scientist&rdquo; is a lot easier than &ldquo;physicist with lots of experience in simulations and data analysis and programming&rdquo; (although: once a physicist, always a physicist).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -856,24 +880,6 @@ The style I use: Dawn</div>
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="/2016/09/r-iso-codes-and-country-names/">
-                <h3 class="media-heading">R: ISO codes and country names</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Sep 9, 2016
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">install.packages(&lsquo;maps&rsquo;)
-iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : chr &quot;AW&quot; ... $ a3 : chr &quot;ABW&quot; ... $ ISOname : chr &quot;Aruba&quot; .. $ mapname : chr &quot;Aruba&quot; ... $ sovereignty: chr &quot;Netherlands&quot; ...  </div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -881,7 +887,7 @@ iso = maps::iso3166 &gt; str(iso) 'data.frame': 269 obs. of 5 variables: $ a2 : 
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         28 posts found
+         29 posts found
       </p>
     </div>
   </div>
