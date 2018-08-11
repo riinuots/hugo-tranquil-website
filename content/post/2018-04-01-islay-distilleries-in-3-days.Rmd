@@ -3,7 +3,7 @@ title: Islay distilleries in 3 days
 author: Riinu
 date: '2018-04-01'
 slug: islay-distilleries-in-3-days
-thumbnailImage: /img/islay/islay_map_logo.png
+thumbnailImage: /img/islay/islay_map_logo_small.jpg
 categories:
   - Travel
 tags:
@@ -18,7 +18,7 @@ tags:
 Left Edinburgh at 8am for a 1pm ferry Kennacraig to Port Askaig (Islay). Edinburgh-Kennacraig should be a 3.5h drive (and it was), but we left early to allow for any delays on the road. Arrived on Islay at 3pm and our accommodation near Port Ellen (southern Islay, close to to Ardbeg, Lagavulin, Laphroiaig) was a 40 min drive from the port.
 
 
-![Map of Islay with all its lovely distilleries.](img/islay/islay_map_logo.png){width=400px}
+![Map of Islay with all its lovely distilleries.](img/islay/islay_map_logo_small.jpg){width=400px}
 
 
 ## Day 1 (Monday 19-February 2018): Ardbeg, Lagavulin, Laphroiaig
