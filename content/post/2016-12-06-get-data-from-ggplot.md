@@ -1,4 +1,4 @@
----
+ ---
 title: Get data from ggplot()
 author: Riinu Ots
 date: '2016-12-06'
@@ -14,7 +14,7 @@ slug: get-data-from-ggplot
 
 ![summarised_barplot](https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png)
 
-{{< gist a6af08ac11f7b5ede69572a7559a704b >}} 
+{{< gist riinuots a6af08ac11f7b5ede69572a7559a704b >}}
 
 
 
