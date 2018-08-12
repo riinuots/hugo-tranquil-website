@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 26 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/utility/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/utility/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +17,10 @@
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/2016/09/online-syntax-highlighter/</guid>
-      <description>http://markup.su/highlighter/
-The style I use: Dawn</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://markup.su/highlighter/&#34;&gt;http://markup.su/highlighter/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The style I use: Dawn&lt;/p&gt;
+</description>
     </item>
     
   </channel>

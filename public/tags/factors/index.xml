@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/factors/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/factors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,9 +17,14 @@
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
-      <description>With a simple combination of mutate_if and fct_explicit_na,you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:
- dplyr reference: http://dplyr.tidyverse.org/reference
-forcats reference: http://dplyr.tidyverse.org/reference</description>
+      <description>&lt;p&gt;With a simple combination of &lt;code&gt;mutate_if&lt;/code&gt; and &lt;code&gt;fct_explicit_na,&lt;/code&gt;you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/riinuots/e517c36b1feb480df981721a00e0e24a.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;forcats&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

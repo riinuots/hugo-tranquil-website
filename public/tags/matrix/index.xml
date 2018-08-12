@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 12 Sep 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/matrix/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/matrix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +17,28 @@
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
       
       <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
-      <description>One picture says more than a thousand words. You have what is one the left, and you want what is on the right.
-my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3) #matrix is a 2D array, this next row creates a third dimension, #duplicating the data my_array = array(my_matrix, dim = c(3,3,2))  There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):</description>
+      <description>&lt;p&gt;One picture says more than a thousand words. You have what is one the left, and you want what is on the right.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3)
+
+#matrix is a 2D array, this next row creates a third dimension,
+#duplicating the data
+my_array = array(my_matrix, dim = c(3,3,2))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#2D:
+increased_matrix = my_matrix[rep(1:nrow(my_matrix), each=3), rep(1:ncol(my_matrix, each=3)]
+
+#3D (same really, just one extra comma for the third dimension):
+increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, each=3), ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that by default, in rep(something, n) the n is &lt;strong&gt;times&lt;/strong&gt; so equivalent to rep(something, times=n), but in this case we need to use &lt;strong&gt;each&lt;/strong&gt; instead of &lt;strong&gt;times&lt;/strong&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

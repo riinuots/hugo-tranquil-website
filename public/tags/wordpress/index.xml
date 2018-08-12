@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,11 +17,69 @@
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
-      <description>Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by blogdown-Hugo.
-Step 1 Read the Migration: From Wordpress chapter of the blogdown book.
- Step 2 Get all your wordpress posts into one XML: WP Admin - Tools - Export.
- Step 3 Install Exitwp and its dependencies (pyyamp, beautifulsoup4, html2text):
-git clone https://github.com/thomasf/exitwp.git sudo easy_install pip sudo pip install pyyaml sudo pip install beautifulsoup4 sudo pip install html2text This worked on macOS1 High Sierra - I already had python installed.</description>
+      <description>&lt;p&gt;Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by &lt;a href=&#34;https://riinu.netlify.com/2018/02/hello-world/&#34;&gt;blogdown-Hugo&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;step-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1&lt;/h2&gt;
+&lt;p&gt;Read the &lt;a href=&#34;https://bookdown.org/yihui/blogdown/from-wordpress.html&#34;&gt;Migration: From Wordpress&lt;/a&gt; chapter of the &lt;strong&gt;blogdown&lt;/strong&gt; book.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2&lt;/h2&gt;
+&lt;p&gt;Get all your wordpress posts into one XML: WP Admin - Tools - Export.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3&lt;/h2&gt;
+&lt;p&gt;Install &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;&gt;Exitwp&lt;/a&gt; and its dependencies (&lt;code&gt;pyyamp&lt;/code&gt;, &lt;code&gt;beautifulsoup4&lt;/code&gt;, &lt;code&gt;html2text&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/thomasf/exitwp.git
+sudo easy_install pip
+sudo pip install pyyaml
+sudo pip install beautifulsoup4
+sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This worked on macOS&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; High Sierra - I already had &lt;code&gt;python&lt;/code&gt; installed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4&lt;/h2&gt;
+&lt;p&gt;Working in the directory that &lt;code&gt;git clone&lt;/code&gt; created (&lt;code&gt;exitwp&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Put the Wordpress XML in the wordpress-xml directory.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;xmllint riinu_wordpress.xml&lt;/code&gt;, worked the first time for me and I didn’t get any errors (so not sure what the &lt;strong&gt;fix errors if there are&lt;/strong&gt; would entail).&lt;/li&gt;
+&lt;li&gt;Back in the &lt;code&gt;exitwp&lt;/code&gt; folder, run &lt;code&gt;python exitwp.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;This created folders &lt;code&gt;build/jekyll/riinudata.wordpress.com/_posts&lt;/code&gt; and the content looked like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/exitwp.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Move all these into &lt;code&gt;exitwp/post&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Take a copy of &lt;a href=&#34;https://github.com/yihui/oldblog_xml/blob/master/convert.R&#34; class=&#34;uri&#34;&gt;https://github.com/yihui/oldblog_xml/blob/master/convert.R&lt;/a&gt; to clean these .markdown files up and ready for Hugo. I edited the first three lines, skipped the “Do not run if…” chunk as I’d already done that in &lt;strong&gt;Step 3&lt;/strong&gt;, edited the &lt;code&gt;authors = c()&lt;/code&gt;, did not run the very last chunk (&lt;code&gt;local({if (!dir.exist...})&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Move all of the files (now &lt;code&gt;.md&lt;/code&gt;) into &lt;code&gt;content/post&lt;/code&gt; of your blogdown repo. Build and voila!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;further-modifications&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Further modifications&lt;/h2&gt;
+&lt;p&gt;Looks like most of my posts were converted like a charm, with nicely formatted code blocks and images. But I few things I noticed that I think I have to fix:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub gists are now displayed as links, will make those into code blocks (or embed them using a &lt;a href=&#34;http://blog.cronally.com/embed-gists-with-hugo/&#34;&gt;Hugo shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Most images show up perfectly, but some have gotten stuck in a code block, e.g. showing up as &lt;code&gt;&amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/rplot.png&amp;quot; alt=&amp;quot;Rplot&amp;quot;/&amp;gt;&lt;/code&gt;. Will sort these&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Overall I feared a lot worse and am super happy with the conversion experience. Took exactly 3 h.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/hilde_knit.jpg&#34; alt=&#34;My name is Hildegard and I approve this message.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;My name is Hildegard and I approve this message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;I’m only 1.5 years late to discover that OS X has been rebranded as macOS: &lt;a href=&#34;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&#34; class=&#34;uri&#34;&gt;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

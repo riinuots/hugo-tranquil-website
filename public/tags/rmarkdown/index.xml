@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 24 Jun 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,11 +17,21 @@
       <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>/2015/06/converting-r-markdown-to-latex/</guid>
-      <description>Install Pandoc: http://pandoc.org/
-library(knitr) knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;  Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:
-pandoc -s report.md -o report.tex
-And that&amp;rsquo;s it!
-(Read this, if you want vector images.)</description>
+      <description>&lt;p&gt;Install Pandoc: &lt;a href=&#34;http://pandoc.org/&#34;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(knitr)
+
+knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pandoc -s report.md -o report.tex&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;p&gt;(Read &lt;a href=&#34;http://proteo.me.uk/2013/06/generating-r-reports-with-vector-images-from-markdown-with-knitr/&#34;&gt;this&lt;/a&gt;, if you want vector images.)&lt;/p&gt;
+</description>
     </item>
     
   </channel>

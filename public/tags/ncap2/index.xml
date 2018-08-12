@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 29 May 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/ncap2/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/ncap2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,11 +17,20 @@
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
       <guid>/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
-      <description>NCO:ncap2 is the function to do it:
-ncap2 -s &#39;new_var=var1+var2&#39; in_filename.nc out_filename.nc
-The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
-I do not know what the -s stands for.
-BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncap2-netCDF-Arithmetic-Processor&#34;&gt;NCO:ncap2&lt;/a&gt; is the function to do it:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ncap2 -s &#39;new_var=var1+var2&#39; in_filename.nc out_filename.nc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).&lt;/p&gt;
+
+&lt;p&gt;I do not know what the -s stands for.&lt;/p&gt;
+
+&lt;p&gt;BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing). To change it, use a very complicated (but allegedly also very powerful) &lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncatted-netCDF-Attribute-Editor&#34;&gt;NCO:ncatted&lt;/a&gt;. Fortunately, its documentation has just the right example:&lt;/p&gt;
+
+&lt;p&gt;Change the value of the &lt;code&gt;long_name&lt;/code&gt; attribute for variable &lt;code&gt;T&lt;/code&gt; from whatever it currently is to &amp;ldquo;temperature&amp;rdquo;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ncatted -a long_name,T,o,c,temperature in.nc&lt;/code&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -30,11 +39,16 @@ BUT the new_var will have the same long_name as the first variable used for summ
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
       <guid>/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
-      <description>NCO:ncap2 and .total
-ncap2 -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc
-Make sure to use single quotes.
-If your in.nc==out.cnc then adding -A will save you from having to specify &amp;ldquo;overwrite&amp;rdquo; (see this).
-ncap2 -A -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncap2-netCDF-Arithmetic-Processor&#34;&gt;NCO:ncap2&lt;/a&gt; and .total&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ncap2 -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sourceforge.net/p/nco/discussion/9830/thread/e15cbda8&#34;&gt;Make sure to use single quotes.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If your in.nc==out.cnc then adding -A will save you from having to specify &amp;ldquo;overwrite&amp;rdquo; (&lt;a href=&#34;https://riinudata.wordpress.com/2014/05/29/nconcap2-and-append/&#34;&gt;see this&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ncap2 -A -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc&lt;/code&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
