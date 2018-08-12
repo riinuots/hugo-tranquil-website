@@ -41,6 +41,8 @@ my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3) #matrix is a 2D array, 
     <meta name="twitter:description" content="One picture says more than a thousand words. You have what is one the left, and you want what is on the right.
 my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3) #matrix is a 2D array, this next row creates a third dimension, #duplicating the data my_array = array(my_matrix, dim = c(3,3,2))  There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):">
     
+      <meta name="twitter:creator" content="@riinuots">
+    
     
 
     
@@ -146,16 +148,6 @@ ga('send', 'pageview');
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
       <span class="sidebar-button-desc">Categories</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="/tags">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">Tags</span>
     </a>
   </li>
 
