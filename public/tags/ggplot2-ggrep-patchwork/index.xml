@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggplot2 Ggrep Patchwork on Riinu&#39;s scripting diary</title>
+    <link>/tags/ggplot2-ggrep-patchwork/</link>
+    <description>Recent content in Ggplot2 Ggrep Patchwork on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/ggplot2-ggrep-patchwork/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Global map of country names</title>
+      <link>/2018/09/global-map-of-country-names/</link>
+      <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/global-map-of-country-names/</guid>
+      <description>&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ggrepel&lt;/code&gt; deals with overlapping text labels (Code#1 at the bottom of this post):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt; is a very convenient new package for combining multiple different plots together (i.e. what we usually to use &lt;code&gt;grid&lt;/code&gt; and &lt;code&gt;gridExtra&lt;/code&gt; for).&lt;/p&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/slowkow/ggrepel&#34; class=&#34;uri&#34;&gt;https://github.com/slowkow/ggrepel&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/thomasp85/patchwork&#34; class=&#34;uri&#34;&gt;https://github.com/thomasp85/patchwork&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To really demonstrate the power of them, let’s make a global map of country names using &lt;code&gt;ggrepel&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(ggrepel)
+library(patchwork)
+
+# data from https://worldmap.harvard.edu/data/geonode:country_centroids_az8
+
+orig_data = read_csv(&amp;quot;country_centroids_az8.csv&amp;quot;)
+
+
+centroidsdata = orig_data %&amp;gt;% 
+  select(country = admin, continent, lat = Latitude, lon = Longitude) %&amp;gt;% 
+  filter(continent != &amp;quot;Seven seas (open ocean)&amp;quot; &amp;amp; continent != &amp;quot;Antarctica&amp;quot;) %&amp;gt;% 
+  mutate(continent  = fct_collapse(continent, &amp;quot;Americas&amp;quot; = c(&amp;quot;North America&amp;quot;, &amp;quot;South America&amp;quot;)))
+
+head(centroidsdata)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##   country     continent   lat   lon
+##   &amp;lt;chr&amp;gt;       &amp;lt;fct&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 Aruba       Americas   12.5 -70.0
+## 2 Afghanistan Asia       33.8  66.0
+## 3 Angola      Africa    -12.3  17.5
+## 4 Anguilla    Americas   18.2 -63.1
+## 5 Albania     Europe     41.1  20.0
+## 6 Aland       Europe     60.2  20.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot1 = centroidsdata %&amp;gt;% 
+  ggplot(aes(x = lon, y = lat, label = country, colour = continent)) +
+  geom_text_repel(segment.alpha = 0)   +
+  theme_void() +
+  scale_color_brewer(palette = &amp;quot;Dark2&amp;quot;)
+
+plot1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now this is very good already with hardly any overlapping labels and the world is pretty recognisable. And really, you can make this plot with just 2 lines of code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(centroidsdata, aes(x = lon, y = lat, label = country)) +
+geom_text_repel(segment.alpha = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So what these two lines make is already very amazing.&lt;/p&gt;
+&lt;p&gt;But I feel like Europe is a little bit misshapen and that the Caribbean and Africa are too close together. So I divided the world into regions (in this case same as continents except Russia is it’s own region - it’s just so big). Then wrote two functions that asked &lt;code&gt;ggrepel&lt;/code&gt; to plot each region separately and use &lt;code&gt;patchwork&lt;/code&gt; to patch each region together:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;centroidsdata = centroidsdata %&amp;gt;% 
+  mutate(region = continent %&amp;gt;% fct_expand(&amp;quot;Russia&amp;quot;)) %&amp;gt;% 
+  mutate(region = replace(region, country == &amp;quot;Russia&amp;quot;, &amp;quot;Russia&amp;quot;))
+
+mapbounds = centroidsdata %&amp;gt;% 
+  group_by(region) %&amp;gt;% 
+  summarise(xmin = min(lon), xmax = max(lon), ymin = min(lat), ymax = max(lat))
+
+
+create_labelmap = function(mydata, mycontinent, myforce = 1, mycolour = &amp;quot;black&amp;quot;){
+  
+  mymapbounds = mapbounds %&amp;gt;% 
+    filter(region == mycontinent)
+  
+  mydata %&amp;gt;% 
+    filter(region == mycontinent) %&amp;gt;% 
+    ggplot(aes(x = lon, y = lat, label = country)) +
+    geom_text_repel(segment.alpha = 0, force = myforce, colour = mycolour)   +
+    theme_void() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    scale_y_continuous(limits = c(mymapbounds$ymin, mymapbounds$ymax)) +
+    scale_x_continuous(limits = c(mymapbounds$xmin, mymapbounds$xmax))
+  
+}
+
+mycolours = RColorBrewer::brewer.pal(5,&amp;quot;Dark2&amp;quot;)
+
+make_world = function(mydata){
+  mydata  = centroidsdata
+  afr = create_labelmap(mydata, &amp;quot;Africa&amp;quot;,   mycolour = mycolours[1])
+  ame = create_labelmap(mydata, &amp;quot;Americas&amp;quot;, mycolour = mycolours[4])
+  asi = create_labelmap(mydata, &amp;quot;Asia&amp;quot;,     mycolour = mycolours[2])
+  eur = create_labelmap(mydata, &amp;quot;Europe&amp;quot;,   mycolour = mycolours[3])
+  rus = create_labelmap(mydata, &amp;quot;Russia&amp;quot;,   mycolour = mycolours[3])
+  oce = create_labelmap(mydata, &amp;quot;Oceania&amp;quot;,  mycolour = mycolours[5])
+
+  
+  (ame + (eur / afr) + (rus / asi / oce)) + plot_layout(ncol = 3)
+}
+
+plot2 = make_world(centroidsdata)
+
+plot2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This gives continents a much better shape, but it does severaly misplace Polynesia. See if you can find where, e.g., Tonga is and where it should be.&lt;/p&gt;
+&lt;p&gt;To see what I did with patchwork there, let’s add black borders to each region (Code#2):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code2-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Code#1:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#devtools::install_github(&amp;quot;slowkow/ggrepel&amp;quot;)
+#devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)
+
+
+library(tidyverse)
+library(ggrepel)
+library(patchwork)
+
+mydata  = data_frame(x = c(1, 1.3), y = c(1, 1), mylabel = c(&amp;quot;Point-1&amp;quot;, &amp;quot;Point-2&amp;quot;))
+
+p = mydata %&amp;gt;% 
+  ggplot(aes(x, y, label = mylabel, colour = mylabel)) +
+  geom_point() +
+  coord_cartesian(xlim = c(-3, 3), ylim = c(-3, 3)) +
+  theme_bw() +
+  theme(legend.position = &amp;quot;none&amp;quot;) +
+  scale_colour_viridis_d()
+
+plot1 = p + geom_text() + ggtitle(&amp;quot;geom_text()&amp;quot;)
+
+plot2 = p+ geom_text_repel() + ggtitle(&amp;quot;geom_text_repel()&amp;quot;)
+
+plot1 + plot2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Code#2:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;create_labelmap = function(mydata, mycontinent, myforce = 1, mycolour = &amp;quot;black&amp;quot;){
+  
+  mymapbounds = mapbounds %&amp;gt;% 
+    filter(region == mycontinent)
+  
+  mydata %&amp;gt;% 
+    filter(region == mycontinent) %&amp;gt;% 
+    ggplot(aes(x = lon, y = lat, label = country)) +
+    geom_text_repel(segment.alpha = 0, force = myforce, colour = mycolour)   +
+    theme_void() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    scale_y_continuous(limits = c(mymapbounds$ymin, mymapbounds$ymax)) +
+    scale_x_continuous(limits = c(mymapbounds$xmin, mymapbounds$xmax)) +
+    theme(panel.border = element_rect(colour = &amp;quot;black&amp;quot;, fill=NA, size=5))
+  
+}
+
+plot3 = make_world(centroidsdata)
+
+plot3&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

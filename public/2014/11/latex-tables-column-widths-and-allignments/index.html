@@ -1,0 +1,780 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.32.4 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Latex tables: column widths and alignments</title>
+    <meta name="author" content="Riinu Ots">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Firstly, start off your table in http://www.tablesgenerator.com/.
+Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &ldquo;publication quality&rdquo;. Note that publication quality tables should not contain vertical lines.
+Screen shot of Tables Generator
+Code#1
+Code #1 is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&rsquo;s compilable).">
+    <meta property="og:description" content="Firstly, start off your table in http://www.tablesgenerator.com/.
+Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &ldquo;publication quality&rdquo;. Note that publication quality tables should not contain vertical lines.
+Screen shot of Tables Generator
+Code#1
+Code #1 is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&rsquo;s compilable).">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Latex tables: column widths and alignments">
+    <meta property="og:url" content="/2014/11/latex-tables-column-widths-and-allignments/">
+    <meta property="og:site_name" content="Riinu&#39;s scripting diary">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Riinu&#39;s scripting diary">
+    <meta name="twitter:description" content="Firstly, start off your table in http://www.tablesgenerator.com/.
+Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &ldquo;publication quality&rdquo;. Note that publication quality tables should not contain vertical lines.
+Screen shot of Tables Generator
+Code#1
+Code #1 is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&rsquo;s compilable).">
+    
+      <meta name="twitter:creator" content="@riinuots">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://avatars2.githubusercontent.com/u/19186958?s=460&v=4">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-114648473-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Riinu&#39;s scripting diary</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://avatars2.githubusercontent.com/u/19186958?s=460&amp;v=4" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://avatars2.githubusercontent.com/u/19186958?s=460&amp;v=4" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Riinu Ots</h4>
+        
+          <h5 class="sidebar-profile-bio">if it aint broke, you&rsquo;re outdated</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://minorplanetcenter.net/db_search/show_object?object_id=25616">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-space-shuttle"></i>
+      
+      <span class="sidebar-button-desc">Asteroid</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riinuots/cv/blob/master/cv.pdf">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-file"></i>
+      
+      <span class="sidebar-button-desc">CV</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riinuots/cv/blob/master/publications.pdf">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Publications</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riinuots">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Latex tables: column widths and alignments
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2014-11-04T00:00:00Z">
+        
+  November 4, 2014
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/latex">LaTex</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Firstly, start off your table in <a href="http://www.tablesgenerator.com/">http://www.tablesgenerator.com/</a>.</p>
+
+<p>Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &ldquo;publication quality&rdquo;. Note that publication quality tables should not contain vertical lines.</p>
+
+<p><img src="http://riinudata.files.wordpress.com/2014/09/tablesgenerator1.png" alt="Screen shoti of Tables Generator" /></p>
+
+<p class="caption">Screen shot of Tables Generator</p>
+
+<p><img src="https://riinudata.files.wordpress.com/2014/11/table-1.png" alt="" /></p>
+
+<p class="caption">Code#1</p>
+
+<p><a href="http://pastebin.com/FS2QLSDF">Code #1</a> is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&rsquo;s compilable). Continuing from that table, let&rsquo;s centre the contents of columns 1-3 and the whole table in your document, by adding \centering and changing the <a href="http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment">table specs</a> from l&rsquo;s to c&rsquo;s: <a href="http://pastebin.com/bxLpsydd">Code #2</a>.</p>
+
+<p><img src="https://riinudata.files.wordpress.com/2014/11/table-21.png" alt="" /></p>
+
+<p class="caption">Code#2</p>
+
+<p>Finally, if your cell contents are long and need wrapping:</p>
+
+<p><img src="https://riinudata.files.wordpress.com/2014/11/table-3.png" alt="table 3" /></p>
+
+<p>Note that if your table is too wide for your document margins, then LaTex issues a warning, not an error. So you need check for warnings like <em>&ldquo;Overfull \hbox (9.75735pt too wide) in paragraph at lines 55&ndash;63&rdquo;</em> in your compilation log. A quick solution to wide cells is <a href="http://stackoverflow.com/questions/790932/how-to-wrap-text-in-latex-tables">like this</a> (<a href="http://pastebin.com/GMXj4dap">Code#4</a>):</p>
+
+<p><img src="https://riinudata.files.wordpress.com/2014/11/table-4.png" alt="Code#4" /></p>
+
+<p class="caption">Code#4</p>
+
+<p>But this solution does not include decent central alignment. Using m (so m{2cm} instead of p{2cm}) would do the vertical centering (<em>e.g.</em> look how the first row is alligned), but still not horizontal. So following <a href="http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef">this </a>StackOverflow post, I started defining column types and widths using the array package. See <a href="http://pastebin.com/EWsvVfqH">Code#5</a>.</p>
+
+<p><img src="https://riinudata.files.wordpress.com/2014/11/table-5.png" alt="Code#5" /></p>
+
+<p class="caption">Code#5</p>
+
+<p>Next time I might write a post on how to add extra space between lines.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/latex/">latex</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/tables/">tables</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/" data-tooltip="Reordering factor levels in R and what could go wrong">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/" data-tooltip="Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2014/11/latex-tables-column-widths-and-allignments/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Riinu Ots. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/" data-tooltip="Reordering factor levels in R and what could go wrong">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/" data-tooltip="Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2014/11/latex-tables-column-widths-and-allignments/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2014%2F11%2Flatex-tables-column-widths-and-allignments%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://avatars2.githubusercontent.com/u/19186958?s=460&amp;v=4" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Riinu Ots</h4>
+    
+      <div id="about-card-bio">if it aint broke, you&rsquo;re outdated</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Data Manager
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Edinburgh, UK
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/09/global-map-of-country-names/">
+                <h3 class="media-heading">Global map of country names</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">This post demonstrates the use of two very cool R packages - ggrepel and patchwork.
+ggrepel deals with overlapping text labels (Code#1 at the bottom of this post):
+patchwork is a very convenient new package for combining multiple different plots together (i.e. what we usually to use grid and gridExtra for).
+More info:
+ https://github.com/slowkow/ggrepel
+ https://github.com/thomasp85/patchwork
+  To really demonstrate the power of them, let’s make a global map of country names using ggrepel:</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/08/my-data-science-toolbox/">
+                <h3 class="media-heading">My data science toolbox</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">I&rsquo;ve been doing data science for over 10 years now. Although most of this time I didn&rsquo;t realise I was doing data science. I thought I was just doing normal science but focusing on simulations and data analysis, rather than field or lab work. I&rsquo;ve switched fields a few times now- physics BSc, Chemistry PhD, now working in medical research. Therefore, instead of this lenghty introduction:
+ &ldquo;I&rsquo;m a physicist by background with substantial interdisciplinary expertise in simulations, data analysis, programming&hellip;&rdquo;</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/islay-distilleries-in-3-days/">
+                <h3 class="media-heading">Islay distilleries in 3 days</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Day 0 (Sunday 18-February 2018) Left Edinburgh at 8am for a 1pm ferry Kennacraig to Port Askaig (Islay). Edinburgh-Kennacraig should be a 3.5h drive (and it was), but we left early to allow for any delays on the road. Arrived on Islay at 3pm and our accommodation near Port Ellen (southern Islay, close to to Ardbeg, Lagavulin, Laphroiaig) was a 40 min drive from the port.
+Map of Islay with all its lovely distilleries.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/converting-old-wordpress-posts-to-hugo/">
+                <h3 class="media-heading">Converting old Wordpress posts to Hugo</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by blogdown-Hugo.
+Step 1 Read the Migration: From Wordpress chapter of the blogdown book.
+ Step 2 Get all your wordpress posts into one XML: WP Admin - Tools - Export.
+ Step 3 Install Exitwp and its dependencies (pyyamp, beautifulsoup4, html2text):
+git clone https://github.com/thomasf/exitwp.git sudo easy_install pip sudo pip install pyyaml sudo pip install beautifulsoup4 sudo pip install html2text This worked on macOS1 High Sierra - I already had python installed.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/hello-world/">
+                <h3 class="media-heading">Hello world: blogdown loves Hugo</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">We are live! I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I&rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&hellip;oh and discovering MARKDOWN.
+My two rules:  text is written in Markdown (I use R Markdown/knitr/bookdown, e.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2017/10/your-first-shiny-app/">
+                <h3 class="media-heading">Your first Shiny app</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">What is Shiny? Shiny is an R package (install.packages(&quot;shiny&quot;)) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.
+I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.
+If it&rsquo;s not worth putting in a Shiny app it&rsquo;s not worth doing.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2017/07/r-replacing-nas-in-all-factors-with-missing/">
+                <h3 class="media-heading">R: Replacing NAs in all factors with &#39;Missing&#39;</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">With a simple combination of mutate_if and fct_explicit_na,you can replace all NAs in all factors with &ldquo;Missing&rdquo;:
+ dplyr reference: http://dplyr.tidyverse.org/reference
+forcats reference: http://dplyr.tidyverse.org/reference</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2017/06/handling-your-bib-file-latex-bibliography/">
+                <h3 class="media-heading">Handling your .bib file (LaTex bibliography)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">To create a .bib file that only includes the citations you used in the manuscript:
+bibexport -o extracted_file.bib manuscript.aux
+There are a few issues with this though. The command bibexport comes with the installation of TexLive, but my Windows computer (bless) does not cooperate (&ldquo;bibexport is not recognised as an internal or external command&hellip;&rdquo;) . So I can only use it on my Mac (luv ya).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2016/12/get-data-from-ggplot/">
+                <h3 class="media-heading">Get data from ggplot()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2016
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
+ fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2016/10/r-lingua-library-vs-package/">
+                <h3 class="media-heading">R lingua: library vs package</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2016
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         30 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2014\/11\/latex-tables-column-widths-and-allignments\/';
+          
+            this.page.identifier = '\/2014\/11\/latex-tables-column-widths-and-allignments\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'riinuots';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

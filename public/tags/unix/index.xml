@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unix on Riinu&#39;s scripting diary</title>
+    <link>/tags/unix/</link>
+    <description>Recent content in Unix on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Jul 2014 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to temporarily disable a bash alias</title>
+      <link>/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
+      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve defined &lt;code&gt;alias ls=&#39;ls -al –color=auto&#39;&lt;/code&gt;, but want to use ls without the extra information and colouring then use&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;\ls&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or equivalently&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;command ls&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Symbolic links and 2 common errors with them</title>
+      <link>/2014/07/symbolic-links-and-2-common-errors-with-them/</link>
+      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
+      <description>&lt;p&gt;I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ln -s target_file sym_link&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)&lt;/p&gt;
+
+&lt;p&gt;However, if you are not a complete UNIX guru, then trying to access your linked files is likely to produce one of these errors:&lt;/p&gt;
+
+&lt;p&gt;No such file or directory OR Too many levels of symbolic links&lt;/p&gt;
+
+&lt;p&gt;The solution to both of these is to &lt;strong&gt;always use full paths&lt;/strong&gt; to the files and their symbolic links (&lt;code&gt;ln -s /home/folder/file.txt /home/folder2/file.txt&lt;/code&gt;). For further information, see &lt;a href=&#34;http://superuser.com/questions/322319/when-creating-a-symbolic-link-how-do-i-troubleshoot-too-many-levels-of-symboli&#34;&gt;this&lt;/a&gt; and &lt;a href=&#34;http://www.unix.com/unix-for-dummies-questions-and-answers/11324-too-many-levels-symbolic-links.html&#34;&gt;this&lt;/a&gt;. Apparently you can have 32 levels of symbolic links, so getting a &amp;ldquo;Too many levels of symbolic links&amp;rdquo; after just creating one, means that there is some serious recursion going on.&lt;/p&gt;
+
+&lt;p&gt;Remove symbolic links just as you remove files:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rm sym_link&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My bash aliases</title>
+      <link>/2014/05/my-bash-aliases/</link>
+      <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/05/my-bash-aliases/</guid>
+      <description>&lt;p&gt;If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# .bashrc
+
+# Put user specific aliases and functions here
+alias ls=&#39;ls -al --color=auto&#39;
+alias qstat=&#39;qstat -a&#39;
+alias qsub=&#39;qsub -m abe -M myemail@email.com&#39;
+
+alias disk=&amp;quot;du * -sh | sort -h&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).&lt;/p&gt;
+
+&lt;p&gt;_&amp;ndash;color=auto _colours folders, executables and symbolic links.&lt;/p&gt;
+
+&lt;p&gt;-a for qstat displays more information.&lt;/p&gt;
+
+&lt;p&gt;Both -m and -M for qsub mean messages. For -m:&lt;/p&gt;
+
+&lt;p&gt;b - Mail is sent at the beginning of the job.&lt;/p&gt;
+
+&lt;p&gt;e - Mail is sent at the end of the job.&lt;/p&gt;
+
+&lt;p&gt;a - Mail is sent when the job is aborted or rescheduled.&lt;/p&gt;
+
+&lt;p&gt;And -M is the flag before the email address(es).&lt;/p&gt;
+
+&lt;p&gt;The last one (I call it disk) displays the sizes of one level of subfolders and orders them too (correct ordering is done by the really cool -h option, as apposed to the numeric sort -n, which would think that 1.4GB&amp;gt;1.4TB).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

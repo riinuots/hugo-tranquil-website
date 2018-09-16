@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggplot2 on Riinu&#39;s scripting diary</title>
+    <link>/tags/ggplot2/</link>
+    <description>Recent content in Ggplot2 on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reordering factor levels in R and what could go wrong</title>
+      <link>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
+      <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve recently started using &lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;ggplot2&lt;/a&gt; in addition to lattice (see &lt;a href=&#34;https://riinudata.wordpress.com/2014/08/08/r-graphical-devices-plot-margins-and-legend-next-to-the-plot-not-on-it/&#34;&gt;this post&lt;/a&gt; that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels. This post will show how to (and also how not to) rearrange factor levels in R.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a quick barplot with strings as x labels.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+
+#create dummy data
+a = paste(&#39;my&#39;, 1:11)
+b = 1:11
+df = data.frame(a, b)
+df
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot1.png&#34; alt=&#34;barplot1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As df$a is an array of strings, R sets the factor levels alphabetically: my 1, my 10, my 11, my 2&amp;hellip;which is not what we want, so let&amp;rsquo;s rearrange factor levels:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df$a = factor(df$a, levels = paste(&#39;my&#39;, 1:11))
+df$a
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot2.png&#34; alt=&#34;barplot2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally, the wrong way to rearrange factor levels would be by using the levels() function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df = data.frame(a, b)
+levels(df$a) = paste(&#39;my&#39;, 1:11)
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot3.png&#34; alt=&#34;barplot3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So be careful - if your data is not as obvious as this example and you are a bit new to factors and levels, you might end up plotting wrong results (like on the last example, &amp;ldquo;my 2&amp;rdquo; and &amp;ldquo;my 3&amp;rdquo; were plotted with the values 10 and 11).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Riinu&#39;s scripting diary</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Global map of country names</title>
+      <link>/2018/09/global-map-of-country-names/</link>
+      <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/global-map-of-country-names/</guid>
+      <description>&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ggrepel&lt;/code&gt; deals with overlapping text labels (Code#1 at the bottom of this post):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt; is a very convenient new package for combining multiple different plots together (i.e. what we usually to use &lt;code&gt;grid&lt;/code&gt; and &lt;code&gt;gridExtra&lt;/code&gt; for).&lt;/p&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/slowkow/ggrepel&#34; class=&#34;uri&#34;&gt;https://github.com/slowkow/ggrepel&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/thomasp85/patchwork&#34; class=&#34;uri&#34;&gt;https://github.com/thomasp85/patchwork&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To really demonstrate the power of them, let’s make a global map of country names using &lt;code&gt;ggrepel&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(ggrepel)
+library(patchwork)
+
+# data from https://worldmap.harvard.edu/data/geonode:country_centroids_az8
+
+orig_data = read_csv(&amp;quot;country_centroids_az8.csv&amp;quot;)
+
+
+centroidsdata = orig_data %&amp;gt;% 
+  select(country = admin, continent, lat = Latitude, lon = Longitude) %&amp;gt;% 
+  filter(continent != &amp;quot;Seven seas (open ocean)&amp;quot; &amp;amp; continent != &amp;quot;Antarctica&amp;quot;) %&amp;gt;% 
+  mutate(continent  = fct_collapse(continent, &amp;quot;Americas&amp;quot; = c(&amp;quot;North America&amp;quot;, &amp;quot;South America&amp;quot;)))
+
+head(centroidsdata)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+##   country     continent   lat   lon
+##   &amp;lt;chr&amp;gt;       &amp;lt;fct&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 Aruba       Americas   12.5 -70.0
+## 2 Afghanistan Asia       33.8  66.0
+## 3 Angola      Africa    -12.3  17.5
+## 4 Anguilla    Americas   18.2 -63.1
+## 5 Albania     Europe     41.1  20.0
+## 6 Aland       Europe     60.2  20.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot1 = centroidsdata %&amp;gt;% 
+  ggplot(aes(x = lon, y = lat, label = country, colour = continent)) +
+  geom_text_repel(segment.alpha = 0)   +
+  theme_void() +
+  scale_color_brewer(palette = &amp;quot;Dark2&amp;quot;)
+
+plot1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now this is very good already with hardly any overlapping labels and the world is pretty recognisable. And really, you can make this plot with just 2 lines of code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(centroidsdata, aes(x = lon, y = lat, label = country)) +
+geom_text_repel(segment.alpha = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So what these two lines make is already very amazing.&lt;/p&gt;
+&lt;p&gt;But I feel like Europe is a little bit misshapen and that the Caribbean and Africa are too close together. So I divided the world into regions (in this case same as continents except Russia is it’s own region - it’s just so big). Then wrote two functions that asked &lt;code&gt;ggrepel&lt;/code&gt; to plot each region separately and use &lt;code&gt;patchwork&lt;/code&gt; to patch each region together:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;centroidsdata = centroidsdata %&amp;gt;% 
+  mutate(region = continent %&amp;gt;% fct_expand(&amp;quot;Russia&amp;quot;)) %&amp;gt;% 
+  mutate(region = replace(region, country == &amp;quot;Russia&amp;quot;, &amp;quot;Russia&amp;quot;))
+
+mapbounds = centroidsdata %&amp;gt;% 
+  group_by(region) %&amp;gt;% 
+  summarise(xmin = min(lon), xmax = max(lon), ymin = min(lat), ymax = max(lat))
+
+
+create_labelmap = function(mydata, mycontinent, myforce = 1, mycolour = &amp;quot;black&amp;quot;){
+  
+  mymapbounds = mapbounds %&amp;gt;% 
+    filter(region == mycontinent)
+  
+  mydata %&amp;gt;% 
+    filter(region == mycontinent) %&amp;gt;% 
+    ggplot(aes(x = lon, y = lat, label = country)) +
+    geom_text_repel(segment.alpha = 0, force = myforce, colour = mycolour)   +
+    theme_void() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    scale_y_continuous(limits = c(mymapbounds$ymin, mymapbounds$ymax)) +
+    scale_x_continuous(limits = c(mymapbounds$xmin, mymapbounds$xmax))
+  
+}
+
+mycolours = RColorBrewer::brewer.pal(5,&amp;quot;Dark2&amp;quot;)
+
+make_world = function(mydata){
+  mydata  = centroidsdata
+  afr = create_labelmap(mydata, &amp;quot;Africa&amp;quot;,   mycolour = mycolours[1])
+  ame = create_labelmap(mydata, &amp;quot;Americas&amp;quot;, mycolour = mycolours[4])
+  asi = create_labelmap(mydata, &amp;quot;Asia&amp;quot;,     mycolour = mycolours[2])
+  eur = create_labelmap(mydata, &amp;quot;Europe&amp;quot;,   mycolour = mycolours[3])
+  rus = create_labelmap(mydata, &amp;quot;Russia&amp;quot;,   mycolour = mycolours[3])
+  oce = create_labelmap(mydata, &amp;quot;Oceania&amp;quot;,  mycolour = mycolours[5])
+
+  
+  (ame + (eur / afr) + (rus / asi / oce)) + plot_layout(ncol = 3)
+}
+
+plot2 = make_world(centroidsdata)
+
+plot2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This gives continents a much better shape, but it does severaly misplace Polynesia. See if you can find where, e.g., Tonga is and where it should be.&lt;/p&gt;
+&lt;p&gt;To see what I did with patchwork there, let’s add black borders to each region (Code#2):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code2-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Code#1:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#devtools::install_github(&amp;quot;slowkow/ggrepel&amp;quot;)
+#devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)
+
+
+library(tidyverse)
+library(ggrepel)
+library(patchwork)
+
+mydata  = data_frame(x = c(1, 1.3), y = c(1, 1), mylabel = c(&amp;quot;Point-1&amp;quot;, &amp;quot;Point-2&amp;quot;))
+
+p = mydata %&amp;gt;% 
+  ggplot(aes(x, y, label = mylabel, colour = mylabel)) +
+  geom_point() +
+  coord_cartesian(xlim = c(-3, 3), ylim = c(-3, 3)) +
+  theme_bw() +
+  theme(legend.position = &amp;quot;none&amp;quot;) +
+  scale_colour_viridis_d()
+
+plot1 = p + geom_text() + ggtitle(&amp;quot;geom_text()&amp;quot;)
+
+plot2 = p+ geom_text_repel() + ggtitle(&amp;quot;geom_text_repel()&amp;quot;)
+
+plot1 + plot2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Code#2:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;create_labelmap = function(mydata, mycontinent, myforce = 1, mycolour = &amp;quot;black&amp;quot;){
+  
+  mymapbounds = mapbounds %&amp;gt;% 
+    filter(region == mycontinent)
+  
+  mydata %&amp;gt;% 
+    filter(region == mycontinent) %&amp;gt;% 
+    ggplot(aes(x = lon, y = lat, label = country)) +
+    geom_text_repel(segment.alpha = 0, force = myforce, colour = mycolour)   +
+    theme_void() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    scale_y_continuous(limits = c(mymapbounds$ymin, mymapbounds$ymax)) +
+    scale_x_continuous(limits = c(mymapbounds$xmin, mymapbounds$xmax)) +
+    theme(panel.border = element_rect(colour = &amp;quot;black&amp;quot;, fill=NA, size=5))
+  
+}
+
+plot3 = make_world(centroidsdata)
+
+plot3&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Your first Shiny app</title>
+      <link>/2017/10/your-first-shiny-app/</link>
+      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/10/your-first-shiny-app/</guid>
+      <description>
+
+&lt;h3 id=&#34;what-is-shiny&#34;&gt;What is Shiny?&lt;/h3&gt;
+
+&lt;p&gt;Shiny is an R package (&lt;code&gt;install.packages(&amp;quot;shiny&amp;quot;)&lt;/code&gt;) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.&lt;/p&gt;
+
+&lt;p&gt;I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.&lt;/p&gt;
+
+&lt;div class=&#34;alert info &#34;&gt;
+  &lt;p&gt;If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;your-first-shiny-app&#34;&gt;Your first Shiny app&lt;/h3&gt;
+
+&lt;p&gt;Getting started with Shiny is actually a lot easier than a lot of people make it out to be. So I created a very short (9 slides) presentation outlining my 5-step programme for your first Shiny app.&lt;/p&gt;
+
+&lt;p&gt;This is the app: &lt;a href=&#34;https://riinu.shinyapps.io/shiny_testing/&#34;&gt;https://riinu.shinyapps.io/shiny_testing/&lt;/a&gt;&lt;/p&gt;
+
+&lt;iframe src=&#34;https://riinu.shinyapps.io/shiny_testing/&#34; width=&#34;600&#34; height=&#34;600&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This is the presentation: &lt;a href=&#34;http://rpubs.com/riinu/shiny&#34;&gt;http://rpubs.com/riinu/shiny&lt;/a&gt;&lt;/p&gt;
+
+&lt;iframe src=&#34;http://rpubs.com/riinu/shiny&#34; width=&#34;1000&#34; height=&#34;800&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;And here are the steps (also included in the presentation):&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 0&lt;/strong&gt;: &lt;code&gt;install.packages(&amp;quot;shiny&amp;quot;)&lt;/code&gt;. Use RStudio.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 1&lt;/strong&gt;: Create a script called &lt;code&gt;app.R&lt;/code&gt; using this skeleton:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/riinuots/c6ec0691633df2929adc7de90bdbc792&#34;&gt;https://gist.github.com/riinuots/c6ec0691633df2929adc7de90bdbc792&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 2&lt;/strong&gt;: Copy your plot code into the renderPlot function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 3&lt;/strong&gt;: Add a &lt;code&gt;sliderInput&lt;/code&gt; to your User Interface (&lt;code&gt;ui&lt;/code&gt;). A slider is just one of the many Shiny widgets you could be using: &lt;a href=&#34;https://shiny.rstudio.com/gallery/widget-gallery.html&#34;&gt;https://shiny.rstudio.com/gallery/widget-gallery.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 4&lt;/strong&gt;: Tell your Server you wish the &lt;code&gt;dplyr::filter()&lt;/code&gt; to use the value from the slider. All inputs from the User Interface (&lt;code&gt;ui&lt;/code&gt;) are stored in &lt;code&gt;input$variable_name&lt;/code&gt;: replace the &lt;code&gt;2007&lt;/code&gt; with &lt;code&gt;input$year&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;STEP 5 (optional)&lt;/strong&gt;: Add &lt;code&gt;animate = TRUE.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Press &lt;code&gt;Control+Shift+Enter&lt;/code&gt; or the &amp;ldquo;Run App&amp;rdquo; button. You now have a Shiny app running on your computer. To deploy it to the internet, e.g. like I&amp;rsquo;ve done in the link above, see &lt;a href=&#34;http://docs.rstudio.com/shinyapps.io/getting-started.html#deploying-applications&#34;&gt;this.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R: Replacing NAs in all factors with &#39;Missing&#39;</title>
+      <link>/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
+      <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
+      <description>&lt;p&gt;With a simple combination of &lt;code&gt;mutate_if&lt;/code&gt; and &lt;code&gt;fct_explicit_na,&lt;/code&gt;you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/riinuots/e517c36b1feb480df981721a00e0e24a.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;forcats&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Get data from ggplot()</title>
+      <link>/2016/12/get-data-from-ggplot/</link>
+      <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/12/get-data-from-ggplot/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;ggplot&lt;/strong&gt; includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, &lt;code&gt;ggplot_build()&lt;/code&gt; can be used to access the summarised dataset.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34; /&gt;&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
+
+&lt;pre&gt;&lt;code&gt;fill         y count prop x PANEL group    ...
+#D7301F 0.2147239    35    1 1     1     4 ...
+#FC8D59 0.6871166    77    1 1     1     3 ...
+#FDCC8A 0.9570552    44    1 1     1     2 ...
+#FEF0D9 1.0000000     7    1 1     1     1 ...
+#D7301F 0.1696429    38    1 2     1     8 ...
+#FC8D59 0.6116071    99    1 2     1     7 ...
+...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R lingua: library vs package</title>
+      <link>/2016/10/r-lingua-library-vs-package/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/10/r-lingua-library-vs-package/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/10/library_vs_package.jpg&#34; alt=&#34;library_vs_package&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R: ISO codes and country names</title>
+      <link>/2016/09/r-iso-codes-and-country-names/</link>
+      <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/09/r-iso-codes-and-country-names/</guid>
+      <description>&lt;p&gt;install.packages(&lt;span style=&#34;color:#0b6125;&#34;&gt;&amp;lsquo;maps&amp;rsquo;&lt;/span&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;iso = maps::iso3166
+
+&amp;gt; str(iso)
+&#39;data.frame&#39;:   269 obs. of  5 variables:
+ $ a2         : chr  &amp;quot;AW&amp;quot; ...
+ $ a3         : chr  &amp;quot;ABW&amp;quot; ...
+ $ ISOname    : chr  &amp;quot;Aruba&amp;quot; ..
+ $ mapname    : chr  &amp;quot;Aruba&amp;quot; ...
+ $ sovereignty: chr  &amp;quot;Netherlands&amp;quot; ...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Add abcd labels on ggplot facets</title>
+      <link>/2016/04/add-abcd-labels-on-ggplot-facets/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
+      <description>&lt;script src=&#34;//gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/04/rplot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How long did my R script run?</title>
+      <link>/2016/04/how-long-did-my-script-run/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/04/how-long-did-my-script-run/</guid>
+      <description>&lt;p&gt;This to the beginning:&lt;/p&gt;
+
+&lt;p&gt;strt&amp;lt;-&lt;a href=&#34;http://inside-r.org/r-doc/base/Sys.time&#34;&gt;Sys.time&lt;/a&gt;()&lt;/p&gt;
+
+&lt;p&gt;And this to the end:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://inside-r.org/r-doc/base/print&#34;&gt;print&lt;/a&gt;(&lt;a href=&#34;http://inside-r.org/r-doc/base/Sys.time&#34;&gt;Sys.time&lt;/a&gt;()-strt)&lt;/p&gt;
+
+&lt;p&gt;Example output:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;print(Sys.time()-strt)
+Time difference of 16.39691 secs&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to &#34;increase&#34; array resolution in R (replicate each element both column-wise and row-wise)</title>
+      <link>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
+      <description>&lt;p&gt;One picture says more than a thousand words. You have what is one the left, and you want what is on the right.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3)
+
+#matrix is a 2D array, this next row creates a third dimension,
+#duplicating the data
+my_array = array(my_matrix, dim = c(3,3,2))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#2D:
+increased_matrix = my_matrix[rep(1:nrow(my_matrix), each=3), rep(1:ncol(my_matrix, each=3)]
+
+#3D (same really, just one extra comma for the third dimension):
+increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, each=3), ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that by default, in rep(something, n) the n is &lt;strong&gt;times&lt;/strong&gt; so equivalent to rep(something, times=n), but in this case we need to use &lt;strong&gt;each&lt;/strong&gt; instead of &lt;strong&gt;times&lt;/strong&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Converting R Markdown to Latex</title>
+      <link>/2015/06/converting-r-markdown-to-latex/</link>
+      <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/converting-r-markdown-to-latex/</guid>
+      <description>&lt;p&gt;Install Pandoc: &lt;a href=&#34;http://pandoc.org/&#34;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(knitr)
+
+knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pandoc -s report.md -o report.tex&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;p&gt;(Read &lt;a href=&#34;http://proteo.me.uk/2013/06/generating-r-reports-with-vector-images-from-markdown-with-knitr/&#34;&gt;this&lt;/a&gt;, if you want vector images.)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reordering factor levels in R and what could go wrong</title>
+      <link>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
+      <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve recently started using &lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;ggplot2&lt;/a&gt; in addition to lattice (see &lt;a href=&#34;https://riinudata.wordpress.com/2014/08/08/r-graphical-devices-plot-margins-and-legend-next-to-the-plot-not-on-it/&#34;&gt;this post&lt;/a&gt; that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels. This post will show how to (and also how not to) rearrange factor levels in R.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a quick barplot with strings as x labels.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+
+#create dummy data
+a = paste(&#39;my&#39;, 1:11)
+b = 1:11
+df = data.frame(a, b)
+df
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot1.png&#34; alt=&#34;barplot1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As df$a is an array of strings, R sets the factor levels alphabetically: my 1, my 10, my 11, my 2&amp;hellip;which is not what we want, so let&amp;rsquo;s rearrange factor levels:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df$a = factor(df$a, levels = paste(&#39;my&#39;, 1:11))
+df$a
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot2.png&#34; alt=&#34;barplot2&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally, the wrong way to rearrange factor levels would be by using the levels() function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df = data.frame(a, b)
+levels(df$a) = paste(&#39;my&#39;, 1:11)
+qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
+  theme(axis.text=element_text(size=16, angle=45))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot3.png&#34; alt=&#34;barplot3&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So be careful - if your data is not as obvious as this example and you are a bit new to factors and levels, you might end up plotting wrong results (like on the last example, &amp;ldquo;my 2&amp;rdquo; and &amp;ldquo;my 3&amp;rdquo; were plotted with the values 10 and 11).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]</title>
+      <link>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
+      <pubDate>Wed, 06 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is a short note based on &lt;a href=&#34;http://stats.stackexchange.com/questions/26176/removal-of-statistically-significant-intercept-term-boosts-r2-in-linear-model/26205#26205&#34;&gt;this&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.&lt;/p&gt;
+
+&lt;p&gt;R2 for a linear model that has an intercept:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn.png&#34; alt=&#34;CodeCogsEqn&#34; /&gt;,&lt;/p&gt;
+
+&lt;p&gt;where &lt;em&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/em&gt; is the variable that the linear model is trying to predict (the response variable), &lt;em&gt;y^&lt;/em&gt; is the predicted value and &lt;em&gt;y-&lt;/em&gt; is the mean value of the response variable.&lt;/p&gt;
+
+&lt;p&gt;And the R2 for a linear model that is forced through the origin:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn-2.png&#34; alt=&#34;CodeCogsEqn (2)&#34; /&gt;,&lt;/p&gt;
+
+&lt;p&gt;basically the mean value of the response variable is removed from the equation, making the denominator bigger (and the result of the division smaller). The reason why the  mean can not be used for this calculation is that it does not make sense any more - forcing the fit through zero kind of means adding an infinite number of (0,0) points into the dataset.&lt;/p&gt;
+
+&lt;p&gt;This means that the R-squared values of two different linear models (one with an intercept, one without) can not really be compared, because when the intercept is quite small compared to the residuals (basically the numerator) then the R2 &amp;ldquo;advantange&amp;rdquo; that the through-origin regression gets is relatively bigger than the decrease in residuals, when including the intercept.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

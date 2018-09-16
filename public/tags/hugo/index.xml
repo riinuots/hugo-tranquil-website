@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Riinu&#39;s scripting diary</title>
+    <link>/tags/hugo/</link>
+    <description>Recent content in Hugo on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Converting old Wordpress posts to Hugo</title>
+      <link>/2018/02/converting-old-wordpress-posts-to-hugo/</link>
+      <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
+      <description>&lt;p&gt;Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by &lt;a href=&#34;https://riinu.netlify.com/2018/02/hello-world/&#34;&gt;blogdown-Hugo&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;step-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1&lt;/h2&gt;
+&lt;p&gt;Read the &lt;a href=&#34;https://bookdown.org/yihui/blogdown/from-wordpress.html&#34;&gt;Migration: From Wordpress&lt;/a&gt; chapter of the &lt;strong&gt;blogdown&lt;/strong&gt; book.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2&lt;/h2&gt;
+&lt;p&gt;Get all your wordpress posts into one XML: WP Admin - Tools - Export.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3&lt;/h2&gt;
+&lt;p&gt;Install &lt;a href=&#34;https://github.com/thomasf/exitwp&#34;&gt;Exitwp&lt;/a&gt; and its dependencies (&lt;code&gt;pyyamp&lt;/code&gt;, &lt;code&gt;beautifulsoup4&lt;/code&gt;, &lt;code&gt;html2text&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/thomasf/exitwp.git
+sudo easy_install pip
+sudo pip install pyyaml
+sudo pip install beautifulsoup4
+sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This worked on macOS&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; High Sierra - I already had &lt;code&gt;python&lt;/code&gt; installed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4&lt;/h2&gt;
+&lt;p&gt;Working in the directory that &lt;code&gt;git clone&lt;/code&gt; created (&lt;code&gt;exitwp&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Put the Wordpress XML in the wordpress-xml directory.&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;xmllint riinu_wordpress.xml&lt;/code&gt;, worked the first time for me and I didn’t get any errors (so not sure what the &lt;strong&gt;fix errors if there are&lt;/strong&gt; would entail).&lt;/li&gt;
+&lt;li&gt;Back in the &lt;code&gt;exitwp&lt;/code&gt; folder, run &lt;code&gt;python exitwp.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;This created folders &lt;code&gt;build/jekyll/riinudata.wordpress.com/_posts&lt;/code&gt; and the content looked like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/exitwp.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Move all these into &lt;code&gt;exitwp/post&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Take a copy of &lt;a href=&#34;https://github.com/yihui/oldblog_xml/blob/master/convert.R&#34; class=&#34;uri&#34;&gt;https://github.com/yihui/oldblog_xml/blob/master/convert.R&lt;/a&gt; to clean these .markdown files up and ready for Hugo. I edited the first three lines, skipped the “Do not run if…” chunk as I’d already done that in &lt;strong&gt;Step 3&lt;/strong&gt;, edited the &lt;code&gt;authors = c()&lt;/code&gt;, did not run the very last chunk (&lt;code&gt;local({if (!dir.exist...})&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Move all of the files (now &lt;code&gt;.md&lt;/code&gt;) into &lt;code&gt;content/post&lt;/code&gt; of your blogdown repo. Build and voila!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;further-modifications&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Further modifications&lt;/h2&gt;
+&lt;p&gt;Looks like most of my posts were converted like a charm, with nicely formatted code blocks and images. But I few things I noticed that I think I have to fix:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub gists are now displayed as links, will make those into code blocks (or embed them using a &lt;a href=&#34;http://blog.cronally.com/embed-gists-with-hugo/&#34;&gt;Hugo shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Most images show up perfectly, but some have gotten stuck in a code block, e.g. showing up as &lt;code&gt;&amp;lt;img src=&amp;quot;https://riinudata.files.wordpress.com/2016/04/rplot.png&amp;quot; alt=&amp;quot;Rplot&amp;quot;/&amp;gt;&lt;/code&gt;. Will sort these&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Overall I feared a lot worse and am super happy with the conversion experience. Took exactly 3 h.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/hilde_knit.jpg&#34; alt=&#34;My name is Hildegard and I approve this message.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;My name is Hildegard and I approve this message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;I’m only 1.5 years late to discover that OS X has been rebranded as macOS: &lt;a href=&#34;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&#34; class=&#34;uri&#34;&gt;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello world: blogdown loves Hugo</title>
+      <link>/2018/02/hello-world/</link>
+      <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/hello-world/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/blogdown_hugo.png?w=736&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;we-are-live&#34;&gt;We are live!&lt;/h1&gt;
+
+&lt;p&gt;I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&amp;hellip;oh and discovering MARKDOWN.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-two-rules&#34;&gt;My two rules:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;text is written in Markdown (I use R Markdown/knitr/bookdown, e.g. see how easy it is to create a book: &lt;a href=&#34;https://surgicalinformatics.github.io/healthyr_book/&#34;&gt;&amp;ldquo;HealthyR: the eBook&amp;rdquo;&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;data analysis ends up in a Shiny app (e.g., see &lt;a href=&#34;https://riinu.me/2017/10/20/your-first-shiny-app/&#34;&gt;&amp;ldquo;If it’s not worth putting in a Shiny app it’s not worth doing.&amp;rdquo;&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;so-i-finally-got-round-to-creating-a-blogdown-hugo-site&#34;&gt;So I finally got round to creating a blogdown-Hugo site:&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is a website generator that is code-based (no more dragging around those pesky Wordpress elements); &lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34;&gt;blogdown&lt;/a&gt; is an R package that will help you generate Hugo, Jekyll, or Hexo sites, especially if you will be including R Markdown in it.&lt;/p&gt;
+
+&lt;h3 id=&#34;steps-on-12-february-2018&#34;&gt;Steps on 12-February 2018:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Created a new blogdown project on RStudio, set &lt;code&gt;kakawait/hugo-tranquilpeak-theme&lt;/code&gt; as the theme&lt;/li&gt;
+&lt;li&gt;Edited my name, email etc. information in the &lt;em&gt;config.toml&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Absolutely could not figure out how to change &lt;code&gt;coverImage = &amp;quot;cover.jpg&amp;quot;&lt;/code&gt;. Tried putting my cover image in &lt;code&gt;/static/img/&lt;/code&gt;, &lt;code&gt;/static/_images/&lt;/code&gt;, &lt;code&gt;source/assets/images&lt;/code&gt; and tried linking to these any way I could think of (e.g. with and without the first &lt;code&gt;/&lt;/code&gt;) but it just wasn&amp;rsquo;t happening. Ended up putting my picture in &lt;code&gt;/themes/hugo-tranquilpeak-theme/static/images/&lt;/code&gt; and blatantly naming it &lt;code&gt;cover.jpg&lt;/code&gt; (replacing the theme&amp;rsquo;s default photo). This worked.&lt;/li&gt;
+&lt;li&gt;Pushed the whole project to &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website&#34;&gt;https://github.com/riinuots/hugo-tranquil-website&lt;/a&gt; and then created a submobule in &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&#34;&gt;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&lt;/a&gt; so when the theme gets updated I can pull the new version. This is not essential. I need to figure out the cover image issue though.&lt;/li&gt;
+&lt;li&gt;Set up Netlify as in &lt;a href=&#34;https://bookdown.org/yihui/blogdown/netlify.html&#34;&gt;https://bookdown.org/yihui/blogdown/netlify.html&lt;/a&gt; which was superquick but then spent some time troubleshooting why my theme wasn&amp;rsquo;t displaying properly. Turns out that for this theme, it is essential to set the &lt;code&gt;baseURL = &amp;quot;https://riinu.netlify.com/&amp;quot;&lt;/code&gt; (in &lt;em&gt;config.toml&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;Created this Hello World post which seemed to work fine at first. I then added an unquoted semicolon to the title, broke everything and spent 2 h trying to figure out what went wrong. These were the errors I was getting and that no-one else in the world (Google) seemed to have reported:
+
+&lt;ul&gt;
+&lt;li&gt;edits to the new post not happening, but the site isn&amp;rsquo;t broken either&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;clean_site()&lt;/code&gt; errors with:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;rmarkdown::clean_site() Error in file.exists(files) : invalid &#39;file&#39; argument&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;after spending 2h on Google/github/rstudio/rmarkdown, blogdown book, blogdown repo, Hugo documentation, I finally came across &lt;code&gt;hugo -v&lt;/code&gt; (v for verbose). Noticed
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;yaml: line 1: mapping values are not allowed in this context&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(which I had indeed seen before at some point during these 2 hours). Anyway, seeing it for the second time clicked - markdown thinks I&amp;rsquo;m mapping something that shouldn&amp;rsquo;t be mapped (mapping usually means defining variables). My title was (second line of the markdown file, really) &lt;code&gt;title: Hello world: blogdown loves Hugo&lt;/code&gt;, but if using a semicolon you need quotes: &lt;code&gt;title: &amp;quot;Hello world: blogdown loves Hugo&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;still-better-than-wordpress&#34;&gt;Still better than Wordpress.&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/pandas.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next steps:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set up Disqus (comments).&lt;/li&gt;
+&lt;li&gt;Bring over old posts from &lt;a href=&#34;https://riinudata.wordpress.com&#34;&gt;https://riinudata.wordpress.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Write all the new posts ideas I&amp;rsquo;ve been gathering over the past 4 months.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
