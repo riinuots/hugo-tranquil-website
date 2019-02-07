@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scripting on Riinu&#39;s scripting diary</title>
-    <link>/categories/scripting/</link>
+    <link>https://riinu.me/categories/scripting/</link>
     <description>Recent content in Scripting on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/categories/scripting/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://riinu.me/categories/scripting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My data science toolbox</title>
-      <link>/2018/08/my-data-science-toolbox/</link>
+      <link>https://riinu.me/2018/08/my-data-science-toolbox/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/08/my-data-science-toolbox/</guid>
+      <guid>https://riinu.me/2018/08/my-data-science-toolbox/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been doing data science for over 10 years now. Although most of this time I didn&amp;rsquo;t realise I was doing data science. I thought I was just doing normal science but focusing on simulations and data analysis, rather than field or lab work. I&amp;rsquo;ve switched fields a few times now- physics BSc, Chemistry PhD, now working in medical research. Therefore, instead of this lenghty introduction:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -39,10 +39,10 @@
     
     <item>
       <title>Converting old Wordpress posts to Hugo</title>
-      <link>/2018/02/converting-old-wordpress-posts-to-hugo/</link>
+      <link>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</link>
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
+      <guid>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
       <description>&lt;p&gt;Between 2014-2018 I published 29 posts on riinudata.wordpress.com. Today I’m converting all of those to my new website powered by &lt;a href=&#34;https://riinu.netlify.com/2018/02/hello-world/&#34;&gt;blogdown-Hugo&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;step-1&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 1&lt;/h2&gt;
@@ -72,7 +72,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;This created folders &lt;code&gt;build/jekyll/riinudata.wordpress.com/_posts&lt;/code&gt; and the content looked like this:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/exitwp.png&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/exitwp.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ul&gt;
@@ -95,7 +95,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;p&gt;Overall I feared a lot worse and am super happy with the conversion experience. Took exactly 3 h.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/hilde_knit.jpg&#34; alt=&#34;My name is Hildegard and I approve this message.&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/hilde_knit.jpg&#34; alt=&#34;My name is Hildegard and I approve this message.&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My name is Hildegard and I approve this message.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -110,10 +110,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Hello world: blogdown loves Hugo</title>
-      <link>/2018/02/hello-world/</link>
+      <link>https://riinu.me/2018/02/hello-world/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/02/hello-world/</guid>
+      <guid>https://riinu.me/2018/02/hello-world/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/blogdown_hugo.png?w=736&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
