@@ -34,7 +34,7 @@ canonifyurls = true
 [author]
   name = "Riinu Ots"
   bio = "if it aint broke, you're outdated"
-  job = "DevOps&Data Science"
+  job = "Data Science"
   location = "Edinburgh, UK"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "thibaud.lepretre@gmail.com"
@@ -81,14 +81,14 @@ canonifyurls = true
   identifier = "cv"
   name = "CV"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-file\"></i>"
-  url = "https://github.com/riinuots/cv/blob/master/cv.pdf"
+  url = "/pdf/cv.pdf"
   
 [[menu.links]]
   weight = 5
   identifier = "publications"
   name = "Publications"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-pencil\"></i>"
-  url = "https://github.com/riinuots/cv/blob/master/publications.pdf"
+  url = "https://scholar.google.co.uk/citations?user=CeW7a8AAAAAJ"
   
   
 [[menu.links]]
