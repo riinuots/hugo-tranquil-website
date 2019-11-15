@@ -15,7 +15,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.32.4 with theme Tranquilpeak 0.4.3-BETA">
+    <meta name="generator" content="Hugo 0.36 with theme Tranquilpeak 0.4.3-BETA">
     <title>Riinu&#39;s scripting diary</title>
     <meta name="author" content="Riinu Ots">
     <meta name="keywords" content="">
@@ -217,6 +217,64 @@ ga('send', 'pageview');
                ">
         <section class="postShorten-group main-content-wrap">
           
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/">
+          Add up two variables of a netCDF file
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2014-05-29T00:00:00Z">
+        
+  May 29, 2014
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/netcdf">netCDF</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      NCO:ncap2 is the function to do it:
+ncap2 -s 'new_var=var1+var2' in_filename.nc out_filename.nc
+The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).
+I do not know what the -s stands for.
+BUT the new_var will have the same long_name as the first variable used for summing (i.e. it could make some things a bit confusing).
+      <p>
+        <a href="/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
           
             
   
@@ -467,6 +525,25 @@ ncap2 -A -s 'summed_variable=variable_to_sum.total($lat,$lon)' in.nc out.nc
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="/2019/11/rstudio-server-lan-party/">
+                <h3 class="media-heading">RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Introduction Requirements Set-up Why are you calling it a LAN party? Docker, containers, images    TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.
+ Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org
+ Introduction Running R programming courses on people’s own laptops is a pain, especially as we use a lot of very useful extensions that actually make learning and using R much easier and more fun.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="/2019/04/new-intuitive-ways-to-reshape-data-in-r/">
                 <h3 class="media-heading">New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()</h3>
               </a>
@@ -638,24 +715,6 @@ There are a few issues with this though. The command bibexport comes with the in
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="/2016/12/get-data-from-ggplot/">
-                <h3 class="media-heading">Get data from ggplot()</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2016
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">ggplot includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, ggplot_build() can be used to access the summarised dataset.
- fill y count prop x PANEL group ... #D7301F 0.2147239 35 1 1 1 4 ... #FC8D59 0.6871166 77 1 1 1 3 ... #FDCC8A 0.9570552 44 1 1 1 2 ... #FEF0D9 1.0000000 7 1 1 1 1 ... #D7301F 0.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -663,7 +722,7 @@ There are a few issues with this though. The command bibexport comes with the in
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         31 posts found
+         32 posts found
       </p>
     </div>
   </div>

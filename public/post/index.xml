@@ -6,10 +6,107 @@
     <description>Recent content in Posts on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline</title>
+      <link>/2019/11/rstudio-server-lan-party/</link>
+      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/rstudio-server-lan-party/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#requirements&#34;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#set-up&#34;&gt;Set-up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-are-you-calling-it-a-lan-party&#34;&gt;Why are you calling it a LAN party?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#docker-containers-images&#34;&gt;Docker, containers, images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Running R programming courses on people’s own laptops is a pain, especially as we use a lot of very useful extensions that actually make learning and using R much easier and more fun. But long installation instructions can be very off-putting for complete beginners, and &lt;strong&gt;people can be discouraged to learn programming if installation hurdles invoke their imposter syndrome&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We almost always run our courses in places with a good internet connection (it does not have to be super fast or flawless), so we get our students all set up on RStudio Server (hosted by us) or &lt;a href=&#34;https://rstudio.cloud&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud&lt;/a&gt; (a free service provided by RStudio!).
+You connect to either of these options using a web browser, and even very old computers can handle this. That’s because the actual computations happen on the server and not on the student’s computer. So the computer just serves as a window to the training instance used.&lt;/p&gt;
+&lt;p&gt;Now, these options work really well as long as you have a stable internet connection. But for teaching R offline and on people’s own laptops, you either have to:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;make sure everyone installs everything correctly before they attend the course&lt;/li&gt;
+&lt;li&gt;Download all the software and extensions, put them on USB sticks and try to install them together at the start&lt;/li&gt;
+&lt;li&gt;start serving RStudio from a your computer using Local Area Network (LAN) created by a router&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, we already discussed why the first option is problematic (gatekeeper for complete beginners). The second option - installing everything at the start together - means that you start the course with the most boring part. &lt;strong&gt;And since everyone’s computers are different&lt;/strong&gt; (both by operating systems as well as different versions of the operating systems), &lt;strong&gt;this can take quite a while to sort&lt;/strong&gt;. Therefore, queue in option c) - an RStudio Server LAN party.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;requirements&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;A computer with more than 4GB of RAM.&lt;/strong&gt; macOS alone uses around 2-3GB just to keep going, and running the RStudio Server docker container was using another 3-4 GB, so you’ll definitely need more than 4GB in total.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A network router.&lt;/strong&gt; For a small number of participants, the same one you already have at home will work. Had to specify “network” here, as apparently, even my Google search for “router” suggests the power tool before network routers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Docker - free software&lt;/strong&gt;, dead easy to install on macOS (search the internet for “download Docker”). Looks like installation on the Windows Home operating system might be trickier. If you are a Windows Home user who is using Docker, please do post a link to your favourite instructions in the comments below.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Internet connection for setting up&lt;/strong&gt; - to download RStudio’s docker image and install your extra packages.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-up&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Set-up&lt;/h2&gt;
+&lt;p&gt;Running RStudio using Docker is so simple you won’t believe me. It honestly is just a single-liner to be entered into your Terminal (Command Prompt on Windows):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d -p 8787:8787 -e ROOT=TRUE -e USER=user -e PASSWORD=password rstudio/verse &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will automatically download a Docker image put together by RStudio. The one called &lt;code&gt;verse&lt;/code&gt; includes all the tidyverse packages as well as publishing-related ones (R Markdown, Shiny, etc.). You can find a list of the difference ones here: &lt;a href=&#34;https://github.com/rocker-org/rocker&#34; class=&#34;uri&#34;&gt;https://github.com/rocker-org/rocker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Then open a browser and go to &lt;code&gt;localhost:8787&lt;/code&gt; and you should be greeted with an RStudio Server login! (Localhost only works on a Mac or Linux, if using Windows, take a note of your IP address and use that instead of &lt;code&gt;localhost&lt;/code&gt;.) More information and instructions can be found here: &lt;a href=&#34;https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image&#34; class=&#34;uri&#34;&gt;https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to &lt;code&gt;localhost&lt;/code&gt; (or something like &lt;code&gt;127.0.0.0&lt;/code&gt; if using Windows).&lt;/p&gt;
+&lt;p&gt;For those of you who have never seen or used RStudio Server, this is what it looks like:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The Docker single-liner above will create a single user with sudo rights (since I’ve included &lt;code&gt;-e ROOT=TRUE&lt;/code&gt;). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: &lt;a href=&#34;https://github.com/einarpius/create_rstudio_users&#34; class=&#34;uri&#34;&gt;https://github.com/einarpius/create_rstudio_users&lt;/a&gt; Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with &lt;code&gt;chmod 700 create_users.sh&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then connect to the same router you’ll be using for your LAN party, go to router settings and assign yourself a fixed IP address, e.g., 168.192.1.78. Once other people connect to the network created by this router (either by WiFi or cable), they need to type &lt;code&gt;168.192.1.78:8787&lt;/code&gt; into any browser and can just start using RStudio. This will work as long as your computer is running Docker and you are all connected to the same router.&lt;/p&gt;
+&lt;p&gt;I had 10 people connected to my laptop and, most of the time, the strain on my CPU was negligible - around 10-20%. That’s because it was a course for complete beginners and they were mostly reading the instructions (included in the training Notebooks they were running R code in). So they weren’t actually hitting Run at the same time, and the tasks weren’t computationally heavy. When we did ask everyone to hit the “Knit to PDF” button all at the same time, it got a bit slower and my CPU was apparently working at 200%. But nothing crashed and everyone got their PDFs made.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-are-you-calling-it-a-lan-party&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Why are you calling it a LAN party?&lt;/h2&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.&lt;/p&gt;
+&lt;p&gt;The term “LAN party” means people coming together to play multiplayer computer games - as it will allow people to play in the same “world”, to either build things together or fight with each other. Good internet access has made LAN parties practically obsolete - people and their computers no longer have to physically be in the same location to play multiplayer games together. I use the term very loosely to refer to anything fun happening on the same network. And being able to use RStudio is definitely a party in my books anyway.&lt;/p&gt;
+&lt;p&gt;But it is for security reasons (e.g., the printer example), or sharing resources in places without excellent internet connection where LAN parties are still very much relevant.&lt;/p&gt;
+&lt;p&gt;* Overall, most existing LANs operate via Ethernet cables (or “internet cables” as most people, including myself refer to them). WiFi LAN or WLAN is a type of LAN. Have a look at your home router, it will probably have different lights for “internet” and “WLAN”/“wireless”. A LAN can also be connected to the internet - if the router itself is connected to the internet. That’s the main purpose of a router - to take the internet coming into your house via a single Ethernet cable, and share it with all your other devices. A LAN is usually just a nice side-effect of that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;docker-containers-images&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Docker, containers, images&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Docker image &lt;/strong&gt; - a file bundling an operating system + programs and files
+&lt;strong&gt;Docker container&lt;/strong&gt; - a running image (it may be paused or stopped)&lt;/p&gt;
+&lt;p&gt;List of all your containers: &lt;code&gt;docker ps -a&lt;/code&gt; (just &lt;code&gt;docker ps&lt;/code&gt; will list running containers, so the ones not stopped or paused)&lt;/p&gt;
+&lt;p&gt;List your images: &lt;code&gt;docker images&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Run a container using an image:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d -p 8787:8787 -e ROOT=TRUE -e USER=user -e PASSWORD=password rstudio/verse &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When you run &lt;code&gt;rstudio/verse&lt;/code&gt; for the first time it will be downloaded into your images. The next time it will be taken directly from there, rather than downloaded. So you’ll only need internet access once.&lt;/p&gt;
+&lt;p&gt;Stop an active container: &lt;code&gt;docker stop container-name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Start it up again: &lt;code&gt;docker start container-name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Save a container as an image (for versioning or passing on to other people):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker commit container-name pository:tag&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;docker commit rstudio-server rstudio/riinu:test1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Rename container (by default it will get a random label, I’d change it to rstudio-server):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker rename happy_hippo rstudio-server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can then start your container with: &lt;code&gt;docker start rstudio-server&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()</title>
@@ -489,10 +586,7 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/04/islay-distilleries-in-3-days/</guid>
-      <description>&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;img/islay/islay_collage.png&#34; /&gt;
-
-&lt;/div&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;img/islay/islay_collage.png&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;day-0-sunday-18-february-2018&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Day 0 (Sunday 18-February 2018)&lt;/h2&gt;
 &lt;p&gt;Left Edinburgh at 8am for a 1pm ferry Kennacraig to Port Askaig (Islay). Edinburgh-Kennacraig should be a 3.5h drive (and it was), but we left early to allow for any delays on the road. Arrived on Islay at 3pm and our accommodation near Port Ellen (southern Islay, close to to Ardbeg, Lagavulin, Laphroiaig) was a 40 min drive from the port.&lt;/p&gt;
@@ -586,7 +680,7 @@ sudo easy_install pip
 sudo pip install pyyaml
 sudo pip install beautifulsoup4
 sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This worked on macOS&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; High Sierra - I already had &lt;code&gt;python&lt;/code&gt; installed.&lt;/p&gt;
+&lt;p&gt;This worked on macOS&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; High Sierra - I already had &lt;code&gt;python&lt;/code&gt; installed.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-4&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 4&lt;/h2&gt;
@@ -597,10 +691,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;Back in the &lt;code&gt;exitwp&lt;/code&gt; folder, run &lt;code&gt;python exitwp.py&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;This created folders &lt;code&gt;build/jekyll/riinudata.wordpress.com/_posts&lt;/code&gt; and the content looked like this:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/exitwp.png&#34; /&gt;
-
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;/img/exitwp.png&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Move all these into &lt;code&gt;exitwp/post&lt;/code&gt; folder.&lt;/li&gt;
 &lt;/ul&gt;
@@ -628,7 +719,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;I’m only 1.5 years late to discover that OS X has been rebranded as macOS: &lt;a href=&#34;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&#34; class=&#34;uri&#34;&gt;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;I’m only 1.5 years late to discover that OS X has been rebranded as macOS: &lt;a href=&#34;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&#34; class=&#34;uri&#34;&gt;https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/&lt;/a&gt;&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
