@@ -256,14 +256,14 @@
   </url>
   
   <url>
-    <loc>/categories/latex/</loc>
-    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
+    <loc>/tags/latex/</loc>
+    <lastmod>2016-04-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/latex/</loc>
-    <lastmod>2016-04-11T00:00:00+00:00</lastmod>
+    <loc>/categories/latex/</loc>
+    <lastmod>2017-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>/categories/netcdf/</loc>
-    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+    <loc>/tags/netcdf/</loc>
+    <lastmod>2014-05-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/netcdf/</loc>
-    <lastmod>2014-05-29T00:00:00+00:00</lastmod>
+    <loc>/categories/netcdf/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -358,14 +358,14 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
+    <loc>/tags/r/</loc>
+    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2018-08-11T00:00:00+00:00</lastmod>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -436,14 +436,14 @@
   </url>
   
   <url>
-    <loc>/categories/unix/</loc>
-    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
+    <loc>/tags/unix/</loc>
+    <lastmod>2014-07-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/unix/</loc>
-    <lastmod>2014-07-22T00:00:00+00:00</lastmod>
+    <loc>/categories/unix/</loc>
+    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
