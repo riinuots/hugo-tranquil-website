@@ -81,7 +81,7 @@ canonifyurls = true
   identifier = "cv"
   name = "CV"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-file\"></i>"
-  url = "/pdf/cv.pdf"
+  url = "/pdf/cv_riinu_ots.pdf"
   
 [[menu.links]]
   weight = 5
