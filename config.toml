@@ -34,7 +34,7 @@ canonifyurls = true
 [author]
   name = "Riinu Ots"
   bio = "if it aint broke, you're outdated"
-  job = "Data Science"
+  job = "Senior Data Manager"
   location = "Edinburgh, UK"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "thibaud.lepretre@gmail.com"
@@ -42,7 +42,7 @@ canonifyurls = true
   # Overwritten by your gravatar image if `author.gravatarEmail` is filled
   picture = "https://pbs.twimg.com/profile_images/1090693362473152512/IAd8vXHs_400x400.jpg"
   # Your Twitter username without the @. E.g : thibaudlepretre
-  twitter = "riinuots"
+  twitter = "_Riinu_"
   # Your google plus profile id. E.g : +ThibaudLepretre or 114625208755123718311
   # googlePlus = "+ThibaudLepretre"
 
@@ -54,7 +54,7 @@ canonifyurls = true
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
 
-#[[menu.main]]
+#[[menu.links]]
 #  weight = 4
 #  identifier = "archives"
 #  name = "Archives"
@@ -67,24 +67,31 @@ canonifyurls = true
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
   url = "/#about"
+  
+[[menu.links]]
+  weight = 3
+  identifier = "book"
+  name = "Book"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-book\"></i>"
+  url = "https://healthyr.surgicalinformatics.org/"
 
 
 [[menu.links]]
-  weight = 3
+  weight = 4
   identifier = "asteroid"
   name = "Asteroid"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-space-shuttle\"></i>"
   url = "https://minorplanetcenter.net/db_search/show_object?object_id=25616"
 
 [[menu.links]]
-  weight = 4
+  weight = 5
   identifier = "cv"
   name = "CV"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-file\"></i>"
   url = "/pdf/cv_riinu_ots.pdf"
   
 [[menu.links]]
-  weight = 5
+  weight = 6
   identifier = "publications"
   name = "Publications"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-pencil\"></i>"
@@ -92,17 +99,30 @@ canonifyurls = true
   
   
 [[menu.links]]
-  weight = 6
+  weight = 7
+  identifier = "twitter"
+  name = "Twitter"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-twitter\"></i>"
+  url = "https://twitter.com/_Riinu_"
+  
+  
+[[menu.main]]
+  weight = 7
   identifier = "github"
   name = "GitHub"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
   url = "https://github.com/riinuots"
 
 
+[[menu.main]]
+  weight = 8
+  identifier = "categories"
+  name = "Categories"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  url = "/categories"
 
-
-[[menu.misc]]
-  weight = 7
+[[menu.main]]
+  weight = 9
   identifier = "rss"
   name = "RSS"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-rss\"></i>"
@@ -115,12 +135,7 @@ canonifyurls = true
 #  weight = 9
 
 
-[[menu.main]]
-  weight = 8
-  identifier = "categories"
-  name = "Categories"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-  url = "/categories"
+
   
   
 #[[menu.main]]
