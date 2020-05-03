@@ -11,6 +11,7 @@ tags:
   - tidyr
 editor_options: 
   chunk_output_type: console
+output: md_document
 ---
 
 TLDR: there are two new and very intuitive R functions for reshaping data: see [Examples](#examples) of `pivot_longer()` and `pivot_wider()` below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see [Installation](#installation)), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.

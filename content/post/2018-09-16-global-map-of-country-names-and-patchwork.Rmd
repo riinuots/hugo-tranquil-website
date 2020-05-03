@@ -8,6 +8,7 @@ categories:
   - R
 tags:
   - ggplot2, ggrep, patchwork
+output: md_document
 ---
 
 This post demonstrates the use of two very cool R packages - `ggrepel` and `patchwork`.

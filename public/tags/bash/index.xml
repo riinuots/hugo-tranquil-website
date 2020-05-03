@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bash on Riinu&#39;s scripting diary</title>
+    <title>bash on Riinu&#39;s scripting diary</title>
     <link>/tags/bash/</link>
-    <description>Recent content in Bash on Riinu&#39;s scripting diary</description>
+    <description>Recent content in bash on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Jul 2014 00:00:00 +0000</lastBuildDate>
@@ -18,11 +17,8 @@
       
       <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve defined &lt;code&gt;alias ls=&#39;ls -al –color=auto&#39;&lt;/code&gt;, but want to use ls without the extra information and colouring then use&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;\ls&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;or equivalently&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;command ls&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
@@ -34,7 +30,6 @@
       
       <guid>/2014/05/my-bash-aliases/</guid>
       <description>&lt;p&gt;If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;# .bashrc
 
 # Put user specific aliases and functions here
@@ -44,24 +39,14 @@ alias qsub=&#39;qsub -m abe -M myemail@email.com&#39;
 
 alias disk=&amp;quot;du * -sh | sort -h&amp;quot;
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).&lt;/p&gt;
 &lt;p&gt;_&amp;ndash;color=auto _colours folders, executables and symbolic links.&lt;/p&gt;
-
 &lt;p&gt;-a for qstat displays more information.&lt;/p&gt;
-
 &lt;p&gt;Both -m and -M for qsub mean messages. For -m:&lt;/p&gt;
-
 &lt;p&gt;b - Mail is sent at the beginning of the job.&lt;/p&gt;
-
 &lt;p&gt;e - Mail is sent at the end of the job.&lt;/p&gt;
-
 &lt;p&gt;a - Mail is sent when the job is aborted or rescheduled.&lt;/p&gt;
-
 &lt;p&gt;And -M is the flag before the email address(es).&lt;/p&gt;
-
 &lt;p&gt;The last one (I call it disk) displays the sizes of one level of subfolders and orders them too (correct ordering is done by the really cool -h option, as apposed to the numeric sort -n, which would think that 1.4GB&amp;gt;1.4TB).&lt;/p&gt;
 </description>
     </item>

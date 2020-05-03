@@ -8,6 +8,7 @@ categories:
   - Travel
 tags:
   - scotland
+output: md_document
 ---
 
 

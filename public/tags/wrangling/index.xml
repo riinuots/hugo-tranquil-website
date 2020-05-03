@@ -1,15 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wrangling on Riinu&#39;s scripting diary</title>
+    <title>wrangling on Riinu&#39;s scripting diary</title>
     <link>/tags/wrangling/</link>
-    <description>Recent content in Wrangling on Riinu&#39;s scripting diary</description>
+    <description>Recent content in wrangling on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/wrangling/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R: filtering with NA values</title>
+      <link>/2020/02/r-filtering-with-na-values/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/02/r-filtering-with-na-values/</guid>
+      <description>
+
+
+&lt;p&gt;NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
+More explanations about this can be found in the Chapter 2: R basics of our book that is freely available at the &lt;a href=&#34;https://healthyr.surgicalinformatics.org/&#34;&gt;HealthyR website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.&lt;/p&gt;
+&lt;p&gt;For example, I want to keep rows that have a value for &lt;code&gt;important_a&lt;/code&gt; and/or &lt;code&gt;important_b&lt;/code&gt; (so rows 1, 3, 4).
+I don’t care whether &lt;code&gt;whatever_c&lt;/code&gt; is empty or not, but I do want to keep it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
+                 important_b = c(NA, NA, &amp;quot;Value&amp;quot;, &amp;quot;Value&amp;quot;, NA),
+                 whatever_c  = c(NA, &amp;quot;Value&amp;quot;, NA, NA, NA))
+
+mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;important_a&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;important_b&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;whatever_c&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Functions for missing values that are very useful, but don’t do what I want are:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on all columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 0 x 3
+## # … with 3 variables: important_a &amp;lt;chr&amp;gt;, important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Returns 0 as we don’t have rows where all 3 columns have a value).&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on specified columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na(important_a, important_b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This only keeps the row where both a and b have a value.&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps rows that have a value in any column:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_all(any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The third example is better achieved using the janitor package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  janitor::remove_empty()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, (3) is pretty close, but still, I’m not interested in row 2 - where both a and b are empty but c has a value (which is why it’s kept).&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Simple solution&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A quick solution is to use &lt;code&gt;! is.na()&lt;/code&gt; for each variable inside a &lt;code&gt;filter()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter(! is.na(important_a) | ! is.na(important_b))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this is definitely what I do when I only have a couple of these variables. But if you have tens, then the filtering logic becomes horrendously long and it’s easy to miss one out/make a mistake.&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Powerful solution:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A scalable solution is to use &lt;code&gt;filter_at()&lt;/code&gt; with &lt;code&gt;vars()&lt;/code&gt; with a select helper (e.g., &lt;code&gt;starts with()&lt;/code&gt;), and then the &lt;code&gt;any_vars(! is.na(.))&lt;/code&gt; that was introduced in (3).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_at(vars(starts_with(&amp;quot;important_&amp;quot;)), any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()</title>
@@ -17,7 +143,10 @@
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
-      <description>&lt;p&gt;TLDR: there are two new and very intuitive R functions for reshaping data: see &lt;a href=&#34;#examples&#34;&gt;Examples&lt;/a&gt; of &lt;code&gt;pivot_longer()&lt;/code&gt; and &lt;code&gt;pivot_wider()&lt;/code&gt; below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see &lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;TLDR: there are two new and very intuitive R functions for reshaping data: see &lt;a href=&#34;#examples&#34;&gt;Examples&lt;/a&gt; of &lt;code&gt;pivot_longer()&lt;/code&gt; and &lt;code&gt;pivot_wider()&lt;/code&gt; below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see &lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.&lt;/p&gt;
 &lt;p&gt;Exciting!&lt;/p&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -66,7 +195,7 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
 &lt;/div&gt;
 &lt;div id=&#34;installation20190407&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Installation&lt;/h1&gt;
-&lt;p&gt;These functions were added just a month ago, so these functions are not yet included in the standard version of &lt;code&gt;tidyr&lt;/code&gt; that comes with &lt;code&gt;install.packages(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt; or even &lt;code&gt;update.packages()&lt;/code&gt; (the current version of &lt;code&gt;tidyr&lt;/code&gt; on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run &lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)&lt;/code&gt; and then &lt;code&gt;devtools::install_github(&amp;quot;tidyverse/tidyr&amp;quot;)&lt;/code&gt;. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.&lt;/p&gt;
+&lt;p&gt;These functions were added just a month ago, so these functions are not yet included in the standard version of &lt;code&gt;tidyr&lt;/code&gt; that comes with &lt;code&gt;install.packages(&#34;tidyverse&#34;)&lt;/code&gt; or even &lt;code&gt;update.packages()&lt;/code&gt; (the current version of &lt;code&gt;tidyr&lt;/code&gt; on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run &lt;code&gt;install.packages(&#34;devtools&#34;)&lt;/code&gt; and then &lt;code&gt;devtools::install_github(&#34;tidyverse/tidyr&#34;)&lt;/code&gt;. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.&lt;/p&gt;
 &lt;p&gt;You might need to Restart R (Session menu at the top) and load &lt;code&gt;library(tidyverse)&lt;/code&gt; again. You can check whether you now have these functions installed by typing in &lt;code&gt;pivot_longer&lt;/code&gt; and pressing F1 - if a relevant Help tab pops open you got it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;examples20190407&#34; class=&#34;section level1&#34;&gt;
@@ -292,7 +421,7 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
 &lt;p&gt;I made the original messy columns still relatively nice to work with - no typos and reasonable delimiters. Usually, the labels are much worse and need the help of &lt;code&gt;janitor::clean_names()&lt;/code&gt;, &lt;code&gt;stringr::str_replace()&lt;/code&gt;, and multiple iterations of &lt;code&gt;tidyr::separate()&lt;/code&gt; to arrive at a nice tidy tibble/data frame.&lt;/p&gt;
 &lt;div id=&#34;tidyrseparate-tips&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;tidyr::separate() tips:&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;into = c(&amp;quot;var1&amp;quot;, NA, &amp;quot;var2&amp;quot;)&lt;/code&gt; - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;into = c(&#34;var1&#34;, NA, &#34;var2&#34;)&lt;/code&gt; - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;... %&amp;gt;% 
     separate(..., into = c(&amp;quot;var1&amp;quot;, &amp;quot;drop&amp;quot;, &amp;quot;var2&amp;quot;)) %&amp;gt;% 
     select(-drop) %&amp;gt;% 

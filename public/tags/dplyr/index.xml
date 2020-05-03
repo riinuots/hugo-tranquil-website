@@ -1,0 +1,141 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dplyr on Riinu&#39;s scripting diary</title>
+    <link>/tags/dplyr/</link>
+    <description>Recent content in dplyr on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/dplyr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R: filtering with NA values</title>
+      <link>/2020/02/r-filtering-with-na-values/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/02/r-filtering-with-na-values/</guid>
+      <description>
+
+
+&lt;p&gt;NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
+More explanations about this can be found in the Chapter 2: R basics of our book that is freely available at the &lt;a href=&#34;https://healthyr.surgicalinformatics.org/&#34;&gt;HealthyR website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.&lt;/p&gt;
+&lt;p&gt;For example, I want to keep rows that have a value for &lt;code&gt;important_a&lt;/code&gt; and/or &lt;code&gt;important_b&lt;/code&gt; (so rows 1, 3, 4).
+I don’t care whether &lt;code&gt;whatever_c&lt;/code&gt; is empty or not, but I do want to keep it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
+                 important_b = c(NA, NA, &amp;quot;Value&amp;quot;, &amp;quot;Value&amp;quot;, NA),
+                 whatever_c  = c(NA, &amp;quot;Value&amp;quot;, NA, NA, NA))
+
+mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;important_a&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;important_b&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;whatever_c&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Functions for missing values that are very useful, but don’t do what I want are:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on all columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 0 x 3
+## # … with 3 variables: important_a &amp;lt;chr&amp;gt;, important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Returns 0 as we don’t have rows where all 3 columns have a value).&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on specified columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na(important_a, important_b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This only keeps the row where both a and b have a value.&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps rows that have a value in any column:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_all(any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The third example is better achieved using the janitor package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  janitor::remove_empty()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, (3) is pretty close, but still, I’m not interested in row 2 - where both a and b are empty but c has a value (which is why it’s kept).&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Simple solution&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A quick solution is to use &lt;code&gt;! is.na()&lt;/code&gt; for each variable inside a &lt;code&gt;filter()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter(! is.na(important_a) | ! is.na(important_b))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this is definitely what I do when I only have a couple of these variables. But if you have tens, then the filtering logic becomes horrendously long and it’s easy to miss one out/make a mistake.&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Powerful solution:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A scalable solution is to use &lt;code&gt;filter_at()&lt;/code&gt; with &lt;code&gt;vars()&lt;/code&gt; with a select helper (e.g., &lt;code&gt;starts with()&lt;/code&gt;), and then the &lt;code&gt;any_vars(! is.na(.))&lt;/code&gt; that was introduced in (3).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_at(vars(starts_with(&amp;quot;important_&amp;quot;)), any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

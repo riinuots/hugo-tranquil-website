@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Netlify on Riinu&#39;s scripting diary</title>
+    <title>netlify on Riinu&#39;s scripting diary</title>
     <link>/tags/netlify/</link>
-    <description>Recent content in Netlify on Riinu&#39;s scripting diary</description>
+    <description>Recent content in netlify on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Feb 2018 00:00:00 +0000</lastBuildDate>
@@ -17,59 +16,50 @@
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/02/hello-world/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/blogdown_hugo.png?w=736&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/blogdown_hugo.png?w=736&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;we-are-live&#34;&gt;We are live!&lt;/h1&gt;
-
 &lt;p&gt;I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&amp;hellip;oh and discovering MARKDOWN.&lt;/p&gt;
-
 &lt;h3 id=&#34;my-two-rules&#34;&gt;My two rules:&lt;/h3&gt;
-
 &lt;ul&gt;
 &lt;li&gt;text is written in Markdown (I use R Markdown/knitr/bookdown, e.g. see how easy it is to create a book: &lt;a href=&#34;https://surgicalinformatics.github.io/healthyr_book/&#34;&gt;&amp;ldquo;HealthyR: the eBook&amp;rdquo;&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;data analysis ends up in a Shiny app (e.g., see &lt;a href=&#34;https://riinu.me/2017/10/20/your-first-shiny-app/&#34;&gt;&amp;ldquo;If it’s not worth putting in a Shiny app it’s not worth doing.&amp;rdquo;&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;data analysis ends up in a Shiny app (e.g., see &lt;a href=&#34;https://riinu.me/2017/10/20/your-first-shiny-app/&#34;&gt;&amp;ldquo;If it’s not worth putting in a Shiny app it’s not worth doing.&amp;quot;&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;so-i-finally-got-round-to-creating-a-blogdown-hugo-site&#34;&gt;So I finally got round to creating a blogdown-Hugo site:&lt;/h2&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is a website generator that is code-based (no more dragging around those pesky Wordpress elements); &lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34;&gt;blogdown&lt;/a&gt; is an R package that will help you generate Hugo, Jekyll, or Hexo sites, especially if you will be including R Markdown in it.&lt;/p&gt;
-
 &lt;h3 id=&#34;steps-on-12-february-2018&#34;&gt;Steps on 12-February 2018:&lt;/h3&gt;
-
 &lt;ul&gt;
-&lt;li&gt;Created a new blogdown project on RStudio, set &lt;code&gt;kakawait/hugo-tranquilpeak-theme&lt;/code&gt; as the theme&lt;/li&gt;
-&lt;li&gt;Edited my name, email etc. information in the &lt;em&gt;config.toml&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;Absolutely could not figure out how to change &lt;code&gt;coverImage = &amp;quot;cover.jpg&amp;quot;&lt;/code&gt;. Tried putting my cover image in &lt;code&gt;/static/img/&lt;/code&gt;, &lt;code&gt;/static/_images/&lt;/code&gt;, &lt;code&gt;source/assets/images&lt;/code&gt; and tried linking to these any way I could think of (e.g. with and without the first &lt;code&gt;/&lt;/code&gt;) but it just wasn&amp;rsquo;t happening. Ended up putting my picture in &lt;code&gt;/themes/hugo-tranquilpeak-theme/static/images/&lt;/code&gt; and blatantly naming it &lt;code&gt;cover.jpg&lt;/code&gt; (replacing the theme&amp;rsquo;s default photo). This worked.&lt;/li&gt;
-&lt;li&gt;Pushed the whole project to &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website&#34;&gt;https://github.com/riinuots/hugo-tranquil-website&lt;/a&gt; and then created a submobule in &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&#34;&gt;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&lt;/a&gt; so when the theme gets updated I can pull the new version. This is not essential. I need to figure out the cover image issue though.&lt;/li&gt;
-&lt;li&gt;Set up Netlify as in &lt;a href=&#34;https://bookdown.org/yihui/blogdown/netlify.html&#34;&gt;https://bookdown.org/yihui/blogdown/netlify.html&lt;/a&gt; which was superquick but then spent some time troubleshooting why my theme wasn&amp;rsquo;t displaying properly. Turns out that for this theme, it is essential to set the &lt;code&gt;baseURL = &amp;quot;https://riinu.netlify.com/&amp;quot;&lt;/code&gt; (in &lt;em&gt;config.toml&lt;/em&gt;).&lt;/li&gt;
-&lt;li&gt;Created this Hello World post which seemed to work fine at first. I then added an unquoted semicolon to the title, broke everything and spent 2 h trying to figure out what went wrong. These were the errors I was getting and that no-one else in the world (Google) seemed to have reported:
-
+&lt;li&gt;
+&lt;p&gt;Created a new blogdown project on RStudio, set &lt;code&gt;kakawait/hugo-tranquilpeak-theme&lt;/code&gt; as the theme&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edited my name, email etc. information in the &lt;em&gt;config.toml&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Absolutely could not figure out how to change &lt;code&gt;coverImage = &amp;quot;cover.jpg&amp;quot;&lt;/code&gt;. Tried putting my cover image in &lt;code&gt;/static/img/&lt;/code&gt;, &lt;code&gt;/static/_images/&lt;/code&gt;, &lt;code&gt;source/assets/images&lt;/code&gt; and tried linking to these any way I could think of (e.g. with and without the first &lt;code&gt;/&lt;/code&gt;) but it just wasn&amp;rsquo;t happening. Ended up putting my picture in &lt;code&gt;/themes/hugo-tranquilpeak-theme/static/images/&lt;/code&gt; and blatantly naming it &lt;code&gt;cover.jpg&lt;/code&gt; (replacing the theme&amp;rsquo;s default photo). This worked.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pushed the whole project to &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website&#34;&gt;https://github.com/riinuots/hugo-tranquil-website&lt;/a&gt; and then created a submobule in &lt;a href=&#34;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&#34;&gt;https://github.com/riinuots/hugo-tranquil-website/tree/master/themes&lt;/a&gt; so when the theme gets updated I can pull the new version. This is not essential. I need to figure out the cover image issue though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set up Netlify as in &lt;a href=&#34;https://bookdown.org/yihui/blogdown/netlify.html&#34;&gt;https://bookdown.org/yihui/blogdown/netlify.html&lt;/a&gt; which was superquick but then spent some time troubleshooting why my theme wasn&amp;rsquo;t displaying properly. Turns out that for this theme, it is essential to set the &lt;code&gt;baseURL = &amp;quot;https://riinu.netlify.com/&amp;quot;&lt;/code&gt; (in &lt;em&gt;config.toml&lt;/em&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Created this Hello World post which seemed to work fine at first. I then added an unquoted semicolon to the title, broke everything and spent 2 h trying to figure out what went wrong. These were the errors I was getting and that no-one else in the world (Google) seemed to have reported:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;edits to the new post not happening, but the site isn&amp;rsquo;t broken either&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;clean_site()&lt;/code&gt; errors with:
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;clean_site()&lt;/code&gt; errors with:&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;code&gt;rmarkdown::clean_site() Error in file.exists(files) : invalid &#39;file&#39; argument&lt;/code&gt;&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;after spending 2h on Google/github/rstudio/rmarkdown, blogdown book, blogdown repo, Hugo documentation, I finally came across &lt;code&gt;hugo -v&lt;/code&gt; (v for verbose). Noticed
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;after spending 2h on Google/github/rstudio/rmarkdown, blogdown book, blogdown repo, Hugo documentation, I finally came across &lt;code&gt;hugo -v&lt;/code&gt; (v for verbose). Noticed&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;code&gt;yaml: line 1: mapping values are not allowed in this context&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;(which I had indeed seen before at some point during these 2 hours). Anyway, seeing it for the second time clicked - markdown thinks I&amp;rsquo;m mapping something that shouldn&amp;rsquo;t be mapped (mapping usually means defining variables). My title was (second line of the markdown file, really) &lt;code&gt;title: Hello world: blogdown loves Hugo&lt;/code&gt;, but if using a semicolon you need quotes: &lt;code&gt;title: &amp;quot;Hello world: blogdown loves Hugo&amp;quot;&lt;/code&gt;.&lt;/p&gt;
-
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;still-better-than-wordpress&#34;&gt;Still better than Wordpress.&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/pandas.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/pandas.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;next-steps&#34;&gt;Next steps:&lt;/h2&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Set up Disqus (comments).&lt;/li&gt;
 &lt;li&gt;Bring over old posts from &lt;a href=&#34;https://riinudata.wordpress.com&#34;&gt;https://riinudata.wordpress.com&lt;/a&gt;&lt;/li&gt;

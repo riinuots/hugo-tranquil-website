@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ggplot2 Ggrep Patchwork on Riinu&#39;s scripting diary</title>
+    <title>ggplot2, ggrep, patchwork on Riinu&#39;s scripting diary</title>
     <link>/tags/ggplot2-ggrep-patchwork/</link>
-    <description>Recent content in Ggplot2 Ggrep Patchwork on Riinu&#39;s scripting diary</description>
+    <description>Recent content in ggplot2, ggrep, patchwork on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Sep 2018 00:00:00 +0000</lastBuildDate>
@@ -17,7 +16,10 @@
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/09/global-map-of-country-names/</guid>
-      <description>&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ggrepel&lt;/code&gt; deals with overlapping text labels (Code#1 at the bottom of this post):&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt; is a very convenient new package for combining multiple different plots together (i.e. what we usually to use &lt;code&gt;grid&lt;/code&gt; and &lt;code&gt;gridExtra&lt;/code&gt; for).&lt;/p&gt;

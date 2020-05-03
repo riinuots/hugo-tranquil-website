@@ -11,6 +11,7 @@ tags:
   - tidyr
 editor_options: 
   chunk_output_type: console
+output: md_document
 ---
 
 
@@ -62,7 +63,7 @@ candydata_raw = read_csv(&quot;2019-04-07_candy_preference_data.csv&quot;)</code
 </div>
 <div id="installation20190407" class="section level1">
 <h1>Installation</h1>
-<p>These functions were added just a month ago, so these functions are not yet included in the standard version of <code>tidyr</code> that comes with <code>install.packages(&quot;tidyverse&quot;)</code> or even <code>update.packages()</code> (the current version of <code>tidyr</code> on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run <code>install.packages(&quot;devtools&quot;)</code> and then <code>devtools::install_github(&quot;tidyverse/tidyr&quot;)</code>. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.</p>
+<p>These functions were added just a month ago, so these functions are not yet included in the standard version of <code>tidyr</code> that comes with <code>install.packages("tidyverse")</code> or even <code>update.packages()</code> (the current version of <code>tidyr</code> on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run <code>install.packages("devtools")</code> and then <code>devtools::install_github("tidyverse/tidyr")</code>. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.</p>
 <p>You might need to Restart R (Session menu at the top) and load <code>library(tidyverse)</code> again. You can check whether you now have these functions installed by typing in <code>pivot_longer</code> and pressing F1 - if a relevant Help tab pops open you got it.</p>
 </div>
 <div id="examples20190407" class="section level1">
@@ -288,7 +289,7 @@ candydata_raw = read_csv(&quot;2019-04-07_candy_preference_data.csv&quot;)</code
 <p>I made the original messy columns still relatively nice to work with - no typos and reasonable delimiters. Usually, the labels are much worse and need the help of <code>janitor::clean_names()</code>, <code>stringr::str_replace()</code>, and multiple iterations of <code>tidyr::separate()</code> to arrive at a nice tidy tibble/data frame.</p>
 <div id="tidyrseparate-tips" class="section level2">
 <h2>tidyr::separate() tips:</h2>
-<p><code>into = c(&quot;var1&quot;, NA, &quot;var2&quot;)</code> - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:</p>
+<p><code>into = c("var1", NA, "var2")</code> - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:</p>
 <pre><code>... %&gt;% 
     separate(..., into = c(&quot;var1&quot;, &quot;drop&quot;, &quot;var2&quot;)) %&gt;% 
     select(-drop) %&gt;% 

@@ -10,6 +10,7 @@ tags:
   - wordpress
   - hugo
   - blogdown
+output: md_document
 ---
 
 

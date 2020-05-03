@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tables on Riinu&#39;s scripting diary</title>
+    <title>tables on Riinu&#39;s scripting diary</title>
     <link>/tags/tables/</link>
-    <description>Recent content in Tables on Riinu&#39;s scripting diary</description>
+    <description>Recent content in tables on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Nov 2014 00:00:00 +0000</lastBuildDate>
@@ -18,39 +17,22 @@
       
       <guid>/2014/11/latex-tables-column-widths-and-allignments/</guid>
       <description>&lt;p&gt;Firstly, start off your table in &lt;a href=&#34;http://www.tablesgenerator.com/&#34;&gt;http://www.tablesgenerator.com/&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &amp;ldquo;publication quality&amp;rdquo;. Note that publication quality tables should not contain vertical lines.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/09/tablesgenerator1.png&#34; alt=&#34;Screen shoti of Tables Generator&#34; /&gt;&lt;/p&gt;
-
-&lt;p class=&#34;caption&#34;&gt;Screen shot of Tables Generator&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p class=&#34;caption&#34;&gt;Code#1&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/09/tablesgenerator1.png&#34; alt=&#34;Screen shoti of Tables Generator&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a href=&#34;http://pastebin.com/FS2QLSDF&#34;&gt;Code #1&lt;/a&gt; is the code from Tables Generator with the addition of caption, label and Latex document begin-end (so it&amp;rsquo;s compilable). Continuing from that table, let&amp;rsquo;s centre the contents of columns 1-3 and the whole table in your document, by adding \centering and changing the &lt;a href=&#34;http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment&#34;&gt;table specs&lt;/a&gt; from l&amp;rsquo;s to c&amp;rsquo;s: &lt;a href=&#34;http://pastebin.com/bxLpsydd&#34;&gt;Code #2&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-21.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p class=&#34;caption&#34;&gt;Code#2&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-21.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Finally, if your cell contents are long and need wrapping:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-3.png&#34; alt=&#34;table 3&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-3.png&#34; alt=&#34;table 3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Note that if your table is too wide for your document margins, then LaTex issues a warning, not an error. So you need check for warnings like &lt;em&gt;&amp;ldquo;Overfull \hbox (9.75735pt too wide) in paragraph at lines 55&amp;ndash;63&amp;rdquo;&lt;/em&gt; in your compilation log. A quick solution to wide cells is &lt;a href=&#34;http://stackoverflow.com/questions/790932/how-to-wrap-text-in-latex-tables&#34;&gt;like this&lt;/a&gt; (&lt;a href=&#34;http://pastebin.com/GMXj4dap&#34;&gt;Code#4&lt;/a&gt;):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-4.png&#34; alt=&#34;Code#4&#34; /&gt;&lt;/p&gt;
-
-&lt;p class=&#34;caption&#34;&gt;Code#4&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-4.png&#34; alt=&#34;Code#4&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;But this solution does not include decent central alignment. Using m (so m{2cm} instead of p{2cm}) would do the vertical centering (&lt;em&gt;e.g.&lt;/em&gt; look how the first row is alligned), but still not horizontal. So following &lt;a href=&#34;http://tex.stackexchange.com/questions/12703/how-to-create-fixed-width-table-columns-with-text-raggedright-centered-raggedlef&#34;&gt;this &lt;/a&gt;StackOverflow post, I started defining column types and widths using the array package. See &lt;a href=&#34;http://pastebin.com/EWsvVfqH&#34;&gt;Code#5&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-5.png&#34; alt=&#34;Code#5&#34; /&gt;&lt;/p&gt;
-
-&lt;p class=&#34;caption&#34;&gt;Code#5&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2014/11/table-5.png&#34; alt=&#34;Code#5&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Next time I might write a post on how to add extra space between lines.&lt;/p&gt;
 </description>
     </item>

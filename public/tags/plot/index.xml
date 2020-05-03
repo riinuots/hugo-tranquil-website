@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Plot on Riinu&#39;s scripting diary</title>
+    <title>plot on Riinu&#39;s scripting diary</title>
     <link>/tags/plot/</link>
-    <description>Recent content in Plot on Riinu&#39;s scripting diary</description>
+    <description>Recent content in plot on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Dec 2016 00:00:00 +0000</lastBuildDate>
@@ -18,10 +17,8 @@
       
       <guid>/2016/12/get-data-from-ggplot/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ggplot&lt;/strong&gt; includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, &lt;code&gt;ggplot_build()&lt;/code&gt; can be used to access the summarised dataset.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34; /&gt;&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34;&gt;&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
 
 &lt;pre&gt;&lt;code&gt;fill         y count prop x PANEL group    ...
 #D7301F 0.2147239    35    1 1     1     4 ...

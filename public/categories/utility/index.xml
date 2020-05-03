@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Utility on Riinu&#39;s scripting diary</title>
@@ -18,7 +17,6 @@
       
       <guid>/2016/09/online-syntax-highlighter/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://markup.su/highlighter/&#34;&gt;http://markup.su/highlighter/&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;The style I use: Dawn&lt;/p&gt;
 </description>
     </item>

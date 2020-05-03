@@ -12,26 +12,17 @@ tags: []
 keywords:
   - tech
 output:
-  blogdown::html_page:
+  md_document:
     toc: true
 ---
 
 
-<div id="TOC">
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#requirements">Requirements</a></li>
-<li><a href="#set-up">Set-up</a></li>
-<li><a href="#why-are-you-calling-it-a-lan-party">Why are you calling it a LAN party?</a></li>
-<li><a href="#docker-containers-images">Docker, containers, images</a></li>
-</ul>
-</div>
 
 <blockquote>
 <p>TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.</p>
 </blockquote>
 <div class="figure">
-<img src="/img/healthyr_bus.png" alt="Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org" />
+<img src="/img/healthyr_bus.png" alt="" />
 <p class="caption">Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org</p>
 </div>
 <div id="introduction" class="section level2">
@@ -56,7 +47,7 @@ You connect to either of these options using a web browser, and even very old co
 <li><strong>Internet connection for setting up</strong> - to download RStudio’s docker image and install your extra packages.</li>
 </ol>
 <div class="figure">
-<img src="/img/docker_lan.png" alt="My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019." />
+<img src="/img/docker_lan.png" alt="" />
 <p class="caption">My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.</p>
 </div>
 </div>
@@ -69,7 +60,7 @@ You connect to either of these options using a web browser, and even very old co
 <p>Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to <code>localhost</code> (or something like <code>127.0.0.0</code> if using Windows).</p>
 <p>For those of you who have never seen or used RStudio Server, this is what it looks like:</p>
 <div class="figure">
-<img src="/img/rstudio_server.png" alt="Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work)." />
+<img src="/img/rstudio_server.png" alt="" />
 <p class="caption">Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).</p>
 </div>
 <p>The Docker single-liner above will create a single user with sudo rights (since I’ve included <code>-e ROOT=TRUE</code>). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: <a href="https://github.com/einarpius/create_rstudio_users" class="uri">https://github.com/einarpius/create_rstudio_users</a> Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with <code>chmod 700 create_users.sh</code>.</p>
@@ -79,7 +70,7 @@ You connect to either of these options using a web browser, and even very old co
 <div id="why-are-you-calling-it-a-lan-party" class="section level2">
 <h2>Why are you calling it a LAN party?</h2>
 <div class="figure">
-<img src="/img/lanparty2010.jpg" alt="My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end." />
+<img src="/img/lanparty2010.jpg" alt="" />
 <p class="caption">My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.</p>
 </div>
 <p>LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.</p>

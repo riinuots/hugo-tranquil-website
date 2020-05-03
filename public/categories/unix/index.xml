@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unix on Riinu&#39;s scripting diary</title>
@@ -17,21 +16,14 @@
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/11/rstudio-server-lan-party/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#requirements&#34;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#set-up&#34;&gt;Set-up&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-are-you-calling-it-a-lan-party&#34;&gt;Why are you calling it a LAN party?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#docker-containers-images&#34;&gt;Docker, containers, images&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+      <description>
+
 
 &lt;blockquote&gt;
 &lt;p&gt;TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&#34; /&gt;
+&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
@@ -56,7 +48,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;li&gt;&lt;strong&gt;Internet connection for setting up&lt;/strong&gt; - to download RStudio’s docker image and install your extra packages.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&#34; /&gt;
+&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -69,7 +61,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;p&gt;Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to &lt;code&gt;localhost&lt;/code&gt; (or something like &lt;code&gt;127.0.0.0&lt;/code&gt; if using Windows).&lt;/p&gt;
 &lt;p&gt;For those of you who have never seen or used RStudio Server, this is what it looks like:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&#34; /&gt;
+&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The Docker single-liner above will create a single user with sudo rights (since I’ve included &lt;code&gt;-e ROOT=TRUE&lt;/code&gt;). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: &lt;a href=&#34;https://github.com/einarpius/create_rstudio_users&#34; class=&#34;uri&#34;&gt;https://github.com/einarpius/create_rstudio_users&lt;/a&gt; Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with &lt;code&gt;chmod 700 create_users.sh&lt;/code&gt;.&lt;/p&gt;
@@ -79,7 +71,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;div id=&#34;why-are-you-calling-it-a-lan-party&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Why are you calling it a LAN party?&lt;/h2&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&#34; /&gt;
+&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.&lt;/p&gt;
@@ -115,7 +107,6 @@ You connect to either of these options using a web browser, and even very old co
       
       <guid>/2016/07/adding-a-cron-job-using-the-ed-editor/</guid>
       <description>&lt;p&gt;These commands (after the first one) work in the ed editor. ed editor is used in the RStudio server shell.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;sudo crontab -e                                     #opens crontab file in chosen editor
 
 a                                                   #add to file
@@ -125,7 +116,6 @@ a                                                   #add to file
 w                                                   #save changes
 Q                                                   #quit
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;In this example the script will run every 0 hours, 30 minutes, see &lt;a href=&#34;http://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job&#34;&gt;Ubuntu: How do I set up a CRON job&lt;/a&gt; for other options.&lt;/p&gt;
 </description>
     </item>
@@ -137,11 +127,8 @@ Q                                                   #quit
       
       <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve defined &lt;code&gt;alias ls=&#39;ls -al –color=auto&#39;&lt;/code&gt;, but want to use ls without the extra information and colouring then use&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;\ls&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;or equivalently&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;command ls&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
@@ -153,19 +140,12 @@ Q                                                   #quit
       
       <guid>/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
       <description>&lt;p&gt;I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;ln -s target_file sym_link&lt;/code&gt;,&lt;/p&gt;
-
 &lt;p&gt;where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)&lt;/p&gt;
-
 &lt;p&gt;However, if you are not a complete UNIX guru, then trying to access your linked files is likely to produce one of these errors:&lt;/p&gt;
-
 &lt;p&gt;No such file or directory OR Too many levels of symbolic links&lt;/p&gt;
-
 &lt;p&gt;The solution to both of these is to &lt;strong&gt;always use full paths&lt;/strong&gt; to the files and their symbolic links (&lt;code&gt;ln -s /home/folder/file.txt /home/folder2/file.txt&lt;/code&gt;). For further information, see &lt;a href=&#34;http://superuser.com/questions/322319/when-creating-a-symbolic-link-how-do-i-troubleshoot-too-many-levels-of-symboli&#34;&gt;this&lt;/a&gt; and &lt;a href=&#34;http://www.unix.com/unix-for-dummies-questions-and-answers/11324-too-many-levels-symbolic-links.html&#34;&gt;this&lt;/a&gt;. Apparently you can have 32 levels of symbolic links, so getting a &amp;ldquo;Too many levels of symbolic links&amp;rdquo; after just creating one, means that there is some serious recursion going on.&lt;/p&gt;
-
 &lt;p&gt;Remove symbolic links just as you remove files:&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;rm sym_link&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
@@ -177,7 +157,6 @@ Q                                                   #quit
       
       <guid>/2014/05/my-bash-aliases/</guid>
       <description>&lt;p&gt;If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;# .bashrc
 
 # Put user specific aliases and functions here
@@ -187,24 +166,14 @@ alias qsub=&#39;qsub -m abe -M myemail@email.com&#39;
 
 alias disk=&amp;quot;du * -sh | sort -h&amp;quot;
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;-a for ls shows hidden files (files that start with a dot, like .bashrc) and -l displays more information than just the file/folder names (permissions for example).&lt;/p&gt;
 &lt;p&gt;_&amp;ndash;color=auto _colours folders, executables and symbolic links.&lt;/p&gt;
-
 &lt;p&gt;-a for qstat displays more information.&lt;/p&gt;
-
 &lt;p&gt;Both -m and -M for qsub mean messages. For -m:&lt;/p&gt;
-
 &lt;p&gt;b - Mail is sent at the beginning of the job.&lt;/p&gt;
-
 &lt;p&gt;e - Mail is sent at the end of the job.&lt;/p&gt;
-
 &lt;p&gt;a - Mail is sent when the job is aborted or rescheduled.&lt;/p&gt;
-
 &lt;p&gt;And -M is the flag before the email address(es).&lt;/p&gt;
-
 &lt;p&gt;The last one (I call it disk) displays the sizes of one level of subfolders and orders them too (correct ordering is done by the really cool -h option, as apposed to the numeric sort -n, which would think that 1.4GB&amp;gt;1.4TB).&lt;/p&gt;
 </description>
     </item>

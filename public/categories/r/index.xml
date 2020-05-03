@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Riinu&#39;s scripting diary</title>
@@ -6,10 +5,137 @@
     <description>Recent content in R on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R: filtering with NA values</title>
+      <link>/2020/02/r-filtering-with-na-values/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/02/r-filtering-with-na-values/</guid>
+      <description>
+
+
+&lt;p&gt;NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
+More explanations about this can be found in the Chapter 2: R basics of our book that is freely available at the &lt;a href=&#34;https://healthyr.surgicalinformatics.org/&#34;&gt;HealthyR website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.&lt;/p&gt;
+&lt;p&gt;For example, I want to keep rows that have a value for &lt;code&gt;important_a&lt;/code&gt; and/or &lt;code&gt;important_b&lt;/code&gt; (so rows 1, 3, 4).
+I don’t care whether &lt;code&gt;whatever_c&lt;/code&gt; is empty or not, but I do want to keep it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
+                 important_b = c(NA, NA, &amp;quot;Value&amp;quot;, &amp;quot;Value&amp;quot;, NA),
+                 whatever_c  = c(NA, &amp;quot;Value&amp;quot;, NA, NA, NA))
+
+mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;important_a&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;important_b&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;whatever_c&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Value&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Functions for missing values that are very useful, but don’t do what I want are:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on all columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 0 x 3
+## # … with 3 variables: important_a &amp;lt;chr&amp;gt;, important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Returns 0 as we don’t have rows where all 3 columns have a value).&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps complete cases based on specified columns:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  drop_na(important_a, important_b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This only keeps the row where both a and b have a value.&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;This keeps rows that have a value in any column:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_all(any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The third example is better achieved using the janitor package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  janitor::remove_empty()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;        Value     
+## 3 Value       Value       &amp;lt;NA&amp;gt;      
+## 4 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, (3) is pretty close, but still, I’m not interested in row 2 - where both a and b are empty but c has a value (which is why it’s kept).&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Simple solution&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A quick solution is to use &lt;code&gt;! is.na()&lt;/code&gt; for each variable inside a &lt;code&gt;filter()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter(! is.na(important_a) | ! is.na(important_b))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this is definitely what I do when I only have a couple of these variables. But if you have tens, then the filtering logic becomes horrendously long and it’s easy to miss one out/make a mistake.&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Powerful solution:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A scalable solution is to use &lt;code&gt;filter_at()&lt;/code&gt; with &lt;code&gt;vars()&lt;/code&gt; with a select helper (e.g., &lt;code&gt;starts with()&lt;/code&gt;), and then the &lt;code&gt;any_vars(! is.na(.))&lt;/code&gt; that was introduced in (3).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
+  filter_at(vars(starts_with(&amp;quot;important_&amp;quot;)), any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   important_a important_b whatever_c
+##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
+## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
+## 2 Value       Value       &amp;lt;NA&amp;gt;      
+## 3 &amp;lt;NA&amp;gt;        Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline</title>
@@ -17,21 +143,14 @@
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/11/rstudio-server-lan-party/</guid>
-      <description>&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#requirements&#34;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#set-up&#34;&gt;Set-up&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-are-you-calling-it-a-lan-party&#34;&gt;Why are you calling it a LAN party?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#docker-containers-images&#34;&gt;Docker, containers, images&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+      <description>
+
 
 &lt;blockquote&gt;
 &lt;p&gt;TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&#34; /&gt;
+&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
@@ -56,7 +175,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;li&gt;&lt;strong&gt;Internet connection for setting up&lt;/strong&gt; - to download RStudio’s docker image and install your extra packages.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&#34; /&gt;
+&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -69,7 +188,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;p&gt;Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to &lt;code&gt;localhost&lt;/code&gt; (or something like &lt;code&gt;127.0.0.0&lt;/code&gt; if using Windows).&lt;/p&gt;
 &lt;p&gt;For those of you who have never seen or used RStudio Server, this is what it looks like:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&#34; /&gt;
+&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The Docker single-liner above will create a single user with sudo rights (since I’ve included &lt;code&gt;-e ROOT=TRUE&lt;/code&gt;). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: &lt;a href=&#34;https://github.com/einarpius/create_rstudio_users&#34; class=&#34;uri&#34;&gt;https://github.com/einarpius/create_rstudio_users&lt;/a&gt; Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with &lt;code&gt;chmod 700 create_users.sh&lt;/code&gt;.&lt;/p&gt;
@@ -79,7 +198,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;div id=&#34;why-are-you-calling-it-a-lan-party&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Why are you calling it a LAN party?&lt;/h2&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&#34; /&gt;
+&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.&lt;/p&gt;
@@ -114,7 +233,10 @@ You connect to either of these options using a web browser, and even very old co
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
-      <description>&lt;p&gt;TLDR: there are two new and very intuitive R functions for reshaping data: see &lt;a href=&#34;#examples&#34;&gt;Examples&lt;/a&gt; of &lt;code&gt;pivot_longer()&lt;/code&gt; and &lt;code&gt;pivot_wider()&lt;/code&gt; below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see &lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;TLDR: there are two new and very intuitive R functions for reshaping data: see &lt;a href=&#34;#examples&#34;&gt;Examples&lt;/a&gt; of &lt;code&gt;pivot_longer()&lt;/code&gt; and &lt;code&gt;pivot_wider()&lt;/code&gt; below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see &lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.&lt;/p&gt;
 &lt;p&gt;Exciting!&lt;/p&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -163,7 +285,7 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
 &lt;/div&gt;
 &lt;div id=&#34;installation20190407&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Installation&lt;/h1&gt;
-&lt;p&gt;These functions were added just a month ago, so these functions are not yet included in the standard version of &lt;code&gt;tidyr&lt;/code&gt; that comes with &lt;code&gt;install.packages(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt; or even &lt;code&gt;update.packages()&lt;/code&gt; (the current version of &lt;code&gt;tidyr&lt;/code&gt; on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run &lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)&lt;/code&gt; and then &lt;code&gt;devtools::install_github(&amp;quot;tidyverse/tidyr&amp;quot;)&lt;/code&gt;. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.&lt;/p&gt;
+&lt;p&gt;These functions were added just a month ago, so these functions are not yet included in the standard version of &lt;code&gt;tidyr&lt;/code&gt; that comes with &lt;code&gt;install.packages(&#34;tidyverse&#34;)&lt;/code&gt; or even &lt;code&gt;update.packages()&lt;/code&gt; (the current version of &lt;code&gt;tidyr&lt;/code&gt; on CRAN is 0.8.3). To play with the bleeding edge versions of R packages, run &lt;code&gt;install.packages(&#34;devtools&#34;)&lt;/code&gt; and then &lt;code&gt;devtools::install_github(&#34;tidyverse/tidyr&#34;)&lt;/code&gt;. If you are a Mac user and it asks you “Do you want to install from sources the package which needs compilation?”, say Yes.&lt;/p&gt;
 &lt;p&gt;You might need to Restart R (Session menu at the top) and load &lt;code&gt;library(tidyverse)&lt;/code&gt; again. You can check whether you now have these functions installed by typing in &lt;code&gt;pivot_longer&lt;/code&gt; and pressing F1 - if a relevant Help tab pops open you got it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;examples20190407&#34; class=&#34;section level1&#34;&gt;
@@ -389,7 +511,7 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
 &lt;p&gt;I made the original messy columns still relatively nice to work with - no typos and reasonable delimiters. Usually, the labels are much worse and need the help of &lt;code&gt;janitor::clean_names()&lt;/code&gt;, &lt;code&gt;stringr::str_replace()&lt;/code&gt;, and multiple iterations of &lt;code&gt;tidyr::separate()&lt;/code&gt; to arrive at a nice tidy tibble/data frame.&lt;/p&gt;
 &lt;div id=&#34;tidyrseparate-tips&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;tidyr::separate() tips:&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;into = c(&amp;quot;var1&amp;quot;, NA, &amp;quot;var2&amp;quot;)&lt;/code&gt; - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;into = c(&#34;var1&#34;, NA, &#34;var2&#34;)&lt;/code&gt; - now this is an amazing trick I only came across this week! This is a convenient way to drop useless (new) columns. Previously, I would have achieved the same result with:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;... %&amp;gt;% 
     separate(..., into = c(&amp;quot;var1&amp;quot;, &amp;quot;drop&amp;quot;, &amp;quot;var2&amp;quot;)) %&amp;gt;% 
     select(-drop) %&amp;gt;% 
@@ -412,7 +534,10 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/09/global-map-of-country-names/</guid>
-      <description>&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
+      <description>
+
+
+&lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ggrepel&lt;/code&gt; deals with overlapping text labels (Code#1 at the bottom of this post):&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt; is a very convenient new package for combining multiple different plots together (i.e. what we usually to use &lt;code&gt;grid&lt;/code&gt; and &lt;code&gt;gridExtra&lt;/code&gt; for).&lt;/p&gt;
@@ -560,46 +685,26 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/10/your-first-shiny-app/</guid>
-      <description>
-
-&lt;h3 id=&#34;what-is-shiny&#34;&gt;What is Shiny?&lt;/h3&gt;
-
+      <description>&lt;h3 id=&#34;what-is-shiny&#34;&gt;What is Shiny?&lt;/h3&gt;
 &lt;p&gt;Shiny is an R package (&lt;code&gt;install.packages(&amp;quot;shiny&amp;quot;)&lt;/code&gt;) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.&lt;/p&gt;
-
 &lt;p&gt;I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.&lt;/p&gt;
-
 &lt;div class=&#34;alert info &#34;&gt;
   &lt;p&gt;If it&amp;rsquo;s not worth putting in a Shiny app it&amp;rsquo;s not worth doing.&lt;/p&gt;
 &lt;/div&gt;
-
 &lt;h3 id=&#34;your-first-shiny-app&#34;&gt;Your first Shiny app&lt;/h3&gt;
-
 &lt;p&gt;Getting started with Shiny is actually a lot easier than a lot of people make it out to be. So I created a very short (9 slides) presentation outlining my 5-step programme for your first Shiny app.&lt;/p&gt;
-
 &lt;p&gt;This is the app: &lt;a href=&#34;https://riinu.shinyapps.io/shiny_testing/&#34;&gt;https://riinu.shinyapps.io/shiny_testing/&lt;/a&gt;&lt;/p&gt;
-
-&lt;iframe src=&#34;https://riinu.shinyapps.io/shiny_testing/&#34; width=&#34;600&#34; height=&#34;600&#34;&gt;&lt;/iframe&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;This is the presentation: &lt;a href=&#34;http://rpubs.com/riinu/shiny&#34;&gt;http://rpubs.com/riinu/shiny&lt;/a&gt;&lt;/p&gt;
-
-&lt;iframe src=&#34;http://rpubs.com/riinu/shiny&#34; width=&#34;1000&#34; height=&#34;800&#34;&gt;&lt;/iframe&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;And here are the steps (also included in the presentation):&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 0&lt;/strong&gt;: &lt;code&gt;install.packages(&amp;quot;shiny&amp;quot;)&lt;/code&gt;. Use RStudio.&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 1&lt;/strong&gt;: Create a script called &lt;code&gt;app.R&lt;/code&gt; using this skeleton:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://gist.github.com/riinuots/c6ec0691633df2929adc7de90bdbc792&#34;&gt;https://gist.github.com/riinuots/c6ec0691633df2929adc7de90bdbc792&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 2&lt;/strong&gt;: Copy your plot code into the renderPlot function.&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 3&lt;/strong&gt;: Add a &lt;code&gt;sliderInput&lt;/code&gt; to your User Interface (&lt;code&gt;ui&lt;/code&gt;). A slider is just one of the many Shiny widgets you could be using: &lt;a href=&#34;https://shiny.rstudio.com/gallery/widget-gallery.html&#34;&gt;https://shiny.rstudio.com/gallery/widget-gallery.html&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 4&lt;/strong&gt;: Tell your Server you wish the &lt;code&gt;dplyr::filter()&lt;/code&gt; to use the value from the slider. All inputs from the User Interface (&lt;code&gt;ui&lt;/code&gt;) are stored in &lt;code&gt;input$variable_name&lt;/code&gt;: replace the &lt;code&gt;2007&lt;/code&gt; with &lt;code&gt;input$year&lt;/code&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;STEP 5 (optional)&lt;/strong&gt;: Add &lt;code&gt;animate = TRUE.&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;Press &lt;code&gt;Control+Shift+Enter&lt;/code&gt; or the &amp;ldquo;Run App&amp;rdquo; button. You now have a Shiny app running on your computer. To deploy it to the internet, e.g. like I&amp;rsquo;ve done in the link above, see &lt;a href=&#34;http://docs.rstudio.com/shinyapps.io/getting-started.html#deploying-applications&#34;&gt;this.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -610,12 +715,10 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
-      <description>&lt;p&gt;With a simple combination of &lt;code&gt;mutate_if&lt;/code&gt; and &lt;code&gt;fct_explicit_na,&lt;/code&gt;you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/riinuots/e517c36b1feb480df981721a00e0e24a.js&#34;&gt;&lt;/script&gt;
+      <description>&lt;p&gt;With a simple combination of &lt;code&gt;mutate_if&lt;/code&gt; and &lt;code&gt;fct_explicit_na, &lt;/code&gt;you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/e517c36b1feb480df981721a00e0e24a.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;&lt;code&gt;dplyr&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;forcats&lt;/code&gt; reference: &lt;a href=&#34;http://dplyr.tidyverse.org/reference&#34;&gt;http://dplyr.tidyverse.org/reference&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -627,10 +730,8 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/2016/12/get-data-from-ggplot/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ggplot&lt;/strong&gt; includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, &lt;code&gt;ggplot_build()&lt;/code&gt; can be used to access the summarised dataset.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34; /&gt;&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34;&gt;&lt;/p&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
 
 &lt;pre&gt;&lt;code&gt;fill         y count prop x PANEL group    ...
 #D7301F 0.2147239    35    1 1     1     4 ...
@@ -650,7 +751,7 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>/2016/10/r-lingua-library-vs-package/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/10/library_vs_package.jpg&#34; alt=&#34;library_vs_package&#34; /&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/10/library_vs_package.jpg&#34; alt=&#34;library_vs_package&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -660,8 +761,7 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/2016/09/r-iso-codes-and-country-names/</guid>
-      <description>&lt;p&gt;install.packages(&lt;span style=&#34;color:#0b6125;&#34;&gt;&amp;lsquo;maps&amp;rsquo;&lt;/span&gt;)&lt;/p&gt;
-
+      <description>&lt;p&gt;install.packages(&lt;!-- raw HTML omitted --&gt;&#39;maps&#39;&lt;!-- raw HTML omitted --&gt;)&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;iso = maps::iso3166
 
 &amp;gt; str(iso)
@@ -681,9 +781,9 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
-      <description>&lt;script src=&#34;//gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392.js&#34;&gt;&lt;/script&gt;
+      <description>&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392.js&#34;&gt;&lt;/script&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/04/rplot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/04/rplot.png%22&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -694,15 +794,10 @@ plot3&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/2016/04/how-long-did-my-script-run/</guid>
       <description>&lt;p&gt;This to the beginning:&lt;/p&gt;
-
 &lt;p&gt;strt&amp;lt;-&lt;a href=&#34;http://inside-r.org/r-doc/base/Sys.time&#34;&gt;Sys.time&lt;/a&gt;()&lt;/p&gt;
-
 &lt;p&gt;And this to the end:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;http://inside-r.org/r-doc/base/print&#34;&gt;print&lt;/a&gt;(&lt;a href=&#34;http://inside-r.org/r-doc/base/Sys.time&#34;&gt;Sys.time&lt;/a&gt;()-strt)&lt;/p&gt;
-
 &lt;p&gt;Example output:&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;print(Sys.time()-strt)
 Time difference of 16.39691 secs&lt;/p&gt;
@@ -717,25 +812,19 @@ Time difference of 16.39691 secs&lt;/p&gt;
       
       <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
       <description>&lt;p&gt;One picture says more than a thousand words. You have what is one the left, and you want what is on the right.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;my_matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;matrix&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;), nrow&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
 
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;my_matrix = matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow=3)
-
-#matrix is a 2D array, this next row creates a third dimension,
-#duplicating the data
-my_array = array(my_matrix, dim = c(3,3,2))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):&lt;/p&gt;
-
+&lt;span style=&#34;color:#75715e&#34;&gt;#matrix is a 2D array, this next row creates a third dimension,&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#duplicating the data&lt;/span&gt;
+my_array &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;array&lt;/span&gt;(my_matrix, dim &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are a few different ways to do this, but by far the cleanest and quickest way is to just select the rows and columns multiple times, by replicating row and column numbers (instead of actually replicating each element):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#2D:
 increased_matrix = my_matrix[rep(1:nrow(my_matrix), each=3), rep(1:ncol(my_matrix, each=3)]
 
 #3D (same really, just one extra comma for the third dimension):
 increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, each=3), ]
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Note that by default, in rep(something, n) the n is &lt;strong&gt;times&lt;/strong&gt; so equivalent to rep(something, times=n), but in this case we need to use &lt;strong&gt;each&lt;/strong&gt; instead of &lt;strong&gt;times&lt;/strong&gt;.&lt;/p&gt;
 </description>
     </item>
@@ -747,18 +836,12 @@ increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, e
       
       <guid>/2015/06/converting-r-markdown-to-latex/</guid>
       <description>&lt;p&gt;Install Pandoc: &lt;a href=&#34;http://pandoc.org/&#34;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(knitr)
 
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(knitr)
-
-knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:&lt;/p&gt;
-
+&lt;span style=&#34;color:#a6e22e&#34;&gt;knit&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;report.Rmd&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;#This creates &amp;#39;report.md&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open the Terminal, Command Prompt (search for cmd) or Windows Powershell, go to the folder and do:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pandoc -s report.md -o report.tex&lt;/code&gt;&lt;/p&gt;
-
 &lt;p&gt;And that&amp;rsquo;s it!&lt;/p&gt;
-
 &lt;p&gt;(Read &lt;a href=&#34;http://proteo.me.uk/2013/06/generating-r-reports-with-vector-images-from-markdown-with-knitr/&#34;&gt;this&lt;/a&gt;, if you want vector images.)&lt;/p&gt;
 </description>
     </item>
@@ -770,42 +853,29 @@ knit(&#39;report.Rmd&#39;) #This creates &#39;report.md&#39;
       
       <guid>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve recently started using &lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;ggplot2&lt;/a&gt; in addition to lattice (see &lt;a href=&#34;https://riinudata.wordpress.com/2014/08/08/r-graphical-devices-plot-margins-and-legend-next-to-the-plot-not-on-it/&#34;&gt;this post&lt;/a&gt; that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels. This post will show how to (and also how not to) rearrange factor levels in R.&lt;/p&gt;
-
 &lt;p&gt;Let&amp;rsquo;s create a quick barplot with strings as x labels.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
 
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
-
-#create dummy data
-a = paste(&#39;my&#39;, 1:11)
-b = 1:11
-df = data.frame(a, b)
+&lt;span style=&#34;color:#75715e&#34;&gt;#create dummy data&lt;/span&gt;
+a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;paste&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;)
+b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;
+df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data.frame&lt;/span&gt;(a, b)
 df
-qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
-  theme(axis.text=element_text(size=16, angle=45))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot1.png&#34; alt=&#34;barplot1&#34; /&gt;&lt;/p&gt;
-
+&lt;span style=&#34;color:#a6e22e&#34;&gt;qplot&lt;/span&gt;(a, b, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;df, geom&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;, stat&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;identity&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt;(axis.text&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;element_text&lt;/span&gt;(size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;, angle&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;45&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot1.png&#34; alt=&#34;barplot1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As df$a is an array of strings, R sets the factor levels alphabetically: my 1, my 10, my 11, my 2&amp;hellip;which is not what we want, so let&amp;rsquo;s rearrange factor levels:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df$a = factor(df$a, levels = paste(&#39;my&#39;, 1:11))
-df$a
-qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
-  theme(axis.text=element_text(size=16, angle=45))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot2.png&#34; alt=&#34;barplot2&#34; /&gt;&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;factor&lt;/span&gt;(df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a, levels &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;paste&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;))
+df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
+&lt;span style=&#34;color:#a6e22e&#34;&gt;qplot&lt;/span&gt;(a, b, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;df, geom&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;, stat&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;identity&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt;(axis.text&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;element_text&lt;/span&gt;(size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;, angle&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;45&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot2.png&#34; alt=&#34;barplot2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And finally, the wrong way to rearrange factor levels would be by using the levels() function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;df = data.frame(a, b)
-levels(df$a) = paste(&#39;my&#39;, 1:11)
-qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
-  theme(axis.text=element_text(size=16, angle=45))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot3.png&#34; alt=&#34;barplot3&#34; /&gt;&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data.frame&lt;/span&gt;(a, b)
+&lt;span style=&#34;color:#a6e22e&#34;&gt;levels&lt;/span&gt;(df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;paste&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;my&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;)
+&lt;span style=&#34;color:#a6e22e&#34;&gt;qplot&lt;/span&gt;(a, b, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;df, geom&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;, stat&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;identity&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt;(axis.text&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;element_text&lt;/span&gt;(size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;, angle&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;45&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/06/barplot3.png&#34; alt=&#34;barplot3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;So be careful - if your data is not as obvious as this example and you are a bit new to factors and levels, you might end up plotting wrong results (like on the last example, &amp;ldquo;my 2&amp;rdquo; and &amp;ldquo;my 3&amp;rdquo; were plotted with the values 10 and 11).&lt;/p&gt;
 </description>
     </item>
@@ -817,21 +887,13 @@ qplot(a, b, data=df, geom=&#39;bar&#39;, stat=&#39;identity&#39;) +
       
       <guid>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is a short note based on &lt;a href=&#34;http://stats.stackexchange.com/questions/26176/removal-of-statistically-significant-intercept-term-boosts-r2-in-linear-model/26205#26205&#34;&gt;this&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
 &lt;p&gt;Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.&lt;/p&gt;
-
 &lt;p&gt;R2 for a linear model that has an intercept:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn.png&#34; alt=&#34;CodeCogsEqn&#34; /&gt;,&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn.png&#34; alt=&#34;CodeCogsEqn&#34;&gt;,&lt;/p&gt;
 &lt;p&gt;where &lt;em&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/em&gt; is the variable that the linear model is trying to predict (the response variable), &lt;em&gt;y^&lt;/em&gt; is the predicted value and &lt;em&gt;y-&lt;/em&gt; is the mean value of the response variable.&lt;/p&gt;
-
 &lt;p&gt;And the R2 for a linear model that is forced through the origin:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn-2.png&#34; alt=&#34;CodeCogsEqn (2)&#34; /&gt;,&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/08/codecogseqn-2.png&#34; alt=&#34;CodeCogsEqn (2)&#34;&gt;,&lt;/p&gt;
 &lt;p&gt;basically the mean value of the response variable is removed from the equation, making the denominator bigger (and the result of the division smaller). The reason why the  mean can not be used for this calculation is that it does not make sense any more - forcing the fit through zero kind of means adding an infinite number of (0,0) points into the dataset.&lt;/p&gt;
-
 &lt;p&gt;This means that the R-squared values of two different linear models (one with an intercept, one without) can not really be compared, because when the intercept is quite small compared to the residuals (basically the numerator) then the R2 &amp;ldquo;advantange&amp;rdquo; that the through-origin regression gets is relatively bigger than the decrease in residuals, when including the intercept.&lt;/p&gt;
 </description>
     </item>

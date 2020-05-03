@@ -12,7 +12,7 @@ tags: []
 keywords:
   - tech
 output:
-  blogdown::html_page:
+  md_document:
     toc: true
 ---
 
