@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>array on Riinu&#39;s scripting diary</title>
-    <link>/tags/array/</link>
+    <link>https://riinu.me/tags/array/</link>
     <description>Recent content in array on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 12 Sep 2015 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/array/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://riinu.me/tags/array/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to &#34;increase&#34; array resolution in R (replicate each element both column-wise and row-wise)</title>
-      <link>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
+      <link>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
+      <guid>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
       <description>&lt;p&gt;One picture says more than a thousand words. You have what is one the left, and you want what is on the right.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34;&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;my_matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;matrix&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;), nrow&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)

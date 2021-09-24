@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Riinu&#39;s scripting diary</title>
-    <link>/post/</link>
+    <link>https://riinu.me/post/</link>
     <description>Recent content in Posts on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://riinu.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R: filtering with NA values</title>
-      <link>/2020/02/r-filtering-with-na-values/</link>
+      <link>https://riinu.me/2020/02/r-filtering-with-na-values/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/02/r-filtering-with-na-values/</guid>
+      <guid>https://riinu.me/2020/02/r-filtering-with-na-values/</guid>
       <description>
 
 
@@ -139,10 +139,10 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline</title>
-      <link>/2019/11/rstudio-server-lan-party/</link>
+      <link>https://riinu.me/2019/11/rstudio-server-lan-party/</link>
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/11/rstudio-server-lan-party/</guid>
+      <guid>https://riinu.me/2019/11/rstudio-server-lan-party/</guid>
       <description>
 
 
@@ -150,7 +150,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/healthyr_bus.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/healthyr_bus.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
@@ -175,7 +175,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;li&gt;&lt;strong&gt;Internet connection for setting up&lt;/strong&gt; - to download RStudio’s docker image and install your extra packages.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/docker_lan.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/docker_lan.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -188,7 +188,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;p&gt;Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to &lt;code&gt;localhost&lt;/code&gt; (or something like &lt;code&gt;127.0.0.0&lt;/code&gt; if using Windows).&lt;/p&gt;
 &lt;p&gt;For those of you who have never seen or used RStudio Server, this is what it looks like:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/rstudio_server.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/rstudio_server.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The Docker single-liner above will create a single user with sudo rights (since I’ve included &lt;code&gt;-e ROOT=TRUE&lt;/code&gt;). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: &lt;a href=&#34;https://github.com/einarpius/create_rstudio_users&#34; class=&#34;uri&#34;&gt;https://github.com/einarpius/create_rstudio_users&lt;/a&gt; Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with &lt;code&gt;chmod 700 create_users.sh&lt;/code&gt;.&lt;/p&gt;
@@ -198,7 +198,7 @@ You connect to either of these options using a web browser, and even very old co
 &lt;div id=&#34;why-are-you-calling-it-a-lan-party&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Why are you calling it a LAN party?&lt;/h2&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/lanparty2010.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/lanparty2010.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.&lt;/p&gt;
@@ -229,10 +229,10 @@ You connect to either of these options using a web browser, and even very old co
     
     <item>
       <title>New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()</title>
-      <link>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</link>
+      <link>https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
+      <guid>https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
       <description>
 
 
@@ -530,16 +530,16 @@ candydata_raw = read_csv(&amp;quot;2019-04-07_candy_preference_data.csv&amp;quot
     
     <item>
       <title>Global map of country names</title>
-      <link>/2018/09/global-map-of-country-names/</link>
+      <link>https://riinu.me/2018/09/global-map-of-country-names/</link>
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/09/global-map-of-country-names/</guid>
+      <guid>https://riinu.me/2018/09/global-map-of-country-names/</guid>
       <description>
 
 
 &lt;p&gt;This post demonstrates the use of two very cool R packages - &lt;code&gt;ggrepel&lt;/code&gt; and &lt;code&gt;patchwork&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ggrepel&lt;/code&gt; deals with overlapping text labels (Code#1 at the bottom of this post):&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code1-1.png&#34; width=&#34;384&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt; is a very convenient new package for combining multiple different plots together (i.e. what we usually to use &lt;code&gt;grid&lt;/code&gt; and &lt;code&gt;gridExtra&lt;/code&gt; for).&lt;/p&gt;
 &lt;p&gt;More info:&lt;/p&gt;
 &lt;ul&gt;
@@ -578,7 +578,7 @@ head(centroidsdata)&lt;/code&gt;&lt;/pre&gt;
   scale_color_brewer(palette = &amp;quot;Dark2&amp;quot;)
 
 plot1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now this is very good already with hardly any overlapping labels and the world is pretty recognisable. And really, you can make this plot with just 2 lines of code:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(centroidsdata, aes(x = lon, y = lat, label = country)) +
 geom_text_repel(segment.alpha = 0)&lt;/code&gt;&lt;/pre&gt;
@@ -627,10 +627,10 @@ make_world = function(mydata){
 plot2 = make_world(centroidsdata)
 
 plot2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This gives continents a much better shape, but it does severaly misplace Polynesia. See if you can find where, e.g., Tonga is and where it should be.&lt;/p&gt;
 &lt;p&gt;To see what I did with patchwork there, let’s add black borders to each region (Code#2):&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code2-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/post/2018-09-16-global-map-of-country-names-and-patchwork_files/figure-html/code2-1.png&#34; width=&#34;2304&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Code#1:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#devtools::install_github(&amp;quot;slowkow/ggrepel&amp;quot;)
 #devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)
@@ -681,10 +681,10 @@ plot3&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Islay distilleries in 3 days</title>
-      <link>/2018/04/islay-distilleries-in-3-days/</link>
+      <link>https://riinu.me/2018/04/islay-distilleries-in-3-days/</link>
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/islay-distilleries-in-3-days/</guid>
+      <guid>https://riinu.me/2018/04/islay-distilleries-in-3-days/</guid>
       <description>
 
 
@@ -761,10 +761,10 @@ plot3&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Converting old Wordpress posts to Hugo</title>
-      <link>/2018/02/converting-old-wordpress-posts-to-hugo/</link>
+      <link>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</link>
       <pubDate>Sat, 24 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
+      <guid>https://riinu.me/2018/02/converting-old-wordpress-posts-to-hugo/</guid>
       <description>
 
 
@@ -796,7 +796,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;Back in the &lt;code&gt;exitwp&lt;/code&gt; folder, run &lt;code&gt;python exitwp.py&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;This created folders &lt;code&gt;build/jekyll/riinudata.wordpress.com/_posts&lt;/code&gt; and the content looked like this:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/img/exitwp.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/img/exitwp.png&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Move all these into &lt;code&gt;exitwp/post&lt;/code&gt; folder.&lt;/li&gt;
 &lt;/ul&gt;
@@ -817,7 +817,7 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;p&gt;Overall I feared a lot worse and am super happy with the conversion experience. Took exactly 3 h.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/hilde_knit.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://riinu.me/img/hilde_knit.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;My name is Hildegard and I approve this message.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -832,10 +832,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Hello world: blogdown loves Hugo</title>
-      <link>/2018/02/hello-world/</link>
+      <link>https://riinu.me/2018/02/hello-world/</link>
       <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/02/hello-world/</guid>
+      <guid>https://riinu.me/2018/02/hello-world/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2018/02/blogdown_hugo.png?w=736&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;we-are-live&#34;&gt;We are live!&lt;/h1&gt;
 &lt;p&gt;I wrote my last blog post on Wordpress on 20-October 2017 and promised myself this was the last time. I&amp;rsquo;ve been blogging on Wordpress since 2014 and the more I used it the more painful it got! This is most likely caused by the fact that I have been thrifting further and further away from point-and-click interfaces anyway&amp;hellip;oh and discovering MARKDOWN.&lt;/p&gt;
@@ -890,10 +890,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Your first Shiny app</title>
-      <link>/2017/10/your-first-shiny-app/</link>
+      <link>https://riinu.me/2017/10/your-first-shiny-app/</link>
       <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/10/your-first-shiny-app/</guid>
+      <guid>https://riinu.me/2017/10/your-first-shiny-app/</guid>
       <description>&lt;h3 id=&#34;what-is-shiny&#34;&gt;What is Shiny?&lt;/h3&gt;
 &lt;p&gt;Shiny is an R package (&lt;code&gt;install.packages(&amp;quot;shiny&amp;quot;)&lt;/code&gt;) for making your outputs interactive. Furthermore, Shiny creates web apps meaning your work can be shared online with people who don&amp;rsquo;t use R. In other words: with Shiny, R people can make websites without ever learning Javascript etc.&lt;/p&gt;
 &lt;p&gt;I am completely obsessed with Shiny and these days I end up presenting most of my work in a Shiny app.&lt;/p&gt;
@@ -920,10 +920,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R: Replacing NAs in all factors with &#39;Missing&#39;</title>
-      <link>/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
+      <link>https://riinu.me/2017/07/r-replacing-nas-in-all-factors-with-missing/</link>
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
+      <guid>https://riinu.me/2017/07/r-replacing-nas-in-all-factors-with-missing/</guid>
       <description>&lt;p&gt;With a simple combination of &lt;code&gt;mutate_if&lt;/code&gt; and &lt;code&gt;fct_explicit_na, &lt;/code&gt;you can replace all NAs in all factors with &amp;ldquo;Missing&amp;rdquo;:&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/e517c36b1feb480df981721a00e0e24a.js&#34;&gt;&lt;/script&gt;
 
@@ -934,10 +934,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Handling your .bib file (LaTex bibliography)</title>
-      <link>/2017/06/handling-your-bib-file-latex-bibliography/</link>
+      <link>https://riinu.me/2017/06/handling-your-bib-file-latex-bibliography/</link>
       <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/06/handling-your-bib-file-latex-bibliography/</guid>
+      <guid>https://riinu.me/2017/06/handling-your-bib-file-latex-bibliography/</guid>
       <description>&lt;p&gt;To create a .bib file that only includes the citations you used in the manuscript:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;bibexport -o extracted_file.bib manuscript.aux&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;There are a few issues with this though. The command &lt;a href=&#34;https://www.ctan.org/pkg/bibexport&#34;&gt;bibexport&lt;/a&gt; comes with the installation of TexLive, but my Windows computer (bless) does not cooperate (&amp;ldquo;bibexport is not recognised as an internal or external command&amp;hellip;&amp;quot;) . So I can only use it on my Mac (luv ya).&lt;/p&gt;
@@ -946,10 +946,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Get data from ggplot()</title>
-      <link>/2016/12/get-data-from-ggplot/</link>
+      <link>https://riinu.me/2016/12/get-data-from-ggplot/</link>
       <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/12/get-data-from-ggplot/</guid>
+      <guid>https://riinu.me/2016/12/get-data-from-ggplot/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ggplot&lt;/strong&gt; includes built in and seamless functionality that summarises your data before plotting it. As shown in the example below, &lt;code&gt;ggplot_build()&lt;/code&gt; can be used to access the summarised dataset.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/12/summarised_barplot.png&#34; alt=&#34;summarised_barplot&#34;&gt;&lt;/p&gt;
 &lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/a6af08ac11f7b5ede69572a7559a704b.js&#34;&gt;&lt;/script&gt;
@@ -968,20 +968,20 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R lingua: library vs package</title>
-      <link>/2016/10/r-lingua-library-vs-package/</link>
+      <link>https://riinu.me/2016/10/r-lingua-library-vs-package/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/10/r-lingua-library-vs-package/</guid>
+      <guid>https://riinu.me/2016/10/r-lingua-library-vs-package/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/10/library_vs_package.jpg&#34; alt=&#34;library_vs_package&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Online syntax highlighter</title>
-      <link>/2016/09/online-syntax-highlighter/</link>
+      <link>https://riinu.me/2016/09/online-syntax-highlighter/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/09/online-syntax-highlighter/</guid>
+      <guid>https://riinu.me/2016/09/online-syntax-highlighter/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://markup.su/highlighter/&#34;&gt;http://markup.su/highlighter/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The style I use: Dawn&lt;/p&gt;
 </description>
@@ -989,11 +989,11 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R: ISO codes and country names</title>
-      <link>/2016/09/r-iso-codes-and-country-names/</link>
+      <link>https://riinu.me/2016/09/r-iso-codes-and-country-names/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/09/r-iso-codes-and-country-names/</guid>
-      <description>&lt;p&gt;install.packages(&lt;!-- raw HTML omitted --&gt;&#39;maps&#39;&lt;!-- raw HTML omitted --&gt;)&lt;/p&gt;
+      <guid>https://riinu.me/2016/09/r-iso-codes-and-country-names/</guid>
+      <description>&lt;p&gt;install.packages(&lt;!-- raw HTML omitted --&gt;&amp;lsquo;maps&amp;rsquo;&lt;!-- raw HTML omitted --&gt;)&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;iso = maps::iso3166
 
 &amp;gt; str(iso)
@@ -1009,10 +1009,10 @@ sudo pip install html2text&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Adding a Cron job using the ed editor</title>
-      <link>/2016/07/adding-a-cron-job-using-the-ed-editor/</link>
+      <link>https://riinu.me/2016/07/adding-a-cron-job-using-the-ed-editor/</link>
       <pubDate>Mon, 25 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/07/adding-a-cron-job-using-the-ed-editor/</guid>
+      <guid>https://riinu.me/2016/07/adding-a-cron-job-using-the-ed-editor/</guid>
       <description>&lt;p&gt;These commands (after the first one) work in the ed editor. ed editor is used in the RStudio server shell.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo crontab -e                                     #opens crontab file in chosen editor
 
@@ -1029,10 +1029,10 @@ Q                                                   #quit
     
     <item>
       <title>Add abcd labels on ggplot facets</title>
-      <link>/2016/04/add-abcd-labels-on-ggplot-facets/</link>
+      <link>https://riinu.me/2016/04/add-abcd-labels-on-ggplot-facets/</link>
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
+      <guid>https://riinu.me/2016/04/add-abcd-labels-on-ggplot-facets/</guid>
       <description>&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/riinuots/25817167cfd397cacecdf6f38b473392.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2016/04/rplot.png%22&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -1041,10 +1041,10 @@ Q                                                   #quit
     
     <item>
       <title>How long did my R script run?</title>
-      <link>/2016/04/how-long-did-my-script-run/</link>
+      <link>https://riinu.me/2016/04/how-long-did-my-script-run/</link>
       <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/04/how-long-did-my-script-run/</guid>
+      <guid>https://riinu.me/2016/04/how-long-did-my-script-run/</guid>
       <description>&lt;p&gt;This to the beginning:&lt;/p&gt;
 &lt;p&gt;strt&amp;lt;-&lt;a href=&#34;http://inside-r.org/r-doc/base/Sys.time&#34;&gt;Sys.time&lt;/a&gt;()&lt;/p&gt;
 &lt;p&gt;And this to the end:&lt;/p&gt;
@@ -1059,10 +1059,10 @@ Time difference of 16.39691 secs&lt;/p&gt;
     
     <item>
       <title>Adding space between rows in LaTex tables</title>
-      <link>/2016/04/adding-space-between-rows-in-latex-tables/</link>
+      <link>https://riinu.me/2016/04/adding-space-between-rows-in-latex-tables/</link>
       <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/04/adding-space-between-rows-in-latex-tables/</guid>
+      <guid>https://riinu.me/2016/04/adding-space-between-rows-in-latex-tables/</guid>
       <description>&lt;p&gt;By default, LaTex tables are very tight:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;\usepackage{booktabs}
 
@@ -1092,10 +1092,10 @@ Row 5 &amp;amp; 9012     &amp;amp; 10000    \\ \bottomrule
     
     <item>
       <title>My minimal LaTex preamble</title>
-      <link>/2016/03/my-minimal-latex-preamble/</link>
+      <link>https://riinu.me/2016/03/my-minimal-latex-preamble/</link>
       <pubDate>Wed, 23 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/03/my-minimal-latex-preamble/</guid>
+      <guid>https://riinu.me/2016/03/my-minimal-latex-preamble/</guid>
       <description>&lt;p&gt;My minimal example:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;\documentclass[a4paper]{article}
 
@@ -1152,10 +1152,10 @@ Hello hello hello
     
     <item>
       <title>How to &#34;increase&#34; array resolution in R (replicate each element both column-wise and row-wise)</title>
-      <link>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
+      <link>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</link>
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
+      <guid>https://riinu.me/2015/09/how-to-increase-array-resolution-in-r-replicate-each-element-both-column-wise-and-row-wise/</guid>
       <description>&lt;p&gt;One picture says more than a thousand words. You have what is one the left, and you want what is on the right.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://riinudata.files.wordpress.com/2015/09/resolution_cut.png&#34; alt=&#34;resolution_cut&#34;&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;my_matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;matrix&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;), nrow&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
@@ -1176,10 +1176,10 @@ increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, e
     
     <item>
       <title>Cut a time period from netCDF with nco</title>
-      <link>/2015/06/cut-a-time-period-from-netcdf-with-nco/</link>
+      <link>https://riinu.me/2015/06/cut-a-time-period-from-netcdf-with-nco/</link>
       <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/06/cut-a-time-period-from-netcdf-with-nco/</guid>
+      <guid>https://riinu.me/2015/06/cut-a-time-period-from-netcdf-with-nco/</guid>
       <description>&lt;p&gt;&lt;code&gt;ncks -d time,start_time,end_time in.nc out.nc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;start_time&lt;/code&gt; and &lt;code&gt;end_time&lt;/code&gt; are integers.&lt;/p&gt;
 &lt;p&gt;Add -F, if you want to use Fortran indexing (to start from 1).&lt;/p&gt;
@@ -1189,10 +1189,10 @@ increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, e
     
     <item>
       <title>Converting R Markdown to Latex</title>
-      <link>/2015/06/converting-r-markdown-to-latex/</link>
+      <link>https://riinu.me/2015/06/converting-r-markdown-to-latex/</link>
       <pubDate>Wed, 24 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/06/converting-r-markdown-to-latex/</guid>
+      <guid>https://riinu.me/2015/06/converting-r-markdown-to-latex/</guid>
       <description>&lt;p&gt;Install Pandoc: &lt;a href=&#34;http://pandoc.org/&#34;&gt;http://pandoc.org/&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(knitr)
 
@@ -1206,10 +1206,10 @@ increased_array = my_array[rep(1:nrow(my_array), each=3), rep(1:ncol(my_array, e
     
     <item>
       <title>Reordering factor levels in R and what could go wrong</title>
-      <link>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
+      <link>https://riinu.me/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</link>
       <pubDate>Thu, 11 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
+      <guid>https://riinu.me/2015/06/reordering-factor-levels-in-r-and-what-could-go-wrong/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve recently started using &lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;ggplot2&lt;/a&gt; in addition to lattice (see &lt;a href=&#34;https://riinudata.wordpress.com/2014/08/08/r-graphical-devices-plot-margins-and-legend-next-to-the-plot-not-on-it/&#34;&gt;this post&lt;/a&gt; that I made a while ago, explaining how I got into using lattice in the first place). Hint: when using ggplot2, you&amp;rsquo;ll need to use of the reshape2 package (also written by the amazing Hadley Wickham) to get your data into a form that ggplot2 works best with. Another thing that you&amp;rsquo;ll want to think about when using ggplo2 is factor levels. This post will show how to (and also how not to) rearrange factor levels in R.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s create a quick barplot with strings as x labels.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
@@ -1240,10 +1240,10 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>Latex tables: column widths and alignments</title>
-      <link>/2014/11/latex-tables-column-widths-and-allignments/</link>
+      <link>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/11/latex-tables-column-widths-and-allignments/</guid>
+      <guid>https://riinu.me/2014/11/latex-tables-column-widths-and-allignments/</guid>
       <description>&lt;p&gt;Firstly, start off your table in &lt;a href=&#34;http://www.tablesgenerator.com/&#34;&gt;http://www.tablesgenerator.com/&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Tables Generator will do a lot for you. Its most useful features are importing from .csv and merging cells. The Booktabs table style (alternative to default table style from the menu) looks a bit nicer and is &amp;ldquo;publication quality&amp;rdquo;. Note that publication quality tables should not contain vertical lines.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;http://riinudata.files.wordpress.com/2014/09/tablesgenerator1.png&#34; alt=&#34;Screen shoti of Tables Generator&#34;&gt;&lt;/p&gt;
@@ -1267,10 +1267,10 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>Why does a linear model without an intercept (forced through the origin) have a higher R-squared value? [calculated by R]</title>
-      <link>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
+      <link>https://riinu.me/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</link>
       <pubDate>Wed, 06 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
+      <guid>https://riinu.me/2014/08/why-does-linear-model-without-an-intercept-forced-through-the-origin-have-a-higher-r-squared-value-calculated-by-r/</guid>
       <description>&lt;p&gt;&lt;em&gt;This is a short note based on &lt;a href=&#34;http://stats.stackexchange.com/questions/26176/removal-of-statistically-significant-intercept-term-boosts-r2-in-linear-model/26205#26205&#34;&gt;this&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Answer in short: Because different formulas are used to calculate the R-squared of a linear regression, depending on whether it has an intercept or not.&lt;/p&gt;
 &lt;p&gt;R2 for a linear model that has an intercept:&lt;/p&gt;
@@ -1285,20 +1285,20 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>Rotate with ImageMagick</title>
-      <link>/2014/07/rotate-with-imagemagick/</link>
+      <link>https://riinu.me/2014/07/rotate-with-imagemagick/</link>
       <pubDate>Wed, 23 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/07/rotate-with-imagemagick/</guid>
+      <guid>https://riinu.me/2014/07/rotate-with-imagemagick/</guid>
       <description>&lt;p&gt;&lt;code&gt;convert -rotate 270 -density 300 -compress lzw in.pdf out.pdf&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>How to temporarily disable a bash alias</title>
-      <link>/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
+      <link>https://riinu.me/2014/07/how-to-temporarily-disable-a-bash-alias/</link>
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
+      <guid>https://riinu.me/2014/07/how-to-temporarily-disable-a-bash-alias/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve defined &lt;code&gt;alias ls=&#39;ls -al –color=auto&#39;&lt;/code&gt;, but want to use ls without the extra information and colouring then use&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;\ls&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;or equivalently&lt;/p&gt;
@@ -1308,10 +1308,10 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>Symbolic links and 2 common errors with them</title>
-      <link>/2014/07/symbolic-links-and-2-common-errors-with-them/</link>
+      <link>https://riinu.me/2014/07/symbolic-links-and-2-common-errors-with-them/</link>
       <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
+      <guid>https://riinu.me/2014/07/symbolic-links-and-2-common-errors-with-them/</guid>
       <description>&lt;p&gt;I don&amp;rsquo;t know if it&amp;rsquo;s good or bad, but I like when the files I&amp;rsquo;m working with are in the working directory (so instead of using pathnames to my files I can just type filename or ./filename). But to avoid copying data and wasting space, symbolic links are the way to go. The command for that is:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ln -s target_file sym_link&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;where -s stands for &amp;ldquo;symbolic&amp;rdquo; (just ln would create a hard link)&lt;/p&gt;
@@ -1325,10 +1325,10 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>Add up two variables of a netCDF file</title>
-      <link>/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</link>
+      <link>https://riinu.me/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
+      <guid>https://riinu.me/2014/05/add-up-the-values-of-two-variables-of-a-netcdf-file/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncap2-netCDF-Arithmetic-Processor&#34;&gt;NCO:ncap2&lt;/a&gt; is the function to do it:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ncap2 -s &#39;new_var=var1+var2&#39; in_filename.nc out_filename.nc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The output file will have all of the variables that exist in the input file as well as the new_var. Add -O if your input and output files are the same (overwrite).&lt;/p&gt;
@@ -1341,10 +1341,10 @@ df&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;a
     
     <item>
       <title>My bash aliases</title>
-      <link>/2014/05/my-bash-aliases/</link>
+      <link>https://riinu.me/2014/05/my-bash-aliases/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/my-bash-aliases/</guid>
+      <guid>https://riinu.me/2014/05/my-bash-aliases/</guid>
       <description>&lt;p&gt;If you find yourself using some commands always with the same flags, then it would make sense to define them as alieses, by putting them into your .bashrc file like this (log out and back in for it to take effect):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# .bashrc
 
@@ -1369,10 +1369,10 @@ alias disk=&amp;quot;du * -sh | sort -h&amp;quot;
     
     <item>
       <title>Saving some variables from a netCDF to a new file</title>
-      <link>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
+      <link>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
+      <guid>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>&lt;p&gt;The NCO (&lt;a href=&#34;http://nco.sourceforge.net/&#34;&gt;&lt;strong&gt;n&lt;/strong&gt;et&lt;strong&gt;C&lt;/strong&gt;DF &lt;strong&gt;O&lt;/strong&gt;perator&lt;/a&gt;) command ncks (&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncks-netCDF-Kitchen-Sink&#34;&gt;netCDF Kitchen Sink&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;From the &lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncks-netCDF-Kitchen-Sink&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1402,10 +1402,10 @@ alias disk=&amp;quot;du * -sh | sort -h&amp;quot;
     
     <item>
       <title>Sum all values over several dimensions of a netCDF variable</title>
-      <link>/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</link>
+      <link>https://riinu.me/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
+      <guid>https://riinu.me/2014/05/sum-all-values-over-several-dimensions-of-a-netcdf-variable/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncap2-netCDF-Arithmetic-Processor&#34;&gt;NCO:ncap2&lt;/a&gt; and .total&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ncap2 -s &#39;summed_variable=variable_to_sum.total($lat,$lon)&#39; in.nc out.nc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://sourceforge.net/p/nco/discussion/9830/thread/e15cbda8&#34;&gt;Make sure to use single quotes.&lt;/a&gt;&lt;/p&gt;

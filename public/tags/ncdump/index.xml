@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ncdump on Riinu&#39;s scripting diary</title>
-    <link>/tags/ncdump/</link>
+    <link>https://riinu.me/tags/ncdump/</link>
     <description>Recent content in ncdump on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 May 2014 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/ncdump/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://riinu.me/tags/ncdump/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Saving some variables from a netCDF to a new file</title>
-      <link>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
+      <link>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</link>
       <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
+      <guid>https://riinu.me/2014/05/saving-some-variables-from-a-netcdf-to-a-new-file/</guid>
       <description>&lt;p&gt;The NCO (&lt;a href=&#34;http://nco.sourceforge.net/&#34;&gt;&lt;strong&gt;n&lt;/strong&gt;et&lt;strong&gt;C&lt;/strong&gt;DF &lt;strong&gt;O&lt;/strong&gt;perator&lt;/a&gt;) command ncks (&lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncks-netCDF-Kitchen-Sink&#34;&gt;netCDF Kitchen Sink&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;From the &lt;a href=&#34;http://nco.sourceforge.net/nco.html#ncks-netCDF-Kitchen-Sink&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;

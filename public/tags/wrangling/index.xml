@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wrangling on Riinu&#39;s scripting diary</title>
-    <link>/tags/wrangling/</link>
+    <link>https://riinu.me/tags/wrangling/</link>
     <description>Recent content in wrangling on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/wrangling/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://riinu.me/tags/wrangling/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R: filtering with NA values</title>
-      <link>/2020/02/r-filtering-with-na-values/</link>
+      <link>https://riinu.me/2020/02/r-filtering-with-na-values/</link>
       <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/02/r-filtering-with-na-values/</guid>
+      <guid>https://riinu.me/2020/02/r-filtering-with-na-values/</guid>
       <description>
 
 
@@ -139,10 +139,10 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()</title>
-      <link>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</link>
+      <link>https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
+      <guid>https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/</guid>
       <description>
 
 

@@ -73,7 +73,7 @@ canonifyurls = true
   identifier = "book"
   name = "Book"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-book\"></i>"
-  url = "https://healthyr.surgicalinformatics.org/"
+  url = "https://argoshare.is.ed.ac.uk/healthyr_book/"
 
 
 [[menu.links]]

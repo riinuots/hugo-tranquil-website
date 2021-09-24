@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.65.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.79.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Riinu Pius (Ots)">
 <meta name="keywords" content="tech">
 <meta name="description" content="TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.
@@ -19,8 +19,8 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline">
 <meta name="twitter:title" content="RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline">
-<meta property="og:url" content="/2019/11/rstudio-server-lan-party/">
-<meta property="twitter:url" content="/2019/11/rstudio-server-lan-party/">
+<meta property="og:url" content="https://riinu.me/2019/11/rstudio-server-lan-party/">
+<meta property="twitter:url" content="https://riinu.me/2019/11/rstudio-server-lan-party/">
 <meta property="og:site_name" content="Riinu&#39;s scripting diary">
 <meta property="og:description" content="TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.
  Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org
@@ -61,8 +61,8 @@
 
 
 
-  <meta property="og:image" content="/img/thumbnails/rstudio_logo.png">
-  <meta property="twitter:image" content="/img/thumbnails/rstudio_logo.png">
+  <meta property="og:image" content="https://riinu.me/img/thumbnails/rstudio_logo.png">
+  <meta property="twitter:image" content="https://riinu.me/img/thumbnails/rstudio_logo.png">
 
 
 
@@ -74,12 +74,12 @@
 
     <title>RStudio Server LAN party: Laptop&#43;Router&#43;Docker to serve RStudio offline</title>
 
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="https://riinu.me/favicon.png">
     
 
     
 
-    <link rel="canonical" href="/2019/11/rstudio-server-lan-party/">
+    <link rel="canonical" href="https://riinu.me/2019/11/rstudio-server-lan-party/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -87,7 +87,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    <link rel="stylesheet" href="https://riinu.me/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
 
@@ -115,12 +115,12 @@ if (!doNotTrack) {
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="/">Riinu&#39;s scripting diary</a>
+    <a class="header-title-link" href="https://riinu.me/">Riinu&#39;s scripting diary</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="/#about">
+         href="https://riinu.me/#about">
     
     
     
@@ -136,7 +136,7 @@ if (!doNotTrack) {
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="/#about">
+        <a href="https://riinu.me/#about">
           <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Riinu Pius (Ots)</h4>
@@ -149,7 +149,7 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/">
+      <a class="sidebar-button-link " href="https://riinu.me/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -159,7 +159,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/#about">
+      <a class="sidebar-button-link " href="https://riinu.me/#about">
     
       <i class="sidebar-button-icon fa fa-lg fa-question"></i>
       
@@ -169,7 +169,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://github.com/riinuots">
+      <a class="sidebar-button-link " href="https://github.com/riinuots" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-github"></i>
       
@@ -179,7 +179,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/categories">
+      <a class="sidebar-button-link " href="https://riinu.me/categories">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -189,7 +189,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/index.xml">
+      <a class="sidebar-button-link " href="https://riinu.me/index.xml">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
@@ -203,7 +203,7 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://healthyr.surgicalinformatics.org/">
+      <a class="sidebar-button-link " href="https://argoshare.is.ed.ac.uk/healthyr_book/" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-book"></i>
       
@@ -213,7 +213,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://minorplanetcenter.net/db_search/show_object?object_id=25616">
+      <a class="sidebar-button-link " href="https://minorplanetcenter.net/db_search/show_object?object_id=25616" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-space-shuttle"></i>
       
@@ -223,7 +223,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/pdf/cv_riinu_ots.pdf">
+      <a class="sidebar-button-link " href="https://riinu.me/pdf/cv_riinu_ots.pdf">
     
       <i class="sidebar-button-icon fa fa-lg fa-file"></i>
       
@@ -233,7 +233,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://scholar.google.co.uk/citations?user=CeW7a8AAAAAJ">
+      <a class="sidebar-button-link " href="https://scholar.google.co.uk/citations?user=CeW7a8AAAAAJ" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
       
@@ -243,7 +243,7 @@ if (!doNotTrack) {
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://twitter.com/_Riinu_">
+      <a class="sidebar-button-link " href="https://twitter.com/_Riinu_" target="_blank" rel="noopener">
     
       <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
       
@@ -289,11 +289,11 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="/categories/r">R</a>, 
+      <a class="category-link" href="https://riinu.me/categories/r">R</a>, 
     
-      <a class="category-link" href="/categories/scripting">scripting</a>, 
+      <a class="category-link" href="https://riinu.me/categories/scripting">scripting</a>, 
     
-      <a class="category-link" href="/categories/unix">Unix</a>
+      <a class="category-link" href="https://riinu.me/categories/unix">Unix</a>
     
   
 
@@ -310,7 +310,7 @@ if (!doNotTrack) {
 <p>TLDR: You can teach R on people’s own laptops without having them install anything or require an internet connection.</p>
 </blockquote>
 <div class="figure">
-<img src="/img/healthyr_bus.png" alt="" />
+<img src="https://riinu.me/img/healthyr_bus.png" alt="" />
 <p class="caption">Members of the Surgical Informatics team in Ghana, 2019. More information: surgicalinformatics.org</p>
 </div>
 <div id="introduction" class="section level2">
@@ -335,7 +335,7 @@ You connect to either of these options using a web browser, and even very old co
 <li><strong>Internet connection for setting up</strong> - to download RStudio’s docker image and install your extra packages.</li>
 </ol>
 <div class="figure">
-<img src="/img/docker_lan.png" alt="" />
+<img src="https://riinu.me/img/docker_lan.png" alt="" />
 <p class="caption">My MacBook Pro serving RStudio to 10 other computers in Ghana, November 2019.</p>
 </div>
 </div>
@@ -348,7 +348,7 @@ You connect to either of these options using a web browser, and even very old co
 <p>Tip: RStudio suggests port 8787, which is what I used for consistency, but if you set it up on 80 you can omit the :80 as that’s the default anyway. So you can just go to <code>localhost</code> (or something like <code>127.0.0.0</code> if using Windows).</p>
 <p>For those of you who have never seen or used RStudio Server, this is what it looks like:</p>
 <div class="figure">
-<img src="/img/rstudio_server.png" alt="" />
+<img src="https://riinu.me/img/rstudio_server.png" alt="" />
 <p class="caption">Rstudio Server is almost identical to RStudio Desktop. Main difference is the “Upload” button in the Files pane. This one is running in a Docker container, served at port 8787, and accessed using Safari (but any web browser will work).</p>
 </div>
 <p>The Docker single-liner above will create a single user with sudo rights (since I’ve included <code>-e ROOT=TRUE</code>). After logging into the instance, you can then add other users and copy the course materials to everyone using these scripts: <a href="https://github.com/einarpius/create_rstudio_users" class="uri">https://github.com/einarpius/create_rstudio_users</a> Note that the instance is running Debian, so you’ll need very basic familiarity with managing file permissions on the command line. For example, you’ll need to make the scripts executable with <code>chmod 700 create_users.sh</code>.</p>
@@ -358,7 +358,7 @@ You connect to either of these options using a web browser, and even very old co
 <div id="why-are-you-calling-it-a-lan-party" class="section level2">
 <h2>Why are you calling it a LAN party?</h2>
 <div class="figure">
-<img src="/img/lanparty2010.jpg" alt="" />
+<img src="https://riinu.me/img/lanparty2010.jpg" alt="" />
 <p class="caption">My friends and I having a LAN party in Estonia, 2010. We would mostly play StarCraft or Civilization, or as pictured here - racing games to wind down at the end.</p>
 </div>
 <p>LAN stands for Local Area Network and in most cases means “devices connected to the same WiFi*”. You’ve probably used LANs lots in your life without even realising. One common example is printers: you know when a printer asks you to connect to the same network to be able to print your files? This usually means your computer and the printer will be in a LAN. If your printed accepted files via any internet connection, rather than just the same local network, then people around the world could submit stuff for your printer. Furthermore, if you have any smart devices in your home, they’ll be having a constant LAN party with each other.</p>
@@ -399,7 +399,7 @@ You connect to either of these options using a web browser, and even very old co
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2020/02/r-filtering-with-na-values/" data-tooltip="R: filtering with NA values">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2020/02/r-filtering-with-na-values/" data-tooltip="R: filtering with NA values">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -407,7 +407,7 @@ You connect to either of these options using a web browser, and even very old co
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/new-intuitive-ways-to-reshape-data-in-r/" data-tooltip="New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/" data-tooltip="New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -425,7 +425,7 @@ You connect to either of these options using a web browser, and even very old co
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2019/11/rstudio-server-lan-party/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://riinu.me/2019/11/rstudio-server-lan-party/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -460,7 +460,7 @@ You connect to either of these options using a web browser, and even very old co
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Riinu Pius (Ots). All Rights Reserved
+    &copy; 2021 Riinu Pius (Ots). All Rights Reserved
   </span>
 </footer>
 
@@ -473,7 +473,7 @@ You connect to either of these options using a web browser, and even very old co
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2020/02/r-filtering-with-na-values/" data-tooltip="R: filtering with NA values">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2020/02/r-filtering-with-na-values/" data-tooltip="R: filtering with NA values">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -481,7 +481,7 @@ You connect to either of these options using a web browser, and even very old co
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/new-intuitive-ways-to-reshape-data-in-r/" data-tooltip="New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/" data-tooltip="New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -499,7 +499,7 @@ You connect to either of these options using a web browser, and even very old co
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2019/11/rstudio-server-lan-party/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://riinu.me/2019/11/rstudio-server-lan-party/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
@@ -529,7 +529,7 @@ You connect to either of these options using a web browser, and even very old co
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2019%2F11%2Frstudio-server-lan-party%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Friinu.me%2F2019%2F11%2Frstudio-server-lan-party%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
@@ -573,7 +573,7 @@ You connect to either of these options using a web browser, and even very old co
     
   
     
-      <div id="cover" style="background-image:url('/cover.jpg');"></div>
+      <div id="cover" style="background-image:url('https://riinu.me/cover.jpg');"></div>
     
   
 
@@ -586,7 +586,7 @@ You connect to either of these options using a web browser, and even very old co
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://riinu.me/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
 <script lang="javascript">
@@ -621,7 +621,7 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = '\/2019\/11\/rstudio-server-lan-party\/';
+          this.page.url = 'https:\/\/riinu.me\/2019\/11\/rstudio-server-lan-party\/';
           
             this.page.identifier = '\/2019\/11\/rstudio-server-lan-party\/'
           
