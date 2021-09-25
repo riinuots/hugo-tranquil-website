@@ -1,0 +1,120 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Riinu&#39;s scripting diary</title>
+    <link>https://riinu.me/categories/git/</link>
+    <description>Recent content in git on Riinu&#39;s scripting diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://riinu.me/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting up a simple one page website using Nicepage and Netlify</title>
+      <link>https://riinu.me/2021/09/create-website/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://riinu.me/2021/09/create-website/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve just set up a single page website (= online business card) for myself and my husband: &lt;a href=&#34;https://pius.cloud/&#34;&gt;https://pius.cloud/&lt;/a&gt; .
+This post summarises what I did.
+If you&amp;rsquo;re looking to get started with something super quickly, then only the first two steps are essential (Creating a website and Serving a website).&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-website-using-nicepage&#34;&gt;Creating a website (using Nicepage)&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve created websites using various tools such as straight up HTML, Wordpress, Hugo+blogdown (this site - riinu.me), bootstrap, etc.
+Each has their strengths and weaknesses and I&amp;rsquo;m always keen on trying out new things.
+After a couple of quick Google searches I decided to make my next website using Nicepage.
+I&amp;rsquo;m using the macOS app, but it also has a Windows version and it can be used online without installing anything on your computer.&lt;/p&gt;
+&lt;p&gt;Looks like Nicepage is a relatively new website builder, founded in 2018, and at the time of writing, it only has 248 Twitter followers: &lt;a href=&#34;https://twitter.com/NicepageApp&#34;&gt;https://twitter.com/NicepageApp&lt;/a&gt;.
+I&amp;rsquo;m not very active on Twitter, and I have 923.
+Yes, it&amp;rsquo;s a bit bizarre to quote these numbers in a blog post, but it will be cool to read this in a few years when I have 1k, and they&amp;rsquo;re at 100k.
+They certainly deserve it, as my experience with creating a website using Nicepage has been awesome! It&amp;rsquo;s so damn good!&lt;/p&gt;
+&lt;p&gt;What I did was:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new blank website&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I never do this!&lt;/strong&gt; I don&amp;rsquo;t believe in re-inventing the wheel, and I&amp;rsquo;m not a designer.
+I just wanted a really simple &amp;lsquo;business-card-like&amp;rsquo; look that I couldn&amp;rsquo;t find in any of the templates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete all pages except Home:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/img/nicepage_website/manage_pages.png&#34; alt=&#34;click on Pages, then delete those not wanted&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove the menu, since I only have a single page.
+From what I can tell, the only way to remove the menu is to remove the header:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/img/nicepage_website/hide_header.png&#34; alt=&#34;click on the dots next to the logo, hide header&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add a New Block split by two&lt;/li&gt;
+&lt;li&gt;Add in image and text elements.
+&lt;ul&gt;
+&lt;li&gt;I experimented with the built-in Block Designs a bit, but ended up using a Blank again.
+Thing is, I was trying to use the Team designs for us.
+But I could not figure out how to use distinct social media icons for different &amp;lsquo;team members&amp;rsquo;.
+Whenever I deleted Twitter from my husband, it also removed it from me.
+I failed to unlink the two profiles.
+Thus, I created a blank box and added the image and text elements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Play around with various settings for alignment. Use the Phone option to re-size the text on small screens only (works so well!), use Preview, add a Favicon (Site settings), etc. Adding a Favicon or a logo worked exceptionally well. In the past, I&amp;rsquo;ve spent a lot of time re-sizing website logos, but Nicepage will do that for you.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://riinu.me/img/nicepage_website/alignment_etc.png&#34; alt=&#34;Adjusting aligment, checking previews on different devices, exporting when done&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Export to HTML.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;serving-a-website-using-netlify-drop&#34;&gt;Serving a website (using Netlify Drop)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A convenient and fast way to publish a website is using Netlify Drop: &lt;a href=&#34;https://app.netlify.com/drop&#34;&gt;https://app.netlify.com/drop&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;You just drag and drop the folder containing your website (= your HTML export) and voila, it&amp;rsquo;s live with an automatically generated shareable link.&lt;/li&gt;
+&lt;li&gt;This works even without creating an account/logging in. The link works for 24h, but if you create a free account you&amp;rsquo;ll be able to claim it and it will work forever. I&amp;rsquo;ve been using Netlify for years and have never had to pay them. Cheers!&lt;/li&gt;
+&lt;li&gt;When you log in you&amp;rsquo;ll be able to change the automatically generated link (site name) to what you wish. For example I&amp;rsquo;ve just changed it to: &lt;a href=&#34;https://riinupius.netlify.app/&#34;&gt;https://riinupius.netlify.app/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;If you&amp;rsquo;re happy with netlify.app trailing in your site address then that&amp;rsquo;s you done!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Updating your website: make your changes in Nicepage, export to HTML, log into Netlify, click on your site, click on Deploys (top menu), drag and drop the updated folder there.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I found Nicepage super cool to use and didn&amp;rsquo;t experience any glitches. But I was working on a very simple single page site and can&amp;rsquo;t vouch how it would work for something more complicated.&lt;/li&gt;
+&lt;li&gt;The free plan seems quite limited, AND I&amp;rsquo;ve just found out that when you first register it lets you use Premium features for free for 7 days. So I&amp;rsquo;ve been using Premium without realising it and I&amp;rsquo;m now wondering if/what will stop working once this passes. The already deployed version won&amp;rsquo;t be affected of course, but future edits&amp;hellip;who knows. I&amp;rsquo;ll try and remember to report back here in 7 days.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;using-your-own-domain-name&#34;&gt;Using your own domain name&lt;/h2&gt;
+&lt;p&gt;I wanted my new website to be at pius.cloud.
+For this, I had to buy the domain name (pius.cloud) from a domain name registrar.
+Netlify also provides this service, thus the easiest way to do it is to go to your Site Settings, click on Set up custom domain, and purchase a domain name from them.
+This way they&amp;rsquo;ll do all the set-up for you, you just pay and click through.
+Custom domain names are not free, $20 per year is about right for the domain names I&amp;rsquo;ve worked with (you usually get a big discount the first year, and then it rises to $20).&lt;/p&gt;
+&lt;p&gt;My domain names are registered with Namecheap, so to keep everything in one place I bought pius.cloud with them.&lt;/p&gt;
+&lt;p&gt;In my Netlify&amp;rsquo;s Domain settings, I added pius.cloud, then scrolled to the bottom to find &amp;ldquo;Set up Netlify DNS (Domain Name System) for your site. Clicking on that gave me a list of nameservers such as dns1.p06.nsone.net, etc.
+Then I had to &amp;lsquo;tell&amp;rsquo; Namecheap that I&amp;rsquo;m using Netlify&amp;rsquo;s DNS for my site:
+&lt;img src=&#34;https://riinu.me/img/nicepage_website/namecheap_dns.png&#34; alt=&#34;Add Netlify&amp;rsquo;s nameservers as Custom DNS for your Domain with your registrar. If using Namecheap, remember to click the green tick!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I missed that little green tick about three times, wondering why my changes hadn&amp;rsquo;t worked. Make sure to click it.&lt;/p&gt;
+&lt;p&gt;It may take up to 24h for these changes to register and your domain name to start working, but it often propagates in just a few minutes.&lt;/p&gt;
+&lt;h2 id=&#34;optional-updating-your-website-with-git-instead-of-drag-and-drop&#34;&gt;Optional: Updating your website with git (instead of drag-and-drop)&lt;/h2&gt;
+&lt;p&gt;If you already speak git (version control software), or are keen to start using version control then Netlify is happy to grab updates from a git repository.
+This saves you from dragging and dropping, but it does mean you need to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install git (if you haven&amp;rsquo;t used before/don&amp;rsquo;t already have it installed it on your computer).&lt;/li&gt;
+&lt;li&gt;Create a GitHub account (or GitLab, etc.).&lt;/li&gt;
+&lt;li&gt;Create a repository on GitHub.&lt;/li&gt;
+&lt;li&gt;Clone the new (empty) repository to your computer. You can do this on the command line, or you can install software that interfaces git. I use GitKraken.&lt;/li&gt;
+&lt;li&gt;Move your website files into the repository.&lt;/li&gt;
+&lt;li&gt;Add all files (&lt;code&gt;git add .&lt;/code&gt; or &amp;lsquo;Stage all&amp;rsquo;), commit, push.&lt;/li&gt;
+&lt;li&gt;Go to Build &amp;amp; Deploy on Netlify (left hand menu once you&amp;rsquo;ve selected your site) and link the GitHub repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now every time you push to that repository, Netlify updates your website automatically. It&amp;rsquo;s like magic!&lt;/p&gt;
+&lt;p&gt;Furthermore, you can look up your changes and commit messages on GitHub:
+&lt;img src=&#34;https://riinu.me/img/nicepage_website/github_commit_history.png&#34; alt=&#34;My commit messages for pius.cloud on GitHub&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There are a few different ways of setting up new git repositories, if you&amp;rsquo;re used to doing it differently that&amp;rsquo;s fine. No need to follow these specific instructions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Netlify also retains all versions of your website under Site overview - Production deploys.
+This means you can revert back to older versions without using git/version control.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -103,7 +103,7 @@ This saves you from dragging and dropping, but it does mean you need to:
 * Create a repository on GitHub.
 * Clone the new (empty) repository to your computer. You can do this on the command line, or you can install software that interfaces git. I use GitKraken.
 * Move your website files into the repository.
-* Add all files (`add .` or 'Stage all'), commit, push.
+* Add all files (`git add .` or 'Stage all'), commit, push.
 * Go to Build & Deploy on Netlify (left hand menu once you've selected your site) and link the GitHub repository.
 
 Now every time you push to that repository, Netlify updates your website automatically. It's like magic!
