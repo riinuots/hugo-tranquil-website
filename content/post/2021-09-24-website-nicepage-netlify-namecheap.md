@@ -64,28 +64,28 @@ From what I can tell, the only way to remove the menu is to remove the header:
 ## Serving a website (using Netlify Drop)
 
 * A convenient and fast way to publish a website is using Netlify Drop: https://app.netlify.com/drop
-    + You just drag and drop the folder containing your website (= your HTML export) and voila, it's live with an automatically generated shareable link
-    + This works even without creating an account/logging in. This link will work for 24h, but if you create a free account you'll be able to claim it and it will work forever. I've been using Netlify for years and have never had to pay them. Cheers!
+    + You just drag and drop the folder containing your website (= your HTML export) and voila, it's live with an automatically generated shareable link.
+    + This works even without creating an account/logging in. The link works for 24h, but if you create a free account you'll be able to claim it and it will work forever. I've been using Netlify for years and have never had to pay them. Cheers!
     + When you log in you'll be able to change the automatically generated link (site name) to what you wish. For example I've just changed it to: https://riinupius.netlify.app/
     
 __If you're happy with netlify.app trailing in your site address then that's you done!__
 
 Updating your website: make your changes in Nicepage, export to HTML, log into Netlify, click on your site, click on Deploys (top menu), drag and drop the updated folder there.
 
-* I found Nicepage super cool to use and didn't experience any glitches. But I was working on a very simple single page site, can't vouch how it would work for something more complicated.
-* Its free plan seems quite limited, AND I've just found out that when you first register it lets you use Premium features for free for 7 days. So I've been using Premium without realising it and I'm now wondering if/what will stop working once this passes. The already deployed version won't be affected of course, but future edits...who knows. Will try and remember to report back here in 7 days.
+* I found Nicepage super cool to use and didn't experience any glitches. But I was working on a very simple single page site and can't vouch how it would work for something more complicated.
+* The free plan seems quite limited, AND I've just found out that when you first register it lets you use Premium features for free for 7 days. So I've been using Premium without realising it and I'm now wondering if/what will stop working once this passes. The already deployed version won't be affected of course, but future edits...who knows. I'll try and remember to report back here in 7 days.
 
 ## Using your own domain name
 
 I wanted my new website to be at pius.cloud. 
-You have to buy the domain name (pius.cloud) from a domain name registrar. 
-Netlify actually does provide this service, so the easiest thing is to go to your Site Settings, click on Set up custom domain, and purchase a domain name from them. 
+For this, I had to buy the domain name (pius.cloud) from a domain name registrar. 
+Netlify also provides this service, thus the easiest way to do it is to go to your Site Settings, click on Set up custom domain, and purchase a domain name from them. 
 This way they'll do all the set-up for you, you just pay and click through. 
 Custom domain names are not free, \$20 per year is about right for the domain names I've worked with (you usually get a big discount the first year, and then it rises to \$20).
 
 My domain names are registered with Namecheap, so to keep everything in one place I bought pius.cloud with them. 
 
-In my Netlify's Domain settings, I added pius.cloud, then scrolled to the bottom to find "Set up Netlify DNS for your site" (DNS stands for Domain Name System). Clicked on that, which gave me a list of nameservers such as dns1.p06.nsone.net, etc.
+In my Netlify's Domain settings, I added pius.cloud, then scrolled to the bottom to find "Set up Netlify DNS (Domain Name System) for your site. Clicking on that gave me a list of nameservers such as dns1.p06.nsone.net, etc.
 Then I had to 'tell' Namecheap that I'm using Netlify's DNS for my site:
 ![Add Netlify's nameservers as Custom DNS for your Domain with your registrar. If using Namecheap, remember to click the green tick!](/img/nicepage_website/namecheap_dns.png)
 
@@ -98,10 +98,10 @@ It may take up to 24h for these changes to register and your domain name to star
 If you already speak git (version control software), or are keen to start using version control then Netlify is happy to grab updates from a git repository.
 This saves you from dragging and dropping, but it does mean you need to:
 
-* Install git (if haven't used before/don't already have it installed it on your computer).
+* Install git (if you haven't used before/don't already have it installed it on your computer).
 * Create a GitHub account (or GitLab, etc.).
 * Create a repository on GitHub.
-* Clone the new (empty) repository to your computer, you can do this on the command line, or you can install software that interfaces git. I use GitKraken.
+* Clone the new (empty) repository to your computer. You can do this on the command line, or you can install software that interfaces git. I use GitKraken.
 * Move your website files into the repository.
 * Add all files (`add .` or 'Stage all'), commit, push.
 * Go to Build & Deploy on Netlify (left hand menu once you've selected your site) and link the GitHub repository.
@@ -114,7 +114,7 @@ Furthermore, you can look up your changes and commit messages on GitHub:
 * There are a few different ways of setting up new git repositories, if you're used to doing it differently that's fine. No need to follow these specific instructions.
 
 Netlify also retains all versions of your website under Site overview - Production deploys.
-Meaning you can revert back to older versions without using git/version control. 
+This means you can revert back to older versions without using git/version control. 
 
 
 
