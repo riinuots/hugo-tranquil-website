@@ -3,11 +3,13 @@ title: 'R: filtering with NA values'
 author: Riinu
 date: '2020-02-27'
 slug: r-filtering-with-na-values
+thumbnailImage: /img/thumbnails/na.png
 categories: [R]
 tags: [wrangling, dplyr, janitor]
 output: md_document
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
@@ -15,9 +17,17 @@ More explanations about this can be found in the Chapter 2: R basics of our book
 <p>This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.</p>
 <p>For example, I want to keep rows that have a value for <code>important_a</code> and/or <code>important_b</code> (so rows 1, 3, 4).
 I don’t care whether <code>whatever_c</code> is empty or not, but I do want to keep it.</p>
-<pre class="r"><code>library(tidyverse)
-
-mydata  = tibble(important_a = c(&quot;Value&quot;, NA, &quot;Value&quot;, NA, NA),
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: replacing previous import
+## &#39;lifecycle::last_warnings&#39; by &#39;rlang::last_warnings&#39;
+## when loading &#39;pillar&#39;</code></pre>
+<pre><code>## Warning: replacing previous import
+## &#39;lifecycle::last_warnings&#39; by &#39;rlang::last_warnings&#39;
+## when loading &#39;tibble&#39;</code></pre>
+<pre><code>## Warning: replacing previous import
+## &#39;lifecycle::last_warnings&#39; by &#39;rlang::last_warnings&#39;
+## when loading &#39;hms&#39;</code></pre>
+<pre class="r"><code>mydata  = tibble(important_a = c(&quot;Value&quot;, NA, &quot;Value&quot;, NA, NA),
                  important_b = c(NA, NA, &quot;Value&quot;, &quot;Value&quot;, NA),
                  whatever_c  = c(NA, &quot;Value&quot;, NA, NA, NA))
 
@@ -64,15 +74,16 @@ mydata %&gt;% knitr::kable()</code></pre>
 </ol>
 <pre class="r"><code>mydata %&gt;% 
   drop_na()</code></pre>
-<pre><code>## # A tibble: 0 x 3
-## # … with 3 variables: important_a &lt;chr&gt;, important_b &lt;chr&gt;, whatever_c &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 0 × 3
+## # … with 3 variables: important_a &lt;chr&gt;,
+## #   important_b &lt;chr&gt;, whatever_c &lt;chr&gt;</code></pre>
 <p>(Returns 0 as we don’t have rows where all 3 columns have a value).</p>
 <ol start="2" style="list-style-type: decimal">
 <li>This keeps complete cases based on specified columns:</li>
 </ol>
 <pre class="r"><code>mydata %&gt;% 
   drop_na(important_a, important_b)</code></pre>
-<pre><code>## # A tibble: 1 x 3
+<pre><code>## # A tibble: 1 × 3
 ##   important_a important_b whatever_c
 ##   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     
 ## 1 Value       Value       &lt;NA&gt;</code></pre>
@@ -82,7 +93,7 @@ mydata %&gt;% knitr::kable()</code></pre>
 </ol>
 <pre class="r"><code>mydata %&gt;% 
   filter_all(any_vars(! is.na(.)))</code></pre>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     
 ## 1 Value       &lt;NA&gt;        &lt;NA&gt;      
@@ -92,7 +103,7 @@ mydata %&gt;% knitr::kable()</code></pre>
 <p>The third example is better achieved using the janitor package:</p>
 <pre class="r"><code>mydata %&gt;% 
   janitor::remove_empty()</code></pre>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     
 ## 1 Value       &lt;NA&gt;        &lt;NA&gt;      
@@ -106,7 +117,7 @@ mydata %&gt;% knitr::kable()</code></pre>
 <p>A quick solution is to use <code>! is.na()</code> for each variable inside a <code>filter()</code>:</p>
 <pre class="r"><code>mydata %&gt;% 
   filter(! is.na(important_a) | ! is.na(important_b))</code></pre>
-<pre><code>## # A tibble: 3 x 3
+<pre><code>## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     
 ## 1 Value       &lt;NA&gt;        &lt;NA&gt;      
@@ -119,7 +130,7 @@ mydata %&gt;% knitr::kable()</code></pre>
 <p>A scalable solution is to use <code>filter_at()</code> with <code>vars()</code> with a select helper (e.g., <code>starts with()</code>), and then the <code>any_vars(! is.na(.))</code> that was introduced in (3).</p>
 <pre class="r"><code>mydata %&gt;% 
   filter_at(vars(starts_with(&quot;important_&quot;)), any_vars(! is.na(.)))</code></pre>
-<pre><code>## # A tibble: 3 x 3
+<pre><code>## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;     
 ## 1 Value       &lt;NA&gt;        &lt;NA&gt;      

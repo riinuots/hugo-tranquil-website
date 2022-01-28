@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.79.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Riinu Pius (Ots)">
+<meta name="keywords" content="tech">
+<meta name="description" content="There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., melt() vs gather() vs pivot_longer() in a previous post: New intuitive ways for reshaping data in R
+That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:">
+
+
+<meta property="og:description" content="There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., melt() vs gather() vs pivot_longer() in a previous post: New intuitive ways for reshaping data in R
+That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reshaping multiple variables into tidy (long) data">
+<meta name="twitter:title" content="Reshaping multiple variables into tidy (long) data">
+<meta property="og:url" content="https://riinu.me/2022/01/r-filtering-with-na-values/">
+<meta property="twitter:url" content="https://riinu.me/2022/01/r-filtering-with-na-values/">
+<meta property="og:site_name" content="Riinu&#39;s scripting diary">
+<meta property="og:description" content="There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., melt() vs gather() vs pivot_longer() in a previous post: New intuitive ways for reshaping data in R
+That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:">
+<meta name="twitter:description" content="There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., melt() vs gather() vs pivot_longer() in a previous post: New intuitive ways for reshaping data in R
+That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-01-28T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2022-01-28T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="R">
+    
+      <meta property="article:section" content="scripting">
+    
+  
+  
+    
+      <meta property="article:tag" content="tidyr">
+    
+      <meta property="article:tag" content="reshaping data">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@_Riinu_">
+
+
+  <meta name="twitter:creator" content="@_Riinu_">
+
+
+
+
+
+
+  <meta property="og:image" content="https://riinu.me/img/thumbnails/tidyr_logo.png">
+  <meta property="twitter:image" content="https://riinu.me/img/thumbnails/tidyr_logo.png">
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=640">
+
+
+    <title>Reshaping multiple variables into tidy (long) data</title>
+
+    <link rel="icon" href="https://riinu.me/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://riinu.me/2022/01/r-filtering-with-na-values/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://riinu.me/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114648473-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://riinu.me/">Riinu&#39;s scripting diary</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://riinu.me/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://riinu.me/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Riinu Pius (Ots)</h4>
+        
+          <h5 class="sidebar-profile-bio">if it aint broke, you&rsquo;re outdated</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://riinu.me/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://riinu.me/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/riinuots" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://riinu.me/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://riinu.me/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://argoshare.is.ed.ac.uk/healthyr_book/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+      
+      <span class="sidebar-button-desc">Book</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://minorplanetcenter.net/db_search/show_object?object_id=25616" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-space-shuttle"></i>
+      
+      <span class="sidebar-button-desc">Asteroid</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://riinu.me/pdf/cv_riinu_ots.pdf">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-file"></i>
+      
+      <span class="sidebar-button-desc">CV</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://scholar.google.co.uk/citations?user=CeW7a8AAAAAJ" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-pencil"></i>
+      
+      <span class="sidebar-button-desc">Publications</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/_Riinu_" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Reshaping multiple variables into tidy (long) data
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2022-01-28T00:00:00Z">
+        
+  January 28, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://riinu.me/categories/r">R</a>, 
+    
+      <a class="category-link" href="https://riinu.me/categories/scripting">scripting</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+<script src="https://riinu.me/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., <code>melt()</code> vs <code>gather()</code> vs <code>pivot_longer()</code> in a previous post: <a href="https://www.riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/">New intuitive ways for reshaping data in R</a></p>
+<p>That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:</p>
+<div id="example-data" class="section level1">
+<h1>Example data</h1>
+<pre class="r"><code># from dput():
+widedata = structure(list(id = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                          time_1 = c(1, 1, 1, 1, 1, 1, 1, 1, 1),
+                          time_2 = c(2, 2, 2, 2, 2, 2, 2, 2, 2), 
+                          time_3 = c(3, 3, 3, 3, 3, 3, 3, 3, 3),
+                          time_4 = c(4, 4, 4, 4, 4, 4, 4, 4, 4),
+                          outcome_1 = c(1, 1, 1, 1, 1, 1, 1, 1, 1),
+                          outcome_2 = c(2, 2, 2, 2, 2, 2, 2, 2, 2),
+                          outcome_3 = c(3, 3, 3, 3, 3, 3, 3, 3, 3),
+                          outcome_4 = c(4, 4, 4, 4, 4, 4, 4, 4, 4)),
+                     row.names = c(NA, -9L), class = c(&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;))</code></pre>
+<p>This is what it looks like:</p>
+<div class="figure">
+<img src="https://riinu.me/img/widedata.png" alt="" />
+<p class="caption">widedata in RStudio View</p>
+</div>
+<p>And this is what we want it to look like:</p>
+<div class="figure">
+<img src="https://riinu.me/img/longdata.png" alt="" />
+<p class="caption">widedata in RStudio View</p>
+</div>
+</div>
+<div id="simple-solution" class="section level1">
+<h1>Simple solution</h1>
+<pre class="r"><code>library(tidyverse)
+
+# pivot_longer puts everything that is not id into two columns (name and value)
+# separate the variable names and stage numbers
+# puts both variables back into two columns using pivot_wider()
+longdata = widedata %&gt;% 
+  pivot_longer(-id) %&gt;% 
+  separate(name, into = c(&quot;name&quot;, &quot;stage&quot;), sep = &quot;_&quot;) %&gt;% 
+  pivot_wider(names_from = &quot;name&quot;, values_from = &quot;value&quot;)</code></pre>
+<p>I think this is a very good solution as it’s easy to understand and debug. See below for a step by step explanation of these lines.</p>
+<p>It is, however, possible to achieve the same result just by using clever arguments inside the <code>pivot_longer()</code> (thank you Lisa for teaching me this):</p>
+</div>
+<div id="clever-solution" class="section level1">
+<h1>Clever solution</h1>
+<pre class="r"><code># same result as above but just pivot_longer()
+widedata %&gt;% 
+  pivot_longer(-id,
+               names_to = c(&quot;.value&quot;, &quot;number&quot;),
+               names_pattern = &quot;(.+)_(.+)&quot;)</code></pre>
+<pre><code>## # A tibble: 36 × 4
+##       id number  time outcome
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1     1 1          1       1
+##  2     1 2          2       2
+##  3     1 3          3       3
+##  4     1 4          4       4
+##  5     2 1          1       1
+##  6     2 2          2       2
+##  7     2 3          3       3
+##  8     2 4          4       4
+##  9     3 1          1       1
+## 10     3 2          2       2
+## # … with 26 more rows</code></pre>
+</div>
+<div id="simple-solution-step-by-step" class="section level1">
+<h1>Simple solution step by step</h1>
+<div id="combine-all-into-two-columns-first" class="section level2">
+<h2>Combine all into two columns first</h2>
+<p><code>pivot_longer(-id)</code> combines all columns except <code>id</code> into two columns (name and value):</p>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(-id)</code></pre>
+<pre><code>## # A tibble: 72 × 3
+##       id name      value
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1     1 time_1        1
+##  2     1 time_2        2
+##  3     1 time_3        3
+##  4     1 time_4        4
+##  5     1 outcome_1     1
+##  6     1 outcome_2     2
+##  7     1 outcome_3     3
+##  8     1 outcome_4     4
+##  9     2 time_1        1
+## 10     2 time_2        2
+## # … with 62 more rows</code></pre>
+<p>The defaults <code>name</code> and <code>value</code> may be changed using these arguments:</p>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(-id, names_to = &quot;my_variables&quot;, values_to = &quot;my_values&quot;) %&gt;% slice(1)</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##      id my_variables my_values
+##   &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+## 1     1 time_1               1</code></pre>
+<ul>
+<li>using <code>%&gt;% slice(1)</code> for brevity</li>
+</ul>
+<p>If you have multiple columns that you don’t want collected, then it’s easier to select the ones you want. In this example, it would look like this:</p>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(matches(&quot;time|outcome&quot;)) %&gt;% slice(1)</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##      id name   value
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;
+## 1     1 time_1     1</code></pre>
+<p>In this example dataset, <code>matches("time|outcome")</code> has the same effect as <code>-id</code>.</p>
+<p>Search for “tidyverse select helpers” to see the various options available for selecting the variables you need (<a href="https://dplyr.tidyverse.org/reference/select.html">select helpers reference</a>).</p>
+</div>
+<div id="separate-column-names-and-numbers" class="section level2">
+<h2>Separate column names and numbers</h2>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(-id) %&gt;% 
+  separate(name, into = c(&quot;name&quot;, &quot;stage&quot;), sep = &quot;_&quot;) %&gt;% slice(1)</code></pre>
+<pre><code>## # A tibble: 1 × 4
+##      id name  stage value
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 time  1         1</code></pre>
+</div>
+<div id="pivot_wider-so-that-each-variable-has-its-own-column" class="section level2">
+<h2>pivot_wider() so that each variable has its own column</h2>
+<p>And the final step of this solution is <code>pivot_wider()</code> which takes the multiple variables that <code>pivot_longer()</code> combined into <code>name</code> and puts them into their own columns:</p>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(-id) %&gt;% 
+  separate(name, into = c(&quot;name&quot;, &quot;stage&quot;), sep = &quot;_&quot;) %&gt;% 
+  pivot_wider(names_from = &quot;name&quot;, values_from = &quot;value&quot;)</code></pre>
+<pre><code>## # A tibble: 36 × 4
+##       id stage  time outcome
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##  1     1 1         1       1
+##  2     1 2         2       2
+##  3     1 3         3       3
+##  4     1 4         4       4
+##  5     2 1         1       1
+##  6     2 2         2       2
+##  7     2 3         3       3
+##  8     2 4         4       4
+##  9     3 1         1       1
+## 10     3 2         2       2
+## # … with 26 more rows</code></pre>
+</div>
+</div>
+<div id="what-if-my-columns-dont-have-delimiters-e.g.-instead-of-time_1-time_2...-its-time1-time2-..." class="section level1">
+<h1>What if my columns don’t have delimiters (e.g., instead of <code>time_1, time_2,...</code> it’s <code>time1, time2, ...</code>)</h1>
+<p>In that case I would use <code>mutate()</code> + <code>str_extract()</code>/<code>str_remove()</code>:</p>
+<pre class="r"><code>widedata %&gt;% 
+  pivot_longer(-id) %&gt;% 
+  mutate(stage    = str_extract(name, &quot;[:digit:]&quot;)) %&gt;% 
+  mutate(variable = str_remove(name, &quot;_[:digit:]&quot;)) %&gt;% 
+  pivot_wider(names_from = &quot;name&quot;, values_from = &quot;value&quot;)</code></pre>
+<p>The first mutate extracts the number (<code>"[:digit:]"</code>) from the column called <code>name</code> (which is the result of <code>pivot_longer()</code>), I’ve called the new variable that gets this number <code>stage</code> but you can call it anything. We then remove the number from <code>name</code> as it now lives in a column of its own.</p>
+<p>This extraction is actually what the <code>tidyr::extract()</code> function is for, but it always takes me much longer to get <code>extract()</code> to work as compared to the easy to manage <code>mutate()</code> + <code>str_extract()</code>/<code>str_remove()</code> combo above.</p>
+</div>
+<div id="final-words" class="section level1">
+<h1>Final words</h1>
+<p>Reshaping data is really tricky, and your spreadsheet from hell is likely much more complicated than the simple example here. It always takes me lots of trial and error to get these things to work properly. Especially if there are irregularities in the data. You may find <code>janitor::clean_names()</code> useful, or you may need to do more cleanup using various <code>str_()</code> functions from the <a href="https://stringr.tidyverse.org">stringr package</a>.</p>
+<p>Good luck!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://riinu.me/tags/tidyr/">tidyr</a>
+
+  <a class="tag tag--primary tag--small" href="https://riinu.me/tags/reshaping-data/">reshaping data</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2021/09/create-website/" data-tooltip="Setting up a simple one page website using Nicepage and Netlify">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://riinu.me/2022/01/r-filtering-with-na-values/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Riinu Pius (Ots). All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://riinu.me/2021/09/create-website/" data-tooltip="Setting up a simple one page website using Nicepage and Netlify">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://riinu.me/2022/01/r-filtering-with-na-values/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Friinu.me%2F2022%2F01%2Fr-filtering-with-na-values%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Riinu Pius (Ots)</h4>
+    
+      <div id="about-card-bio">if it aint broke, you&rsquo;re outdated</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Senior Data Manager
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Edinburgh, UK
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://riinu.me/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://riinu.me/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/riinu.me\/2022\/01\/r-filtering-with-na-values\/';
+          
+            this.page.identifier = '\/2022\/01\/r-filtering-with-na-values\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'riinuots';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

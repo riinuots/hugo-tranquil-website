@@ -5,10 +5,175 @@
     <description>Recent content in R on Riinu&#39;s scripting diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jan 2022 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://riinu.me/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reshaping multiple variables into tidy (long) data</title>
+      <link>https://riinu.me/2022/01/r-filtering-with-na-values/</link>
+      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://riinu.me/2022/01/r-filtering-with-na-values/</guid>
+      <description>
+&lt;script src=&#34;https://riinu.me/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., &lt;code&gt;melt()&lt;/code&gt; vs &lt;code&gt;gather()&lt;/code&gt; vs &lt;code&gt;pivot_longer()&lt;/code&gt; in a previous post: &lt;a href=&#34;https://www.riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/&#34;&gt;New intuitive ways for reshaping data in R&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:&lt;/p&gt;
+&lt;div id=&#34;example-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example data&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# from dput():
+widedata = structure(list(id = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                          time_1 = c(1, 1, 1, 1, 1, 1, 1, 1, 1),
+                          time_2 = c(2, 2, 2, 2, 2, 2, 2, 2, 2), 
+                          time_3 = c(3, 3, 3, 3, 3, 3, 3, 3, 3),
+                          time_4 = c(4, 4, 4, 4, 4, 4, 4, 4, 4),
+                          outcome_1 = c(1, 1, 1, 1, 1, 1, 1, 1, 1),
+                          outcome_2 = c(2, 2, 2, 2, 2, 2, 2, 2, 2),
+                          outcome_3 = c(3, 3, 3, 3, 3, 3, 3, 3, 3),
+                          outcome_4 = c(4, 4, 4, 4, 4, 4, 4, 4, 4)),
+                     row.names = c(NA, -9L), class = c(&amp;quot;tbl_df&amp;quot;, &amp;quot;tbl&amp;quot;, &amp;quot;data.frame&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is what it looks like:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://riinu.me/img/widedata.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;widedata in RStudio View&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And this is what we want it to look like:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://riinu.me/img/longdata.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;widedata in RStudio View&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simple-solution&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simple solution&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+# pivot_longer puts everything that is not id into two columns (name and value)
+# separate the variable names and stage numbers
+# puts both variables back into two columns using pivot_wider()
+longdata = widedata %&amp;gt;% 
+  pivot_longer(-id) %&amp;gt;% 
+  separate(name, into = c(&amp;quot;name&amp;quot;, &amp;quot;stage&amp;quot;), sep = &amp;quot;_&amp;quot;) %&amp;gt;% 
+  pivot_wider(names_from = &amp;quot;name&amp;quot;, values_from = &amp;quot;value&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I think this is a very good solution as it’s easy to understand and debug. See below for a step by step explanation of these lines.&lt;/p&gt;
+&lt;p&gt;It is, however, possible to achieve the same result just by using clever arguments inside the &lt;code&gt;pivot_longer()&lt;/code&gt; (thank you Lisa for teaching me this):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;clever-solution&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Clever solution&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# same result as above but just pivot_longer()
+widedata %&amp;gt;% 
+  pivot_longer(-id,
+               names_to = c(&amp;quot;.value&amp;quot;, &amp;quot;number&amp;quot;),
+               names_pattern = &amp;quot;(.+)_(.+)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 36 × 4
+##       id number  time outcome
+##    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+##  1     1 1          1       1
+##  2     1 2          2       2
+##  3     1 3          3       3
+##  4     1 4          4       4
+##  5     2 1          1       1
+##  6     2 2          2       2
+##  7     2 3          3       3
+##  8     2 4          4       4
+##  9     3 1          1       1
+## 10     3 2          2       2
+## # … with 26 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simple-solution-step-by-step&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simple solution step by step&lt;/h1&gt;
+&lt;div id=&#34;combine-all-into-two-columns-first&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Combine all into two columns first&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;pivot_longer(-id)&lt;/code&gt; combines all columns except &lt;code&gt;id&lt;/code&gt; into two columns (name and value):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(-id)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 72 × 3
+##       id name      value
+##    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;
+##  1     1 time_1        1
+##  2     1 time_2        2
+##  3     1 time_3        3
+##  4     1 time_4        4
+##  5     1 outcome_1     1
+##  6     1 outcome_2     2
+##  7     1 outcome_3     3
+##  8     1 outcome_4     4
+##  9     2 time_1        1
+## 10     2 time_2        2
+## # … with 62 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The defaults &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;value&lt;/code&gt; may be changed using these arguments:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(-id, names_to = &amp;quot;my_variables&amp;quot;, values_to = &amp;quot;my_values&amp;quot;) %&amp;gt;% slice(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
+##      id my_variables my_values
+##   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;
+## 1     1 time_1               1&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;using &lt;code&gt;%&amp;gt;% slice(1)&lt;/code&gt; for brevity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have multiple columns that you don’t want collected, then it’s easier to select the ones you want. In this example, it would look like this:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(matches(&amp;quot;time|outcome&amp;quot;)) %&amp;gt;% slice(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
+##      id name   value
+##   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1     1 time_1     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this example dataset, &lt;code&gt;matches(&#34;time|outcome&#34;)&lt;/code&gt; has the same effect as &lt;code&gt;-id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Search for “tidyverse select helpers” to see the various options available for selecting the variables you need (&lt;a href=&#34;https://dplyr.tidyverse.org/reference/select.html&#34;&gt;select helpers reference&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;separate-column-names-and-numbers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Separate column names and numbers&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(-id) %&amp;gt;% 
+  separate(name, into = c(&amp;quot;name&amp;quot;, &amp;quot;stage&amp;quot;), sep = &amp;quot;_&amp;quot;) %&amp;gt;% slice(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 4
+##      id name  stage value
+##   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1 time  1         1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pivot_wider-so-that-each-variable-has-its-own-column&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;pivot_wider() so that each variable has its own column&lt;/h2&gt;
+&lt;p&gt;And the final step of this solution is &lt;code&gt;pivot_wider()&lt;/code&gt; which takes the multiple variables that &lt;code&gt;pivot_longer()&lt;/code&gt; combined into &lt;code&gt;name&lt;/code&gt; and puts them into their own columns:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(-id) %&amp;gt;% 
+  separate(name, into = c(&amp;quot;name&amp;quot;, &amp;quot;stage&amp;quot;), sep = &amp;quot;_&amp;quot;) %&amp;gt;% 
+  pivot_wider(names_from = &amp;quot;name&amp;quot;, values_from = &amp;quot;value&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 36 × 4
+##       id stage  time outcome
+##    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+##  1     1 1         1       1
+##  2     1 2         2       2
+##  3     1 3         3       3
+##  4     1 4         4       4
+##  5     2 1         1       1
+##  6     2 2         2       2
+##  7     2 3         3       3
+##  8     2 4         4       4
+##  9     3 1         1       1
+## 10     3 2         2       2
+## # … with 26 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-if-my-columns-dont-have-delimiters-e.g.-instead-of-time_1-time_2...-its-time1-time2-...&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What if my columns don’t have delimiters (e.g., instead of &lt;code&gt;time_1, time_2,...&lt;/code&gt; it’s &lt;code&gt;time1, time2, ...&lt;/code&gt;)&lt;/h1&gt;
+&lt;p&gt;In that case I would use &lt;code&gt;mutate()&lt;/code&gt; + &lt;code&gt;str_extract()&lt;/code&gt;/&lt;code&gt;str_remove()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;widedata %&amp;gt;% 
+  pivot_longer(-id) %&amp;gt;% 
+  mutate(stage    = str_extract(name, &amp;quot;[:digit:]&amp;quot;)) %&amp;gt;% 
+  mutate(variable = str_remove(name, &amp;quot;_[:digit:]&amp;quot;)) %&amp;gt;% 
+  pivot_wider(names_from = &amp;quot;name&amp;quot;, values_from = &amp;quot;value&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first mutate extracts the number (&lt;code&gt;&#34;[:digit:]&#34;&lt;/code&gt;) from the column called &lt;code&gt;name&lt;/code&gt; (which is the result of &lt;code&gt;pivot_longer()&lt;/code&gt;), I’ve called the new variable that gets this number &lt;code&gt;stage&lt;/code&gt; but you can call it anything. We then remove the number from &lt;code&gt;name&lt;/code&gt; as it now lives in a column of its own.&lt;/p&gt;
+&lt;p&gt;This extraction is actually what the &lt;code&gt;tidyr::extract()&lt;/code&gt; function is for, but it always takes me much longer to get &lt;code&gt;extract()&lt;/code&gt; to work as compared to the easy to manage &lt;code&gt;mutate()&lt;/code&gt; + &lt;code&gt;str_extract()&lt;/code&gt;/&lt;code&gt;str_remove()&lt;/code&gt; combo above.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-words&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Final words&lt;/h1&gt;
+&lt;p&gt;Reshaping data is really tricky, and your spreadsheet from hell is likely much more complicated than the simple example here. It always takes me lots of trial and error to get these things to work properly. Especially if there are irregularities in the data. You may find &lt;code&gt;janitor::clean_names()&lt;/code&gt; useful, or you may need to do more cleanup using various &lt;code&gt;str_()&lt;/code&gt; functions from the &lt;a href=&#34;https://stringr.tidyverse.org&#34;&gt;stringr package&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Good luck!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>R: filtering with NA values</title>
@@ -17,6 +182,7 @@
       
       <guid>https://riinu.me/2020/02/r-filtering-with-na-values/</guid>
       <description>
+&lt;script src=&#34;https://riinu.me/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
@@ -24,9 +190,17 @@ More explanations about this can be found in the Chapter 2: R basics of our book
 &lt;p&gt;This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.&lt;/p&gt;
 &lt;p&gt;For example, I want to keep rows that have a value for &lt;code&gt;important_a&lt;/code&gt; and/or &lt;code&gt;important_b&lt;/code&gt; (so rows 1, 3, 4).
 I don’t care whether &lt;code&gt;whatever_c&lt;/code&gt; is empty or not, but I do want to keep it.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
-
-mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;pillar&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;tibble&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;hms&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
                  important_b = c(NA, NA, &amp;quot;Value&amp;quot;, &amp;quot;Value&amp;quot;, NA),
                  whatever_c  = c(NA, &amp;quot;Value&amp;quot;, NA, NA, NA))
 
@@ -73,15 +247,16 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   drop_na()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 0 x 3
-## # … with 3 variables: important_a &amp;lt;chr&amp;gt;, important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 0 × 3
+## # … with 3 variables: important_a &amp;lt;chr&amp;gt;,
+## #   important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(Returns 0 as we don’t have rows where all 3 columns have a value).&lt;/p&gt;
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;This keeps complete cases based on specified columns:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   drop_na(important_a, important_b)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
@@ -91,7 +266,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter_all(any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -101,7 +276,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The third example is better achieved using the janitor package:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   janitor::remove_empty()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -115,7 +290,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A quick solution is to use &lt;code&gt;! is.na()&lt;/code&gt; for each variable inside a &lt;code&gt;filter()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter(! is.na(important_a) | ! is.na(important_b))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -128,7 +303,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A scalable solution is to use &lt;code&gt;filter_at()&lt;/code&gt; with &lt;code&gt;vars()&lt;/code&gt; with a select helper (e.g., &lt;code&gt;starts with()&lt;/code&gt;), and then the &lt;code&gt;any_vars(! is.na(.))&lt;/code&gt; that was introduced in (3).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter_at(vars(starts_with(&amp;quot;important_&amp;quot;)), any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      

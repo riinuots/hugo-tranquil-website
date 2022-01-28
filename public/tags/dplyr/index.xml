@@ -17,6 +17,7 @@
       
       <guid>https://riinu.me/2020/02/r-filtering-with-na-values/</guid>
       <description>
+&lt;script src=&#34;https://riinu.me/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;NA - Not Available/Not applicable is R’s way of denoting empty or missing values. When doing comparisons - such as equal to, greater than, etc. - extra care and thought needs to go into how missing values (NAs) are handled.
@@ -24,9 +25,17 @@ More explanations about this can be found in the Chapter 2: R basics of our book
 &lt;p&gt;This post lists a couple of different ways of keeping or discarding rows based on how important the variables with missing values are to you.&lt;/p&gt;
 &lt;p&gt;For example, I want to keep rows that have a value for &lt;code&gt;important_a&lt;/code&gt; and/or &lt;code&gt;important_b&lt;/code&gt; (so rows 1, 3, 4).
 I don’t care whether &lt;code&gt;whatever_c&lt;/code&gt; is empty or not, but I do want to keep it.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
-
-mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;pillar&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;tibble&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: replacing previous import
+## &amp;#39;lifecycle::last_warnings&amp;#39; by &amp;#39;rlang::last_warnings&amp;#39;
+## when loading &amp;#39;hms&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata  = tibble(important_a = c(&amp;quot;Value&amp;quot;, NA, &amp;quot;Value&amp;quot;, NA, NA),
                  important_b = c(NA, NA, &amp;quot;Value&amp;quot;, &amp;quot;Value&amp;quot;, NA),
                  whatever_c  = c(NA, &amp;quot;Value&amp;quot;, NA, NA, NA))
 
@@ -73,15 +82,16 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   drop_na()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 0 x 3
-## # … with 3 variables: important_a &amp;lt;chr&amp;gt;, important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 0 × 3
+## # … with 3 variables: important_a &amp;lt;chr&amp;gt;,
+## #   important_b &amp;lt;chr&amp;gt;, whatever_c &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(Returns 0 as we don’t have rows where all 3 columns have a value).&lt;/p&gt;
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;This keeps complete cases based on specified columns:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   drop_na(important_a, important_b)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       Value       &amp;lt;NA&amp;gt;&lt;/code&gt;&lt;/pre&gt;
@@ -91,7 +101,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter_all(any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -101,7 +111,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The third example is better achieved using the janitor package:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   janitor::remove_empty()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -115,7 +125,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A quick solution is to use &lt;code&gt;! is.na()&lt;/code&gt; for each variable inside a &lt;code&gt;filter()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter(! is.na(important_a) | ! is.na(important_b))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
@@ -128,7 +138,7 @@ mydata %&amp;gt;% knitr::kable()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A scalable solution is to use &lt;code&gt;filter_at()&lt;/code&gt; with &lt;code&gt;vars()&lt;/code&gt; with a select helper (e.g., &lt;code&gt;starts with()&lt;/code&gt;), and then the &lt;code&gt;any_vars(! is.na(.))&lt;/code&gt; that was introduced in (3).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mydata %&amp;gt;% 
   filter_at(vars(starts_with(&amp;quot;important_&amp;quot;)), any_vars(! is.na(.)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 × 3
 ##   important_a important_b whatever_c
 ##   &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;     
 ## 1 Value       &amp;lt;NA&amp;gt;        &amp;lt;NA&amp;gt;      
