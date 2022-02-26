@@ -11,11 +11,11 @@
     
     
     <item>
-      <title>Reshaping multiple variables into tidy (long) data</title>
-      <link>https://riinu.me/2022/01/r-filtering-with-na-values/</link>
+      <title>Reshaping multiple variables into tidy data (wide to long)</title>
+      <link>https://riinu.me/2022/01/wide-to-long-multiple/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://riinu.me/2022/01/r-filtering-with-na-values/</guid>
+      <guid>https://riinu.me/2022/01/wide-to-long-multiple/</guid>
       <description>
 &lt;script src=&#34;https://riinu.me/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
@@ -38,12 +38,12 @@ widedata = structure(list(id = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
 &lt;p&gt;This is what it looks like:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;https://riinu.me/img/widedata.png&#34; alt=&#34;&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;widedata in RStudio View&lt;/p&gt;
+&lt;p class=&#34;caption&#34;&gt;wide data in RStudio View&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;And this is what we want it to look like:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;https://riinu.me/img/longdata.png&#34; alt=&#34;&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;widedata in RStudio View&lt;/p&gt;
+&lt;p class=&#34;caption&#34;&gt;long data in RStudio View&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;simple-solution&#34; class=&#34;section level1&#34;&gt;

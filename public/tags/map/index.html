@@ -13,10 +13,10 @@
 
 <meta property="og:description" content="Riinu&#39;s scripting diary">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tidyr">
-<meta name="twitter:title" content="tidyr">
-<meta property="og:url" content="https://riinu.me/tags/tidyr/">
-<meta property="twitter:url" content="https://riinu.me/tags/tidyr/">
+<meta property="og:title" content="map">
+<meta name="twitter:title" content="map">
+<meta property="og:url" content="https://riinu.me/tags/map/">
+<meta property="twitter:url" content="https://riinu.me/tags/map/">
 <meta property="og:site_name" content="Riinu&#39;s scripting diary">
 <meta property="og:description" content="Riinu&#39;s scripting diary">
 <meta name="twitter:description" content="Riinu&#39;s scripting diary">
@@ -43,16 +43,16 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/5f7b9bb853156ab2b014b7a27f12ae37?s=640">
 
 
-    <title>tidyr</title>
+    <title>map</title>
 
     <link rel="icon" href="https://riinu.me/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://riinu.me/tags/tidyr/index.xml">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://riinu.me/tags/map/index.xml">
     
 
     
 
-    <link rel="canonical" href="https://riinu.me/tags/tidyr/">
+    <link rel="canonical" href="https://riinu.me/tags/map/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -258,16 +258,16 @@ if (!doNotTrack) {
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://riinu.me/2022/01/wide-to-long-multiple/">
-          Reshaping multiple variables into tidy data (wide to long)
+        <a class="link-unstyled" href="https://riinu.me/2022/02/world-map-ggplot2/">
+          World map using ggplot2 and an equal-area projection
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2022-01-28T00:00:00Z">
+      <time itemprop="datePublished" datetime="2022-02-25T00:00:00Z">
         
-  January 28, 2022
+  February 25, 2022
 
       </time>
     
@@ -287,79 +287,19 @@ if (!doNotTrack) {
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       
-        There’s some explanation on what reshaping data in R means, why we do it, as well as the history, e.g., melt() vs gather() vs pivot_longer() in a previous post: New intuitive ways for reshaping data in R
-That post shows how to reshape a single variable that had been recorded/entered across multiple different columns. But if multiple different variables are recorded over multiple different columns, then this is what you might want to do:
+        There are of different ways to make maps in R, ad I always have to look this up and figure this out again from previous examples that I’ve used. Today I had another look at what’s currently possible and what’s an easy way of making a world map in ggplot2 that doesn’t require fetching data from various places.
+TLDR: Copy this code to plot a world map using ggplot2:
       
       <p>
-        <a href="https://riinu.me/2022/01/wide-to-long-multiple/" class="postShorten-excerpt_link link">Continue reading</a>
+        <a href="https://riinu.me/2022/02/world-map-ggplot2/" class="postShorten-excerpt_link link">Continue reading</a>
         
       </p>
     </div>
   </div>
   
-    <a href="https://riinu.me/2022/01/wide-to-long-multiple/">
+    <a href="https://riinu.me/2022/02/world-map-ggplot2/">
       <div class="postShorten-thumbnailimg">
         <img alt="" itemprop="image" src="https://riinu.me/img/thumbnails/tidyr_logo.png"/>
-      </div>
-    </a>
-  
-</article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/">
-          New intuitive ways for reshaping data in R: long live pivot_longer() and pivot_wider()
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-04-07T00:00:00Z">
-        
-  April 7, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="https://riinu.me/categories/r">R</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        TLDR: there are two new and very intuitive R functions for reshaping data: see Examples of pivot_longer() and pivot_wider() below. At the time of writing, these new functions are extremely fresh and only exist in the development version on GitHub (see Installation), we should probably wait for the tidyverse team to officially release them (in CRAN) before putting them into day-to-day use.
-Exciting!
-Introduction The juxtapose of data collection vs data analysis: data that was very easy to collect, is probably very hard to analyse, and vice versa.
-      
-      <p>
-        <a href="https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://riinu.me/2019/04/new-intuitive-ways-to-reshape-data-in-r/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://riinu.me/img/thumbnails/tidyr.png"/>
       </div>
     </a>
   

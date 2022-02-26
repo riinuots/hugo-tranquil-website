@@ -23,6 +23,11 @@ googleAnalytics = "UA-114648473-1"
 paginate = 7
 canonifyurls = true
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [permalinks]
   post = "/:year/:month/:slug/"
 
